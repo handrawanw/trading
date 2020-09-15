@@ -4,10 +4,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import "bootstrap/dist/css/bootstrap.css";
+import ReduxState from "./Store/index";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ReduxState>
+      <Router>
+        <App />
+      </Router>
+    </ReduxState>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,10 +1,28 @@
 import React from "react";
 
-export default function FormBeli(){
+import { BeliSend } from "../Fungsi/beli";
+
+export default function FormBeli() {
   
+  const [DataBeli, setDataBeli] = React.useState({
+    jumlah:"",
+    harga:""
+  });
+
+  const handleInput = (e) => {
+    if (e.target.validity.valid) {
+      setDataBeli({ ...DataBeli, [e.target.name]: e.target.value });
+    };
+  }
+
+  const handleSubmitBeli = (e) => {
+    e.preventDefault();
+    BeliSend({ DataBeli });
+  }
+
   return (
     <div className="d-block ml-3 mt-3">
-    <form>
+    <form onSubmit={handleSubmitBeli}>
       <div className="form-group row">
           <div className="col-4 d-block">
             <div className="d-block mb-3">
@@ -31,11 +49,11 @@ export default function FormBeli(){
             <label for="jumlah">
               Jumlah
             </label>
-            <input type="text" className="form-control" />
+            <input type="text" name={Object.keys(DataBeli)[0]} value={Object.values(DataBeli)[0]} pattern="\d*" onInput={handleInput} className="form-control" />
             <label for="jumlah">
               Harga
             </label>
-            <input type="text" className="form-control" />
+            <input type="text" name={Object.keys(DataBeli)[1]} value={Object.values(DataBeli)[1]} pattern="\d*" onInput={handleInput} className="form-control" />
             
             <div className="d-block mt-1">
               Total 123

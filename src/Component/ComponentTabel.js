@@ -2,9 +2,31 @@ import React from 'react';
 
 import { Container } from "reactstrap";
 
+import { useDispatch,useSelector } from "react-redux";
+
+import { SetTradeBeliAll, SetTradeJualAll } from "../Store/actionRedux/TabelMarketAction";
+
+import { SocketIO } from "../Fungsi/soket";
+
 import "./Components.css";
 
-function ComponentBeli({ Judul, Jumlah, Beli, Total }) {
+function ComponentBeli({ Data, Judul, Jumlah, Beli, Total }) {
+
+  let dispatch = useDispatch();
+
+  let redux = useSelector((state) => state);
+
+  React.useEffect(() => {
+    SocketIO.on("tradeAll", (data) => {
+      if (Judul.toUpperCase() === "JUAL") {
+        dispatch(SetTradeJualAll({ market: JSON.parse(data) }));
+      } else if (Judul.toUpperCase() === "BELI") {
+        dispatch(SetTradeBeliAll({ market: JSON.parse(data) }));
+      } else {
+        dispatch(SetTradeBeliAll({ market: [] }));
+      }
+    });
+  }, [Judul,dispatch]);
   
   return (
     <Container fluid>

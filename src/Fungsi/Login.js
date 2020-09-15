@@ -1,15 +1,15 @@
 import axios from "axios";
 import Toast from "cogo-toast";
 
-export function BeliSend({DataBeli}) {
+export function LoginSend({DataLogin}) {
   axios({
-    url: `${process.env.REACT_APP_URL_LOCALHOST}/buyTrade`,
+    url: `${process.env.REACT_APP_URL_LOCALHOST}/user/login`,
     method: "POST",
     headers: {
       jwttoken:localStorage.getItem("token")
     },
     data: {
-      ...DataBeli
+      ...DataLogin
     }
   }).then(({ data }) => {
     Toast.success(data.message);

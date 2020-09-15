@@ -1,0 +1,33 @@
+.componentBeli {
+  width: 100%;
+  height:auto;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.componentBeli div {
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.overScrollBeli {
+  overflow: scroll;
+  max-height:300px;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+
+.overScrollBeli::-webkit-scrollbar {
+  display: none;
+}
+
+.scrolStatic {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
+}

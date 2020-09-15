@@ -8,7 +8,13 @@ import FormJual from "../Form/formJual";
 
 import History from "../Component/ComponentHistory";
 
-export default function Dashboard(){
+import {SocketIO} from "../Fungsi/soket";
+
+export default function Dashboard() {
+  
+  React.useEffect(() => {
+    SocketIO.emit("sambungkan", JSON.stringify({ nama: "wawan" }))
+  },[])
   
   return (
     <Container>

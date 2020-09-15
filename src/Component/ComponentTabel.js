@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Row, Col } from "reactstrap";
+import { Container } from "reactstrap";
 
 import "./Components.css";
 
@@ -16,7 +16,7 @@ function ComponentBeli({ Judul, Jumlah, Beli, Total }) {
           <div className="componentBeli overScrollBeli">
             <div>
               <div className="d-block m-2 scrolStatic">
-                <h6>Jumlah</h6>
+                <h6>JUMLAH</h6>
               </div>
               <div className="d-block">
                 <div>10</div>
@@ -45,7 +45,7 @@ function ComponentBeli({ Judul, Jumlah, Beli, Total }) {
 
             <div>
               <div className="d-block m-2 scrolStatic">
-                <h6>Beli</h6>
+                <h6>{Judul}</h6>
               </div>
               <div className="d-block">
                 <div>10</div>

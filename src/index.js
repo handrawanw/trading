@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import "bootstrap/dist/css/bootstrap.css";
 import ReduxState from "./Store/index";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>

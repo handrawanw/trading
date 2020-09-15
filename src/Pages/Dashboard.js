@@ -6,6 +6,8 @@ import TabelJualBeli from "../Component/ComponentTabel";
 import FormBeli from "../Form/formBeli";
 import FormJual from "../Form/formJual";
 
+import ButtonLogout from "../Form/ButtonLogout";
+
 import History from "../Component/ComponentHistory";
 
 import {SocketIO} from "../Fungsi/soket";
@@ -23,6 +25,7 @@ export default function Dashboard() {
           <div className="mt-1"></div>
           <div align="center">
             <h2>MARKET</h2>
+            <ButtonLogout />
           </div>
         </Col>
       </Row>

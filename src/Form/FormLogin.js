@@ -1,24 +1,28 @@
 import React from "react";
 
 
-import { LoginSend } from "../Fungsi/Login";
+import LoginSend from "../Fungsi/Login";
+
+import { useHistory,Link } from "react-router-dom";
 
 import "./LoginForm.css";
 
 export default function Login() {
 
+  let history = useHistory();
+
   const [DataLogin, setDataLogin] = React.useState({
     email:"",
     password:""
   });
-  
+
   const handleInput = (e) => {
       setDataLogin({ ...DataLogin, [e.target.name]: e.target.value });
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    LoginSend({ DataLogin });
+    LoginSend({DataLogin,history})
   }
   
   return (
@@ -35,9 +39,12 @@ export default function Login() {
             </label>
             <input type="text"
               className="form-control" name={Object.keys(DataLogin)[1]} value={Object.values(DataLogin)[1]} onChange={handleInput}
-              />
+          />
             <div className="d-block mt-2" align="right">
-              <button className="btn btn-outline-success">
+            <Link to="/daftar" className="m-2">
+              Daftar
+            </Link>  
+            <button className="btn btn-outline-success">
                 <small>Login</small>
               </button>
             </div>

@@ -2,6 +2,7 @@ import React from 'react';
 
 import Dashboard from "./Pages/Dashboard";
 import Login from './Pages/Login';
+import Daftar from './Pages/Daftar';
 
 import ProteksiRoute from "./ProteksiRoute";
 import Auth from "./Auth";
@@ -27,6 +28,9 @@ function App() {
       <Switch>
         <Route path="/" exact>
           <Login />
+        </Route>
+        <Route path="/daftar">
+          <Daftar />
         </Route>
         <ProteksiRoute path="/dashboard" component={Dashboard} />
       </Switch>

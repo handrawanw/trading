@@ -10,24 +10,13 @@ import { SocketIO } from "../Fungsi/soket";
 
 import "./Components.css";
 
-/*
-  CODEO(pin):"CODEO"
-  _id(pin):"5f6151b0615acb21d8ae90db"
-  user(pin):"5f614a8af192ad2d609be452"
-  jumlah(pin):1
-  total(pin):123
-  tipe(pin):"BELI"
-  harga(pin):123
-  createdAt(pin):"2020-09-15T23:43:44.091Z"
-  updatedAt(pin):"2020-09-15T23:43:44.091Z"
-__v(pin):0
-*/
-
 function ComponentBeli({ Data, Judul, TabelTipe }) {
 
   let dispatch = useDispatch();
 
   let { market } = useSelector((state) => state.TradeState[TabelTipe]);
+
+  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser:{});
   
   React.useEffect(() => {
     SocketIO.on("tradeAll", (data) => {
@@ -51,6 +40,7 @@ function ComponentBeli({ Data, Judul, TabelTipe }) {
         </section>
         <aside>
           <div className="componentBeli overScrollBeli">
+
             <div>
               <div className="d-block m-2 scrolStatic">
                 <h6>JUMLAH</h6>

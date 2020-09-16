@@ -1,8 +1,12 @@
 import React from "react";
 
-import { BeliSend } from "../Fungsi/beli";
+import { useSelector } from "react-redux";
 
-export default function FormBeli() {
+import { JualSend } from "../Fungsi/Jual";
+
+export default function FormJual() {
+  
+  const {codeo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser:{});
   
   const [DataJual, setDataJual] = React.useState({
     jumlah:"",
@@ -15,27 +19,27 @@ export default function FormBeli() {
     };
   }
 
-  const handleSubmitBeli = (e) => {
+  const handleSubmitJual = (e) => {
     e.preventDefault();
-    BeliSend({ DataJual });
+    JualSend({ DataJual });
   }
 
   return (
     <div className="d-block ml-3 mt-3">
-    <form onSubmit={handleSubmitBeli}>
+    <form onSubmit={handleSubmitJual}>
       <div className="form-group row">
           <div className="col-4 d-block">
             <div className="d-block mb-3">
               <div className="d-block">
-                SALDO
+                CODEO
               </div>
               <div className="d-block">
-                0
+                {codeo}
               </div>
             </div>
             <div className="d-block mb-1">
               <div className="d-block">
-                LAST PRICE BELI
+                LAST PRICE Jual
               </div>
               <div className="d-block">
                 0

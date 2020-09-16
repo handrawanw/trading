@@ -1,8 +1,12 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
+
 import { BeliSend } from "../Fungsi/beli";
 
 export default function FormBeli() {
+
+  const {saldo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser:{});
   
   const [DataBeli, setDataBeli] = React.useState({
     jumlah:"",
@@ -30,7 +34,7 @@ export default function FormBeli() {
                 SALDO
               </div>
               <div className="d-block">
-                0
+                {saldo}
               </div>
             </div>
             <div className="d-block mb-1">

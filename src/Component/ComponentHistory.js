@@ -2,9 +2,13 @@ import React from 'react';
 
 import { Container } from "reactstrap";
 
+import { useSelector } from "react-redux";
+
 import "./Components.css";
 
 function ComponentBeli({ Judul }) {
+
+  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser:{});
   
   return (
     <Container fluid>

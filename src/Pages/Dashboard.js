@@ -31,10 +31,10 @@ export default function Dashboard() {
       </Row>
       <Row>
         <Col xs="12" sm="12" md="6" lg="6" xl="6">
-            <TabelJualBeli Judul="JUAL" /> 
+            <TabelJualBeli Judul="JUAL" TabelTipe="TradeJual" /> 
         </Col>
         <Col xs="12" sm="12" md="6" lg="6" xl="6">
-            <TabelJualBeli Judul="BELI" /> 
+            <TabelJualBeli Judul="BELI" TabelTipe="TradeBeli" /> 
         </Col>
       </Row>
       <Row>

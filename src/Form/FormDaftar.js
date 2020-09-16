@@ -3,10 +3,13 @@ import React from "react";
 
 import DaftarSend from "../Fungsi/Daftar";
 
+import { useHistory } from "react-router-dom";
+
 import "./LoginForm.css";
 
 export default function Daftar() {
 
+  let history = useHistory();
 
   const [DataDaftar, setDataDaftar] = React.useState({
     username:"",
@@ -20,7 +23,7 @@ export default function Daftar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    DaftarSend({DataDaftar})
+    DaftarSend({DataDaftar,history})
   }
   
   return (

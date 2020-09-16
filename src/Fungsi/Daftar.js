@@ -1,7 +1,7 @@
 import axios from "axios";
 import Toast from "cogo-toast";
 
-export default function DaftarSend({ DataDaftar }) {
+export default function DaftarSend({ DataDaftar,history }) {
   axios({
     url: `${process.env.REACT_APP_URL_LOCALHOST}/user`,
     method: "POST",
@@ -12,7 +12,8 @@ export default function DaftarSend({ DataDaftar }) {
       ...DataDaftar
     }
   }).then(({ data }) => {
-      Toast.success(data.message);
+    Toast.success(data.message);
+    history.push("/");
   }).catch((err) => {
     let msg = "";
     if (err.response === undefined) {

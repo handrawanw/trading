@@ -3,7 +3,7 @@ import Toast from "cogo-toast";
 
 export function BeliSend({DataBeli}) {
   axios({
-    url: `${process.env.REACT_APP_URL_LOCALHOST}/buyTrade`,
+    url: `${process.env.REACT_APP_URL_LOCALHOST}/tradeBuy`,
     method: "POST",
     headers: {
       jwttoken:localStorage.getItem("token")

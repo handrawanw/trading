@@ -10,18 +10,33 @@ import { SocketIO } from "../Fungsi/soket";
 
 import "./Components.css";
 
-function ComponentBeli({ Data, Judul, Jumlah, Beli, Total }) {
+/*
+  CODEO(pin):"CODEO"
+  _id(pin):"5f6151b0615acb21d8ae90db"
+  user(pin):"5f614a8af192ad2d609be452"
+  jumlah(pin):1
+  total(pin):123
+  tipe(pin):"BELI"
+  harga(pin):123
+  createdAt(pin):"2020-09-15T23:43:44.091Z"
+  updatedAt(pin):"2020-09-15T23:43:44.091Z"
+__v(pin):0
+*/
+
+function ComponentBeli({ Data, Judul, TabelTipe }) {
 
   let dispatch = useDispatch();
 
-  let redux = useSelector((state) => state);
-
+  let { market } = useSelector((state) => state.TradeState[TabelTipe]);
+  
   React.useEffect(() => {
     SocketIO.on("tradeAll", (data) => {
       if (Judul.toUpperCase() === "JUAL") {
-        dispatch(SetTradeJualAll({ market: JSON.parse(data) }));
+        let marketDataJual = JSON.parse(data).tradeAll.filter((item) => item.tipe === "JUAL").sort((a, b) => b.harga - a.harga);
+        dispatch(SetTradeJualAll({ market: marketDataJual }));
       } else if (Judul.toUpperCase() === "BELI") {
-        dispatch(SetTradeBeliAll({ market: JSON.parse(data) }));
+        let marketDataBeli = JSON.parse(data).tradeAll.filter((item)=>item.tipe==="BELI").sort((a, b) => a.harga - b.harga);
+        dispatch(SetTradeBeliAll({ market:marketDataBeli }));
       } else {
         dispatch(SetTradeBeliAll({ market: [] }));
       }
@@ -41,26 +56,13 @@ function ComponentBeli({ Data, Judul, Jumlah, Beli, Total }) {
                 <h6>JUMLAH</h6>
               </div>
               <div className="d-block">
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
+                {
+                  market?market.length>0?market.map((item) => {
+                    return (
+                      <div>{item.jumlah}</div>
+                    )
+                  }):"-":"-"
+                }
               </div>
               
             </div>
@@ -70,26 +72,13 @@ function ComponentBeli({ Data, Judul, Jumlah, Beli, Total }) {
                 <h6>{Judul}</h6>
               </div>
               <div className="d-block">
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
+                  {
+                    market?market.length>0?market.map((item) => {
+                      return (
+                        <div>{item.harga}</div>
+                      )
+                    }):"-":"-"
+                  }
               </div>
               
             </div>
@@ -99,26 +88,13 @@ function ComponentBeli({ Data, Judul, Jumlah, Beli, Total }) {
                 <h6>TOTAL</h6>
               </div>
               <div className="d-block">
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
-                <div>12</div>
+                {
+                  market?market.length>0?market.map((item) => {
+                    return (
+                      <div>{item.total}</div>
+                    )
+                  }):"-":"-"
+                }
               </div>
             </div>
 

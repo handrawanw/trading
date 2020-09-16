@@ -6,7 +6,7 @@ import { BeliSend } from "../Fungsi/beli";
 
 export default function FormBeli() {
 
-  const {saldo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser:{});
+  const {saldo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
   
   const [DataBeli, setDataBeli] = React.useState({
     jumlah:"",

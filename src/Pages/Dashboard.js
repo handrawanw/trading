@@ -18,8 +18,7 @@ import { setInfoUser } from "../Store/actionRedux/infoUserRedux";
 export default function Dashboard() {
   
   let dispatch = useDispatch();
-  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser:{});
-
+  
   React.useEffect(() => {
     SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
     SocketIO.on("infoUser", (data) => {
@@ -28,6 +27,9 @@ export default function Dashboard() {
     });
   }, [dispatch])
   
+  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
+
+
   return (
     <Container fluid>
        <Row>

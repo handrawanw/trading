@@ -6,7 +6,7 @@ import { JualSend } from "../Fungsi/Jual";
 
 export default function FormJual() {
   
-  const {codeo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser:{});
+  const {codeo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
   
   const [DataJual, setDataJual] = React.useState({
     jumlah:"",

@@ -8,7 +8,7 @@ import "./Components.css";
 
 function ComponentBeli({ Judul }) {
 
-  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser:{});
+  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
   
   return (
     <Container fluid>

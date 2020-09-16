@@ -16,16 +16,18 @@ function ComponentBeli({ Data, Judul, TabelTipe }) {
 
   let { market } = useSelector((state) => state.TradeState[TabelTipe]);
 
-  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser:{});
+  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
   
   React.useEffect(() => {
     SocketIO.on("tradeAll", (data) => {
       if (Judul.toUpperCase() === "JUAL") {
-        let marketDataJual = JSON.parse(data).tradeAll.filter((item) => item.tipe === "JUAL").sort((a, b) => b.harga - a.harga);
-        dispatch(SetTradeJualAll({ market: marketDataJual }));
+        let marketDataJual = JSON.parse(data).tradeAll;
+        let marketArray=marketDataJual?marketDataJual.filter((item) => item.tipe.toUpperCase() === "JUAL").sort((a, b) => b.harga - a.harga):[];
+        dispatch(SetTradeJualAll({ market: marketArray }));
       } else if (Judul.toUpperCase() === "BELI") {
-        let marketDataBeli = JSON.parse(data).tradeAll.filter((item)=>item.tipe==="BELI").sort((a, b) => a.harga - b.harga);
-        dispatch(SetTradeBeliAll({ market:marketDataBeli }));
+        let marketDataBeli = JSON.parse(data).tradeAll;
+        let marketArray=marketDataBeli?marketDataBeli.filter((item)=>item.tipe.toUpperCase()==="BELI").sort((a, b) => a.harga - b.harga):[];
+        dispatch(SetTradeBeliAll({ market:marketArray }));
       } else {
         dispatch(SetTradeBeliAll({ market: [] }));
       }

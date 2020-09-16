@@ -22,11 +22,11 @@ function ComponentBeli({ Data, Judul, TabelTipe }) {
     SocketIO.on("tradeAll", (data) => {
       if (Judul.toUpperCase() === "JUAL") {
         let marketDataJual = JSON.parse(data).tradeAll;
-        let marketArray=marketDataJual?marketDataJual.filter((item) => item.tipe.toUpperCase() === "JUAL").sort((a, b) => b.harga - a.harga):[];
+        let marketArray=marketDataJual?marketDataJual.filter((item) => item.tipe.toUpperCase() === "JUAL").filter((item)=>item.jumlah!==0).sort((a, b) => b.harga - a.harga):[];
         dispatch(SetTradeJualAll({ market: marketArray }));
       } else if (Judul.toUpperCase() === "BELI") {
         let marketDataBeli = JSON.parse(data).tradeAll;
-        let marketArray=marketDataBeli?marketDataBeli.filter((item)=>item.tipe.toUpperCase()==="BELI").sort((a, b) => a.harga - b.harga):[];
+        let marketArray=marketDataBeli?marketDataBeli.filter((item)=>item.tipe.toUpperCase()==="BELI").filter((item)=>item.jumlah!==0).sort((a, b) => a.harga - b.harga):[];
         dispatch(SetTradeBeliAll({ market:marketArray }));
       } else {
         dispatch(SetTradeBeliAll({ market: [] }));

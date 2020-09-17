@@ -18,7 +18,8 @@ import { setInfoUser } from "../Store/actionRedux/infoUserRedux";
 export default function Dashboard() {
   
   let dispatch = useDispatch();
-  
+  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
+
   React.useEffect(() => {
     SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
     SocketIO.on("infoUser", (data) => {
@@ -27,10 +28,7 @@ export default function Dashboard() {
     });
   }, [dispatch])
   
-  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
-
-
-  return (
+  return ( 
     <Container fluid>
        <Row>
         <Col xs="12" sm="12" md="12" lg="12" xl="12">
@@ -39,7 +37,7 @@ export default function Dashboard() {
             <h2>{username}</h2>
             <ButtonLogout />
           </div>
-        </Col>
+        </Col>d
       </Row>
 
       <Row>
@@ -61,7 +59,7 @@ export default function Dashboard() {
       <Row>
         <Col xs="12" sm="12" md="6" lg="6" xl="6">
           <FormBeli />
-        </Col>
+        </Col> 
         <Col xs="12" sm="12" md="6" lg="6" xl="6">
           <FormJual />
         </Col>

@@ -60,7 +60,7 @@ export default function FormBeli() {
             <input type="text" name={Object.keys(DataBeli)[1]} value={Object.values(DataBeli)[1]} pattern="\d*" onInput={handleInput} className="form-control" />
             
             <div className="d-block mt-1">
-              Total 123
+              Total Bayar : {Number(DataBeli.jumlah)*Number(DataBeli.harga)}
             </div>
           </div>
       </div>

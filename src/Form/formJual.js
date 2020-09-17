@@ -10,8 +10,9 @@ export default function FormJual() {
   
   const [DataJual, setDataJual] = React.useState({
     jumlah:"",
-    harga:""
+    harga:"",
   });
+
 
   const handleInput = (e) => {
     if (e.target.validity.valid) {
@@ -60,7 +61,7 @@ export default function FormJual() {
             <input type="text" name={Object.keys(DataJual)[1]} value={Object.values(DataJual)[1]} pattern="\d*" onInput={handleInput} className="form-control" />
             
             <div className="d-block mt-1">
-              Total 123
+              Total Bayar : {Number(DataJual.jumlah)*Number(DataJual.harga)}
             </div>
           </div>
       </div>

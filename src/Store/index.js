@@ -9,12 +9,14 @@ import { reduxSoldierMiddleware } from "redux-soldier";
 
 import { TradeState } from "../Store/storeRedux/TabelMarketStore";
 import UserState from "../Store/storeRedux/infoUserStore";
+import storeHistory from "../Store/storeRedux/storeHistory";
 
 export default function ReduxState({ children }) {
   
   let STORE = combineReducers({
     TradeState,
     UserState,
+    storeHistory
   });
 
   let STORED = createStore(STORE, composeWithDevTools(applyMiddleware(reduxSoldierMiddleware)));

@@ -10,7 +10,6 @@ import ButtonLogout from "../Form/ButtonLogout";
 
 import History from "../Component/ComponentHistory";
 
-import ChartBeli from "../Chart/LineChartBeli";
 import ChartJual from "../Chart/LineChartJual";
 
 
@@ -18,6 +17,7 @@ import { SocketIO } from "../Fungsi/soket";
 
 import { useDispatch,useSelector } from "react-redux";
 import { setInfoUser } from "../Store/actionRedux/infoUserRedux";
+import {setChart} from "../Store/actionRedux/historyTrade";
 
 export default function Dashboard() {
   
@@ -30,6 +30,10 @@ export default function Dashboard() {
       let user = JSON.parse(data);
       dispatch(setInfoUser({ User: user }));
     });
+    SocketIO.on("latestTrade",(data)=>{
+      let History=JSON.parse(data).latestTrade;
+      dispatch(setChart({Data:History}));
+    })
   }, [dispatch])
   
   return ( 

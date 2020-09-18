@@ -31,15 +31,16 @@ function ComponentBeli({ Judul }) {
         </section>
         <aside>
           <div className="componentBeli overScrollBeli">
+
             <div>
               <div className="d-block m-2 scrolStatic">
-                <h6>Jumlah</h6>
+                <h6>NO</h6>
               </div>
               <div className="d-block">
                   {
-                    market?market.length>0?market.map((item) => {
+                    market?market.length>0?market.map((item,index) => {
                       return (
-                        <div>{item.tipe}</div>
+                      <div className="m-3 fontS">{index+1}</div>
                       )
                     }):"-":"-"
                   }
@@ -55,7 +56,7 @@ function ComponentBeli({ Judul }) {
                 {
                   market?market.length>0?market.map((item) => {
                     return (
-                      <div>{item.harga}</div>
+                      <div className="m-3 fontS ">{item.harga}</div>
                     )
                   }):"-":"-"
                 }
@@ -71,11 +72,27 @@ function ComponentBeli({ Judul }) {
                   {
                     market?market.length>0?market.map((item) => {
                       return (
-                        <div>{item.total}</div>
+                        <div className="m-3 fontS">{item.total}</div>
                       )
                     }):"-":"-"
                   }
               </div>
+            </div>
+
+            <div>
+              <div className="d-block m-2 scrolStatic">
+                <h6>TIPE</h6>
+              </div>
+              <div className="d-block">
+                  {
+                    market?market.length>0?market.map((item) => {
+                      return (
+                      <div className="m-3 fontS">{item.tipe}</div>
+                      )
+                    }):"-":"-"
+                  }
+              </div>
+              
             </div>
 
             <div>
@@ -86,7 +103,7 @@ function ComponentBeli({ Judul }) {
                 {
                   market?market.length>0?market.map(() => {
                     return (
-                      <div>PENDING</div>
+                      <div className="m-3 fontS ">PENDING</div>
                     )
                   }):"-":"-"
                 }
@@ -100,15 +117,17 @@ function ComponentBeli({ Judul }) {
               <div className="d-block">
 
                 {
-                  market?market.length>0?market.map(() => {
+                  market?market.length>0?market.map((item,index) => {
                     return (
-                      <button className="btn btn-success">
-                          <i className="fa fa-money" />
+                      <div className="d-block">
+                      <button className="btn btn-success p-1 m-1">
+                         {index+1} <i className="fa fa-money" />
                       </button>
+                      </div>
                     );
                   }):"-":"-"
                 }
-                
+
               </div>
             </div>
 

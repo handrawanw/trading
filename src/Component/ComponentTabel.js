@@ -75,7 +75,7 @@ function ComponentBeli({ Data, Judul, TabelTipe }) {
 
             <div>
               <div className="d-block m-2 scrolStatic">
-                <h6>{Judul}</h6>
+                <h6>HARGA</h6>
               </div>
               <div className="d-block">
                   {

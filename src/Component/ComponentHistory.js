@@ -98,16 +98,17 @@ function ComponentBeli({ Judul }) {
                 <h6>ACTION</h6>
               </div>
               <div className="d-block">
-                <div className="d-block">
-                  <button className="btn btn-danger">
-                    &times;
-                  </button>
-                </div>
-                <div className="d-block">
-                  <button className="btn btn-danger">
-                    &times;
-                  </button>
-                </div>
+
+                {
+                  market?market.length>0?market.map(() => {
+                    return (
+                      <button className="btn btn-success">
+                          <i className="fa fa-money" />
+                      </button>
+                    );
+                  }):"-":"-"
+                }
+                
               </div>
             </div>
 

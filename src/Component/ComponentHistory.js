@@ -2,13 +2,26 @@ import React from 'react';
 
 import { Container } from "reactstrap";
 
-import { useSelector } from "react-redux";
+import { SocketIO } from "../Fungsi/soket";
+
+import { useSelector,useDispatch } from "react-redux";
+
+import {SetTradeAll} from "../Store/actionRedux/TabelMarketAction";
 
 import "./Components.css";
 
 function ComponentBeli({ Judul }) {
 
-  let { market } = useSelector((state) => state.TradeState);
+  let dispatch=useDispatch();
+  let { market } = useSelector((state) => state.TradeState.TradeMe);
+
+  React.useEffect(() => {
+    SocketIO.on("tradeMe", (data) => {
+        let tradeMe=JSON.parse(data).tradeMe;
+        let filterSort=tradeMe.sort((a,b)=>b.harga-a.harga);
+        dispatch(SetTradeAll({market:filterSort}));
+    });
+  }, [Judul,dispatch]);
 
   return (
     <Container fluid>
@@ -23,17 +36,29 @@ function ComponentBeli({ Judul }) {
                 <h6>Jumlah</h6>
               </div>
               <div className="d-block">
-                  
+                  {
+                    market?market.length>0?market.map((item) => {
+                      return (
+                        <div>{item.tipe}</div>
+                      )
+                    }):"-":"-"
+                  }
               </div>
               
             </div>
 
             <div>
               <div className="d-block m-2 scrolStatic">
-                <h6>Beli</h6>
+                <h6>HARGA</h6>
               </div>
               <div className="d-block">
-               
+                {
+                  market?market.length>0?market.map((item) => {
+                    return (
+                      <div>{item.harga}</div>
+                    )
+                  }):"-":"-"
+                }
               </div>
               
             </div>
@@ -43,9 +68,13 @@ function ComponentBeli({ Judul }) {
                 <h6>TOTAL</h6>
               </div>
               <div className="d-block">
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
+                  {
+                    market?market.length>0?market.map((item) => {
+                      return (
+                        <div>{item.total}</div>
+                      )
+                    }):"-":"-"
+                  }
               </div>
             </div>
 
@@ -54,9 +83,13 @@ function ComponentBeli({ Judul }) {
                 <h6>STATUS</h6>
               </div>
               <div className="d-block">
-                <div>PENDING</div>
-                <div>PENDING</div>
-                <div>PENDING</div>
+                {
+                  market?market.length>0?market.map(() => {
+                    return (
+                      <div>PENDING</div>
+                    )
+                  }):"-":"-"
+                }
               </div>
             </div>
 

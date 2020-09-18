@@ -41,6 +41,22 @@ function ComponentBeli({ Data, Judul, TabelTipe }) {
         <aside>
           <div className="componentBeli overScrollBeli">
 
+          <div>
+              <div className="d-block m-2 scrolStatic">
+                <h6>TIPE</h6>
+              </div>
+              <div className="d-block">
+                {
+                  market?market.length>0?market.map((item) => {
+                    return (
+                      <div>{item.tipe}</div>
+                    )
+                  }):"-":"-"
+                }
+              </div>
+              
+            </div>
+
             <div>
               <div className="d-block m-2 scrolStatic">
                 <h6>JUMLAH</h6>

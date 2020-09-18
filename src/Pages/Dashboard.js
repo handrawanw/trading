@@ -54,17 +54,8 @@ export default function Dashboard() {
       </Row>
 
       <Row>
-        <Col xs="12" sm="12" md="6" lg="6" xl="6">
-          <div className="mt-1 mb-1"></div>
-          <div align="center">
-            <ChartBeli />
-          </div>
-        </Col>
-        <Col xs="12" sm="12" md="6" lg="6" xl="6">
-          <div className="mt-1 mb-1"></div>
-          <div align="center">
+        <Col xs="12" sm="12" md="12" lg="12" xl="12">
             <ChartJual />
-          </div>
         </Col>
       </Row>
 

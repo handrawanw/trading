@@ -6,7 +6,7 @@ import { BeliSend } from "../Fungsi/beli";
 
 export default function FormBeli() {
 
-  const {saldo,_id} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
+  const {saldo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
   
   const [DataBeli, setDataBeli] = React.useState({
     jumlah:"",
@@ -31,7 +31,7 @@ export default function FormBeli() {
           <div className="col-4 d-block">
             <div className="d-block mb-3">
               <div className="d-block">
-                SALDO {_id}
+                SALDO 
               </div>
               <div className="d-block">
                 {saldo}

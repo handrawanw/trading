@@ -8,6 +8,8 @@ import { useSelector,useDispatch } from "react-redux";
 
 import {SetTradeAll} from "../Store/actionRedux/TabelMarketAction";
 
+import {RefundSend} from "../Fungsi/refund";
+
 import "./Components.css";
 
 function ComponentBeli({ Judul }) {
@@ -119,8 +121,8 @@ function ComponentBeli({ Judul }) {
                 {
                   market?market.length>0?market.map((item,index) => {
                     return (
-                      <div className="d-block">
-                      <button className="btn btn-success p-1 m-1">
+                      <div key={index+1} className="d-block">
+                      <button className="btn btn-success p-1 m-1" onClick={()=>RefundSend({DataRefund:item._id})}>
                          {index+1} <i className="fa fa-money" />
                       </button>
                       </div>

@@ -10,6 +10,10 @@ import ButtonLogout from "../Form/ButtonLogout";
 
 import History from "../Component/ComponentHistory";
 
+import ChartBeli from "../Chart/LineChartBeli";
+import ChartJual from "../Chart/LineChartJual";
+
+
 import { SocketIO } from "../Fungsi/soket";
 
 import { useDispatch,useSelector } from "react-redux";
@@ -48,6 +52,22 @@ export default function Dashboard() {
           </div>
         </Col>
       </Row>
+
+      <Row>
+        <Col xs="12" sm="12" md="6" lg="6" xl="6">
+          <div className="mt-1 mb-1"></div>
+          <div align="center">
+            <ChartBeli />
+          </div>
+        </Col>
+        <Col xs="12" sm="12" md="6" lg="6" xl="6">
+          <div className="mt-1 mb-1"></div>
+          <div align="center">
+            <ChartJual />
+          </div>
+        </Col>
+      </Row>
+
       <Row>
         <Col xs="12" sm="12" md="6" lg="6" xl="6">
             <TabelJualBeli Judul="JUAL" TabelTipe="TradeJual" /> 

@@ -4,6 +4,9 @@ let initialState = {
   },
   TradeBeli: {
     market:[]
+  },
+  TradeAll:{
+    market:[]
   }
 };
 
@@ -25,6 +28,15 @@ export function TradeState(state=initialState,action){
           ...state,
           TradeBeli: {
             ...state.TradeBeli,
+            market:action.market
+          }
+        };
+    case "TradeAll":
+      
+      return {
+        ...state,
+          TradeAll: {
+            ...state.TradeAll,
             market:action.market
           }
         };

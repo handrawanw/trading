@@ -32,10 +32,10 @@ export default function FormJual() {
           <div className="col-4 d-block">
             <div className="d-block mb-3">
               <div className="d-block">
-                CODEO
+                TOTAL
               </div>
               <div className="d-block">
-                {codeo}
+                {codeo} CODEO
               </div>
             </div>
             <div className="d-block mb-1">
@@ -58,7 +58,7 @@ export default function FormJual() {
             <label for="jumlah">
               Harga
             </label>
-            <input type="text" name={Object.keys(DataJual)[1]} value={Object.values(DataJual)[1]} pattern="\d*" onInput={handleInput} className="form-control" />
+            <input type="text" name={Object.keys(DataJual)[1]} value={Object.values(DataJual)[1]} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />
             
             <div className="d-block mt-1">
               Total Bayar : {Number(DataJual.jumlah)*Number(DataJual.harga)}

@@ -13,3 +13,11 @@ export function SetTradeBeliAll({market}) {
     market,
   }
 }
+
+export function SetTradeAll({market}) {
+  
+  return {
+    type:"TradeAll",
+    market,
+  }
+}

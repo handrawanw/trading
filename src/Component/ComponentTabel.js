@@ -4,7 +4,7 @@ import { Container } from "reactstrap";
 
 import { useDispatch,useSelector } from "react-redux";
 
-import { SetTradeBeliAll, SetTradeJualAll } from "../Store/actionRedux/TabelMarketAction";
+import { SetTradeBeliAll, SetTradeJualAll,SetTradeAll } from "../Store/actionRedux/TabelMarketAction";
 
 import { SocketIO } from "../Fungsi/soket";
 
@@ -16,8 +16,6 @@ function ComponentBeli({ Data, Judul, TabelTipe }) {
 
   let { market } = useSelector((state) => state.TradeState[TabelTipe]);
 
-  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
-  
   React.useEffect(() => {
     SocketIO.on("tradeAll", (data) => {
       if (Judul.toUpperCase() === "JUAL") {
@@ -29,7 +27,7 @@ function ComponentBeli({ Data, Judul, TabelTipe }) {
         let marketArray=marketDataBeli?marketDataBeli.filter((item)=>item.tipe.toUpperCase()==="BELI").filter((item)=>item.jumlah!==0).sort((a, b) => a.harga - b.harga).filter((item)=>item.jumlah>0).sort((a, b) => a.jumlah - b.jumlah):[];
         dispatch(SetTradeBeliAll({ market:marketArray }));
       } else {
-        dispatch(SetTradeBeliAll({ market: [] }));
+        dispatch([SetTradeJualAll({ market: [] }),SetTradeBeliAll({ market: [] }),SetTradeAll({ market: [] })]);
       }
     });
   }, [Judul,dispatch]);
@@ -43,22 +41,6 @@ function ComponentBeli({ Data, Judul, TabelTipe }) {
         <aside>
           <div className="componentBeli overScrollBeli">
 
-            <div>
-              <div className="d-block m-2 scrolStatic">
-                <h6>Id</h6>
-              </div>
-              <div className="d-block">
-                {
-                  market?market.length>0?market.map((item) => {
-                    return (
-                      <div>{item.user}XIU{item._id}</div>
-                    )
-                  }):"-":"-"
-                } 
-              </div>
-               
-            </div> 
-            
             <div>
               <div className="d-block m-2 scrolStatic">
                 <h6>JUMLAH</h6>
@@ -114,4 +96,3 @@ function ComponentBeli({ Data, Judul, TabelTipe }) {
 }
 
 export default ComponentBeli;
-

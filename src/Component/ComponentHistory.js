@@ -8,8 +8,8 @@ import "./Components.css";
 
 function ComponentBeli({ Judul }) {
 
-  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
-  
+  let { market } = useSelector((state) => state.TradeState);
+
   return (
     <Container fluid>
       <div className="d-block" align="center">
@@ -23,9 +23,7 @@ function ComponentBeli({ Judul }) {
                 <h6>Jumlah</h6>
               </div>
               <div className="d-block">
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
+                  
               </div>
               
             </div>
@@ -35,9 +33,7 @@ function ComponentBeli({ Judul }) {
                 <h6>Beli</h6>
               </div>
               <div className="d-block">
-                <div>10</div>
-                <div>12</div>
-                <div>10</div>
+               
               </div>
               
             </div>

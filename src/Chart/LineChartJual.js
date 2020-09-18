@@ -1,9 +1,13 @@
 import React from "react";
 import {Line} from 'react-chartjs-2';
 
-import {useSelector} from "react-redux";
+import {useSelector,useDispatch} from "react-redux";
+
+import {setDataBeli,setDataJual} from "../Store/actionRedux/historyTrade";
 
 export default function Charts(){
+
+  let dispatch=useDispatch();
 
   let {Grafik}=useSelector((state)=>state.storeHistory);
 
@@ -18,6 +22,10 @@ export default function Charts(){
       dataJUal.push(item.latestHarga);
     }
   });
+
+  React.useEffect(()=>{
+    dispatch([setDataBeli({Data:dataBeli,last:dataBeli[dataBeli.length-1]}),setDataJual({Data:dataJUal,last:dataJUal[dataJUal.length-1]})])
+  },[dispatch,dataBeli,dataJUal]);
 
   const data = {
     labels: labelnew,

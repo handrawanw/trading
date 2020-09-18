@@ -6,6 +6,9 @@ import { BeliSend } from "../Fungsi/beli";
 
 export default function FormBeli() {
 
+  let {lastJual}=useSelector((state)=>state.storeHistory);
+  
+
   const {saldo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
   
   const [DataBeli, setDataBeli] = React.useState({
@@ -42,7 +45,7 @@ export default function FormBeli() {
                 LAST PRICE BELI
               </div>
               <div className="d-block">
-                0
+                {lastJual?lastJual:0}
               </div>
             </div>
             <button className="btn btn-success form-control">

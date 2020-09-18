@@ -27,7 +27,7 @@ function ComponentBeli({ Data, Judul, TabelTipe }) {
         let marketArray=marketDataBeli?marketDataBeli.filter((item)=>item.tipe.toUpperCase()==="BELI").filter((item)=>item.jumlah!==0).sort((a, b) => a.harga - b.harga).filter((item)=>item.jumlah>0).sort((a, b) => a.jumlah - b.jumlah):[];
         dispatch(SetTradeBeliAll({ market:marketArray }));
       } else {
-        dispatch([SetTradeJualAll({ market: [] }),SetTradeBeliAll({ market: [] }),SetTradeAll({ market: [] })]);
+        dispatch([SetTradeJualAll({ market: null }),SetTradeBeliAll({ market: null }),SetTradeAll({ market: [] })]);
       }
     });
   }, [Judul,dispatch]);

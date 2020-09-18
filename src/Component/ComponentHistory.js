@@ -52,6 +52,21 @@ function ComponentBeli({ Judul }) {
 
             <div>
               <div className="d-block m-2 scrolStatic">
+                <h6>JUMLAH</h6>
+              </div>
+              <div className="d-block">
+                {
+                  market?market.length>0?market.map((item) => {
+                    return (
+                    <div className="m-3 fontS ">{item.jumlah}</div>
+                    )
+                  }):"-":"-"
+                }
+              </div>
+            </div>
+
+            <div>
+              <div className="d-block m-2 scrolStatic">
                 <h6>HARGA</h6>
               </div>
               <div className="d-block">
@@ -111,6 +126,7 @@ function ComponentBeli({ Judul }) {
                 }
               </div>
             </div>
+            
 
             <div>
               <div className="d-block m-2 scrolStatic">

@@ -5,13 +5,16 @@ import { useSelector } from "react-redux";
 import { JualSend } from "../Fungsi/Jual";
 
 export default function FormJual() {
-  
+
+  let {lastBeli}=useSelector((state)=>state.storeHistory);
+
   const {codeo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
   
   const [DataJual, setDataJual] = React.useState({
     jumlah:"",
     harga:"",
   });
+
 
 
   const handleInput = (e) => {
@@ -43,7 +46,7 @@ export default function FormJual() {
                 LAST PRICE Jual
               </div>
               <div className="d-block">
-                0
+                {lastBeli}
               </div>
             </div>
             <button className="btn btn-danger form-control">

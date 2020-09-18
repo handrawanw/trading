@@ -16,4 +16,4 @@ class Auth {
 
 }
 
-module.exports = new Auth();
+export default new Auth();

@@ -37,7 +37,7 @@ export default function FormBeli() {
                 SALDO 
               </div>
               <div className="d-block">
-                {saldo}
+                {saldo?saldo:0}
               </div>
             </div>
             <div className="d-block mb-1">

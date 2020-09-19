@@ -38,7 +38,7 @@ export default function FormJual() {
                 TOTAL
               </div>
               <div className="d-block">
-                {codeo} CODEO
+                {codeo?codeo:0} CODEO
               </div>
             </div>
             <div className="d-block mb-1">
@@ -46,7 +46,7 @@ export default function FormJual() {
                 LAST PRICE Jual
               </div>
               <div className="d-block">
-                {lastBeli}
+                {lastBeli?lastBeli:0}
               </div>
             </div>
             <button className="btn btn-danger form-control">

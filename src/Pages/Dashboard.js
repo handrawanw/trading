@@ -13,7 +13,7 @@ import History from "../Component/ComponentHistory";
 import ChartJual from "../Chart/LineChartJual";
 
 
-import { SocketIO } from "../Fungsi/soket";
+import { SocketIO, uuid } from "../Fungsi/soket";
 
 import { useDispatch,useSelector } from "react-redux";
 import { setInfoUser } from "../Store/actionRedux/infoUserRedux";
@@ -25,8 +25,10 @@ export default function Dashboard() {
   const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
 
   React.useEffect(() => {
+    let {id}=uuid||{};
+
     SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
-    SocketIO.on("infoUser", (data) => {
+    SocketIO.on(`infoUser${id}`, (data) => {
       let user = JSON.parse(data);
       dispatch(setInfoUser({ User: user }));
     });
@@ -35,7 +37,7 @@ export default function Dashboard() {
       let labelOld=History?History.filter((item)=>item.tipeHistori?item:null):[];
       let labelnew=[],dataBeli=[],dataJUal=[];
       labelOld.forEach((item)=> {
-      labelnew.push(new Date(item.createdAt).toLocaleDateString()+" "+new Date(item.createdAt).toLocaleTimeString())
+      labelnew.push(new Date(item.createdAt).toLocaleTimeString()+" "+new Date(item.createdAt).toLocaleDateString())
         if(item.tipeHistori.toUpperCase()==="BELI"){
           dataBeli.push(item.latestHarga);
         }else{
@@ -48,15 +50,6 @@ export default function Dashboard() {
   
   return ( 
     <Container fluid>
-       <Row>
-        <Col xs="12" sm="12" md="12" lg="12" xl="12">
-          <div className="mt-1"></div>
-          <div align="center">
-            <h2>{username}</h2>
-            <ButtonLogout />
-          </div>
-        </Col>d
-      </Row>
 
       <Row>
         <Col xs="12" sm="12" md="12" lg="12" xl="12">
@@ -65,6 +58,16 @@ export default function Dashboard() {
             <h2>MARKET</h2>
           </div>
         </Col>
+      </Row>
+
+      <Row>
+        <Col xs="12" sm="12" md="12" lg="12" xl="12">
+          <div className="mt-1"></div>
+          <div align="center">
+            <h2>{username?`Hello, ${username}`:"-"}</h2>
+            <ButtonLogout />
+          </div>
+        </Col>d
       </Row>
 
       <Row>

@@ -6,7 +6,7 @@ import { useDispatch,useSelector } from "react-redux";
 
 import { SetTradeBeliAll, SetTradeJualAll,SetTradeAll } from "../Store/actionRedux/TabelMarketAction";
 
-import { SocketIO } from "../Fungsi/soket";
+import { SocketIO ,uuid} from "../Fungsi/soket";
 
 import "./Components.css";
 
@@ -17,18 +17,21 @@ function ComponentBeli({ Data, Judul, TabelTipe }) {
   let { market } = useSelector((state) => state.TradeState[TabelTipe]);
 
   React.useEffect(() => {
+    let {id}=uuid||"";
     SocketIO.on("tradeAll", (data) => {
+      let marketDataJual = JSON.parse(data).tradeAll||[];
+      let myOrder=marketDataJual.filter((item)=>item.user.toString()===id.toString());
       if (Judul.toUpperCase() === "JUAL") {
-        let marketDataJual = JSON.parse(data).tradeAll;
-        let marketArray=marketDataJual?marketDataJual.filter((item) => item.tipe.toUpperCase() === "JUAL").sort((a, b) => b.harga - a.harga).filter((item)=>item.jumlah>0).sort((a, b) => b.jumlah - a.jumlah):[];
+        let marketArray=marketDataJual?marketDataJual.filter((item)=>item.user.toString()===id.toString()?null:item).filter((item) => item.tipe.toUpperCase() === "JUAL").sort((a, b) => b.harga - a.harga).filter((item)=>item.jumlah>0).sort((a, b) => b.jumlah - a.jumlah):[];
         dispatch(SetTradeJualAll({ market: marketArray }));
       } else if (Judul.toUpperCase() === "BELI") {
-        let marketDataBeli = JSON.parse(data).tradeAll;
-        let marketArray=marketDataBeli?marketDataBeli.filter((item)=>item.tipe.toUpperCase()==="BELI").filter((item)=>item.jumlah!==0).sort((a, b) => a.harga - b.harga).filter((item)=>item.jumlah>0).sort((a, b) => a.jumlah - b.jumlah):[];
+        let marketDataBeli = JSON.parse(data).tradeAll||[];
+        let marketArray=marketDataBeli?marketDataBeli.filter((item)=>item.user.toString()===id.toString()?null:item).filter((item)=>item.tipe.toUpperCase()==="BELI").filter((item)=>item.jumlah!==0).sort((a, b) => a.harga - b.harga).filter((item)=>item.jumlah>0).sort((a, b) => a.jumlah - b.jumlah):[];
         dispatch(SetTradeBeliAll({ market:marketArray }));
       } else {
-        dispatch([SetTradeJualAll({ market: null }),SetTradeBeliAll({ market: null }),SetTradeAll({ market: [] })]);
+        dispatch([SetTradeJualAll({ market: [] }),SetTradeBeliAll({ market: [] }),SetTradeAll({ market: [] })]);
       }
+      dispatch(SetTradeAll({market:myOrder}));
     });
   }, [Judul,dispatch]);
   

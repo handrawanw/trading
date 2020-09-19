@@ -1,3 +1,4 @@
+const MAX_DATA=20;
 let initialState = {
     Grafik:[],
     LabelNew:[],
@@ -14,11 +15,11 @@ export default function HistoryStore(state=initialState,action){
       return {
         ...state,
         Grafik:action.Data,
-        LabelNew:action.LabelNew,
-        DataBeli:action.DataBeli,
+        LabelNew:typeof action.LabelNew==="object"?action.LabelNew.filter((item,index)=>index<=MAX_DATA?item:null):[],
+        DataBeli:typeof action.DataBeli==="object"?action.DataBeli.reverse().filter((item,index)=>index<=MAX_DATA?item:null):[],
         lastBeli:action.lastBeli,
-        DataJual:action.DataJual,
-        lastJual:action.lastJual
+        DataJual:typeof action.DataJual==="object"?action.DataJual.reverse().filter((item,index)=>index<=MAX_DATA?item:null):[],
+        lastJual:action.lastJual,
       };
     case "setDataJual":
         return {

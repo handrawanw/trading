@@ -2,11 +2,8 @@ import React from 'react';
 
 import { Container } from "reactstrap";
 
-import { SocketIO } from "../Fungsi/soket";
 
-import { useSelector,useDispatch } from "react-redux";
-
-import {SetTradeAll} from "../Store/actionRedux/TabelMarketAction";
+import { useSelector } from "react-redux";
 
 import {RefundSend} from "../Fungsi/refund";
 
@@ -14,16 +11,8 @@ import "./Components.css";
 
 function ComponentBeli({ Judul }) {
 
-  let dispatch=useDispatch();
   let { market } = useSelector((state) => state.TradeState.TradeMe);
 
-  React.useEffect(() => {
-    SocketIO.on("tradeMe", (data) => {
-        let tradeMe=JSON.parse(data).tradeMe;
-        let filterSort=tradeMe.sort((a,b)=>b.harga-a.harga);
-        dispatch(SetTradeAll({market:filterSort}));
-    });
-  }, [Judul,dispatch]);
 
   return (
     <Container fluid>

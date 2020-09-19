@@ -6,7 +6,7 @@ import Daftar from './Pages/Daftar';
 
 import ProteksiRoute from "./ProteksiRoute";
 import Auth from "./Auth";
-import { Route,Switch, useHistory ,withRouter } from "react-router-dom";
+import { Route, Switch, useHistory, withRouter } from "react-router-dom";
 
 function App() {
   

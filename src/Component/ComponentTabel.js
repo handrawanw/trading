@@ -10,7 +10,7 @@ import { SocketIO ,uuid} from "../Fungsi/soket";
 
 import "./Components.css";
 
-function ComponentBeli({ Data, Judul, TabelTipe }) {
+function ComponentBeli({  Judul, TabelTipe }) {
 
   let dispatch = useDispatch();
 

@@ -67,7 +67,7 @@ export default function Dashboard() {
             <h2>{username?`Hello, ${username}`:"-"}</h2>
             <ButtonLogout />
           </div>
-        </Col>d
+        </Col>
       </Row>
 
       <Row>

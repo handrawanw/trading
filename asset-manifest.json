@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/trading/static/css/main.fb08442a.chunk.css",
-    "main.js": "/trading/static/js/main.32e7a688.chunk.js",
-    "main.js.map": "/trading/static/js/main.32e7a688.chunk.js.map",
+    "main.js": "/trading/static/js/main.2d903a2b.chunk.js",
+    "main.js.map": "/trading/static/js/main.2d903a2b.chunk.js.map",
     "runtime-main.js": "/trading/static/js/runtime-main.fcf35010.js",
     "runtime-main.js.map": "/trading/static/js/runtime-main.fcf35010.js.map",
     "static/css/2.8aa5a7f8.chunk.css": "/trading/static/css/2.8aa5a7f8.chunk.css",
-    "static/js/2.a30945d9.chunk.js": "/trading/static/js/2.a30945d9.chunk.js",
-    "static/js/2.a30945d9.chunk.js.map": "/trading/static/js/2.a30945d9.chunk.js.map",
+    "static/js/2.6ca71010.chunk.js": "/trading/static/js/2.6ca71010.chunk.js",
+    "static/js/2.6ca71010.chunk.js.map": "/trading/static/js/2.6ca71010.chunk.js.map",
     "index.html": "/trading/index.html",
-    "precache-manifest.433dbf3377979a082d9390713691a7a9.js": "/trading/precache-manifest.433dbf3377979a082d9390713691a7a9.js",
+    "precache-manifest.b31245383191bd3d8e2838d2e3224a55.js": "/trading/precache-manifest.b31245383191bd3d8e2838d2e3224a55.js",
     "service-worker.js": "/trading/service-worker.js",
     "static/css/2.8aa5a7f8.chunk.css.map": "/trading/static/css/2.8aa5a7f8.chunk.css.map",
     "static/css/main.fb08442a.chunk.css.map": "/trading/static/css/main.fb08442a.chunk.css.map",
-    "static/js/2.a30945d9.chunk.js.LICENSE.txt": "/trading/static/js/2.a30945d9.chunk.js.LICENSE.txt"
+    "static/js/2.6ca71010.chunk.js.LICENSE.txt": "/trading/static/js/2.6ca71010.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.fcf35010.js",
     "static/css/2.8aa5a7f8.chunk.css",
-    "static/js/2.a30945d9.chunk.js",
+    "static/js/2.6ca71010.chunk.js",
     "static/css/main.fb08442a.chunk.css",
-    "static/js/main.32e7a688.chunk.js"
+    "static/js/main.2d903a2b.chunk.js"
   ]
 }

@@ -1,38 +1,20 @@
 import React from "react";
 import {Line} from 'react-chartjs-2';
 
-import {useSelector,useDispatch} from "react-redux";
-
-import {setDataBeli,setDataJual} from "../Store/actionRedux/historyTrade";
+import {useSelector} from "react-redux";
 
 export default function Charts(){
-
-  let dispatch=useDispatch();
-
-  let {Grafik}=useSelector((state)=>state.storeHistory);
-
-  let labelOld=Grafik?Grafik.filter((item)=>item.tipeHistori?item:null):[]
-  let labelnew=[],dataBeli=[],dataJUal=[];
-
-  labelOld.forEach((item)=> {
-    labelnew.push(new Date(item.createdAt).toLocaleDateString()+" "+new Date(item.createdAt).toLocaleTimeString())
-    if(item.tipeHistori.toUpperCase()==="BELI"){
-      dataBeli.push(item.latestHarga);
-    }else{
-      dataJUal.push(item.latestHarga);
-    }
-  });
-
-  React.useEffect(()=>{
-    dispatch([setDataBeli({Data:dataBeli,last:dataBeli[dataBeli.length-1]}),setDataJual({Data:dataJUal,last:dataJUal[dataJUal.length-1]})])
-  },[dispatch,dataBeli,dataJUal]);
+  
+  let {LabelNew,DataBeli,DataJual}=useSelector((state)=>state.storeHistory);
+  
+  
 
   const data = {
-    labels: labelnew,
+    labels:LabelNew,
     datasets: [{
         type: 'line',
         label: 'Harga Beli',
-        data:dataBeli,
+        data:DataBeli,
         fill: false,
         backgroundColor: 'red',
         borderColor: 'red',
@@ -42,7 +24,7 @@ export default function Charts(){
       {
         type: 'line',
         label: 'Harga Jual',
-        data:dataJUal,
+        data:DataJual,
         fill: false,
         backgroundColor: 'green',
         borderColor: 'green',

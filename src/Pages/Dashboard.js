@@ -32,7 +32,17 @@ export default function Dashboard() {
     });
     SocketIO.on("latestTrade",(data)=>{
       let History=JSON.parse(data).latestTrade;
-      dispatch(setChart({Data:History}));
+      let labelOld=History?History.filter((item)=>item.tipeHistori?item:null):[];
+      let labelnew=[],dataBeli=[],dataJUal=[];
+      labelOld.forEach((item)=> {
+      labelnew.push(new Date(item.createdAt).toLocaleDateString()+" "+new Date(item.createdAt).toLocaleTimeString())
+        if(item.tipeHistori.toUpperCase()==="BELI"){
+          dataBeli.push(item.latestHarga);
+        }else{
+          dataJUal.push(item.latestHarga);
+        }
+      });
+      dispatch(setChart({LabelNew:labelnew,Data:History,DataBeli:dataBeli,lastBeli:dataBeli[dataBeli.length-1],DataJual:dataJUal,lastJual:dataJUal[dataJUal.length-1]}));
     })
   }, [dispatch])
   

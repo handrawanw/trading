@@ -1,8 +1,8 @@
-export function setChart({Data}){
+export function setChart(Data){
   
   return {
     type: "setChart",
-    Data,
+    ...Data,
   };
 }
 

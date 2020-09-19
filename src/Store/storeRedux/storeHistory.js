@@ -1,5 +1,6 @@
 let initialState = {
     Grafik:[],
+    LabelNew:[],
     DataBeli:[],
     DataJual:[],
     lastJual:0,
@@ -12,7 +13,12 @@ export default function HistoryStore(state=initialState,action){
     case "setChart":
       return {
         ...state,
-        Grafik:action.Data
+        Grafik:action.Data,
+        LabelNew:action.LabelNew,
+        DataBeli:action.DataBeli,
+        lastBeli:action.lastBeli,
+        DataJual:action.DataJual,
+        lastJual:action.lastJual
       };
     case "setDataJual":
         return {

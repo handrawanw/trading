@@ -6,7 +6,7 @@ import Daftar from './Pages/Daftar';
 
 import ProteksiRoute from "./ProteksiRoute";
 import Auth from "./Auth";
-import { useHistory,withRouter,Route,Switch } from "react-router-dom";
+import { Route,Switch, useHistory ,withRouter } from "react-router-dom";
 
 function App() {
   
@@ -26,13 +26,13 @@ function App() {
 
   return (
       <Switch>
-        <Route path="/" exact>
+        <Route path={`/`} exact>
           <Login />
         </Route>
-        <Route path="/daftar">
+        <Route path={`/daftar`}>
           <Daftar />
         </Route>
-        <ProteksiRoute path="/dashboard" component={Dashboard} />
+        <ProteksiRoute path={`/dashboard`} component={Dashboard} />
       </Switch>
   );
 }

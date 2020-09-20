@@ -1,5 +1,6 @@
 import React from "react";
 import { Container,Row,Col } from "reactstrap";
+import Toast from "cogo-toast";
 
 import TabelJualBeli from "../Component/ComponentTabel";
 
@@ -19,6 +20,7 @@ import { useDispatch,useSelector } from "react-redux";
 import { setInfoUser } from "../Store/actionRedux/infoUserRedux";
 import {setChart} from "../Store/actionRedux/historyTrade";
 
+
 export default function Dashboard() {
   
   let dispatch = useDispatch();
@@ -30,6 +32,9 @@ export default function Dashboard() {
     SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
     SocketIO.on(`infoUser${id}`, (data) => {
       let user = JSON.parse(data);
+      if(user.message){
+        Toast.success(user.message);
+      }
       dispatch(setInfoUser({ User: user }));
     });
     SocketIO.on("latestTrade",(data)=>{

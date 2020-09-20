@@ -22,11 +22,11 @@ function ComponentBeli({  Judul, TabelTipe }) {
       let marketDataJual = JSON.parse(data).tradeAll||[];
       let myOrder=marketDataJual.filter((item)=>item.user.toString()===id.toString());
       if (Judul.toUpperCase() === "JUAL") {
-        let marketArray=marketDataJual?marketDataJual.filter((item)=>item.user.toString()===id.toString()?null:item).filter((item) => item.tipe.toUpperCase() === "JUAL").sort((a, b) => b.harga - a.harga).filter((item)=>item.jumlah>0).sort((a, b) => b.jumlah - a.jumlah):[];
+        let marketArray=marketDataJual?marketDataJual.filter((item)=>item.user.toString()===id.toString()?null:item).filter((item) => item.tipe.toUpperCase() === "JUAL").sort((a, b) => b.harga - a.harga).filter((item)=>item.jumlah>0).sort((a, b) => b.harga - a.harga).sort((a, b) => b.jumlah - a.jumlah):[];
         dispatch(SetTradeJualAll({ market: marketArray }));
       } else if (Judul.toUpperCase() === "BELI") {
         let marketDataBeli = JSON.parse(data).tradeAll||[];
-        let marketArray=marketDataBeli?marketDataBeli.filter((item)=>item.user.toString()===id.toString()?null:item).filter((item)=>item.tipe.toUpperCase()==="BELI").filter((item)=>item.jumlah!==0).sort((a, b) => a.harga - b.harga).filter((item)=>item.jumlah>0).sort((a, b) => a.jumlah - b.jumlah):[];
+        let marketArray=marketDataBeli?marketDataBeli.filter((item)=>item.user.toString()===id.toString()?null:item).filter((item)=>item.tipe.toUpperCase()==="BELI").filter((item)=>item.jumlah!==0).sort((a, b) => a.harga - b.harga).filter((item)=>item.jumlah>0).sort((a, b) => a.harga - b.harga).sort((a, b) => a.jumlah - b.jumlah):[];
         dispatch(SetTradeBeliAll({ market:marketArray }));
       } else {
         dispatch([SetTradeJualAll({ market: [] }),SetTradeBeliAll({ market: [] }),SetTradeAll({ market: [] })]);

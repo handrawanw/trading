@@ -27,18 +27,14 @@ export default function Dashboard() {
   const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
   
   React.useEffect(() => {
-    let inc=0;
     let {id}=uuid||{};
 
     SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
     SocketIO.on(`infoUser${id}`, (data) => {
       let user = JSON.parse(data);
-      if(inc<=0){
-        if(user.message){
-          Toast.success(user.message);
-          inc+=1;
-        }
-      }
+          if(user.message){
+            Toast.success(user.message);
+          }
       dispatch(setInfoUser({ User: user }));
     });
     SocketIO.on("latestTrade",(data)=>{

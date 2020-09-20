@@ -16,20 +16,20 @@ export default function Charts(){
         label: 'Harga Beli',
         data:DataBeli,
         fill: false,
-        backgroundColor: 'red',
-        borderColor: 'red',
-        hoverBackgroundColor: 'red',
-        hoverBorderColor: 'red',
+        backgroundColor: 'green',
+        borderColor: 'green',
+        hoverBackgroundColor: 'green',
+        hoverBorderColor: 'green',
       },
       {
         type: 'line',
         label: 'Harga Jual',
         data:DataJual,
         fill: false,
-        backgroundColor: 'green',
-        borderColor: 'green',
-        hoverBackgroundColor: 'green',
-        hoverBorderColor: 'green',
+        backgroundColor: 'red',
+        borderColor: 'red',
+        hoverBackgroundColor: 'red',
+        hoverBorderColor: 'red',
       }
     ]
   };

@@ -5,3 +5,13 @@ export function setInfoUser({User}){
     User,
   };
 }
+
+export function setFormHarga({tipe,jumlah,harga}){
+  
+  return {
+    type: "setInfoUser",
+    tipe,
+    jumlah,
+    harga
+  };
+}

@@ -8,6 +8,8 @@ import { SetTradeBeliAll, SetTradeJualAll,SetTradeAll } from "../Store/actionRed
 
 import { SocketIO ,uuid} from "../Fungsi/soket";
 
+import {OrderCount} from "../Fungsi/hitungOrder";
+
 import "./Components.css";
 
 function ComponentBeli({  Judul, TabelTipe }) {
@@ -23,11 +25,13 @@ function ComponentBeli({  Judul, TabelTipe }) {
       let myOrder=marketDataJual.filter((item)=>item.user.toString()===id.toString());
       if (Judul.toUpperCase() === "JUAL") {
         let marketArray=marketDataJual?marketDataJual.filter((item)=>item.user.toString()===id.toString()?null:item).filter((item) => item.tipe.toUpperCase() === "JUAL").sort((a, b) => b.harga - a.harga).filter((item)=>item.jumlah>0).sort((a, b) => b.harga - a.harga).sort((a, b) => b.jumlah - a.jumlah):[];
-        dispatch(SetTradeJualAll({ market: marketArray }));
+        let finalCount=OrderCount({marketData:marketArray});
+        dispatch(SetTradeJualAll({ market:finalCount}));
       } else if (Judul.toUpperCase() === "BELI") {
         let marketDataBeli = JSON.parse(data).tradeAll||[];
         let marketArray=marketDataBeli?marketDataBeli.filter((item)=>item.user.toString()===id.toString()?null:item).filter((item)=>item.tipe.toUpperCase()==="BELI").filter((item)=>item.jumlah!==0).sort((a, b) => a.harga - b.harga).filter((item)=>item.jumlah>0).sort((a, b) => a.harga - b.harga).sort((a, b) => a.jumlah - b.jumlah):[];
-        dispatch(SetTradeBeliAll({ market:marketArray }));
+        let finalCount=OrderCount({marketData:marketArray});
+        dispatch(SetTradeBeliAll({ market:finalCount}));
       } else {
         dispatch([SetTradeJualAll({ market: [] }),SetTradeBeliAll({ market: [] }),SetTradeAll({ market: [] })]);
       }
@@ -52,7 +56,7 @@ function ComponentBeli({  Judul, TabelTipe }) {
                 {
                   market?market.length>0?market.map((item) => {
                     return (
-                      <div>{item.tipe}</div>
+                      <div>{item.key.tipe}</div>
                     )
                   }):"-":"-"
                 }
@@ -68,7 +72,7 @@ function ComponentBeli({  Judul, TabelTipe }) {
                 {
                   market?market.length>0?market.map((item) => {
                     return (
-                      <div>{item.jumlah}</div>
+                      <div>{item.key.jumlah}</div>
                     )
                   }):"-":"-"
                 }
@@ -82,10 +86,20 @@ function ComponentBeli({  Judul, TabelTipe }) {
               </div>
               <div className="d-block">
                   {
-                    market?market.length>0?market.map((item) => {
-                      return (
-                        <div>{item.harga}</div>
-                      )
+                    market?market.length>0?market.map((item,index) => {
+                      if(item.key.tipe==="JUAL"){
+                        return (
+                          <div><button className="badge badge-danger" onClick={()=>alert(index)}>{item.key.harga}</button></div>
+                        );
+                      }else if(item.key.tipe==="BELI"){
+                        return (
+                          <div><button className="badge badge-success" onClick={()=>alert(index)}>{item.key.harga}</button></div>
+                        );
+                      }else{
+                        return (
+                          null
+                        );
+                      }
                     }):"-":"-"
                   }
               </div>
@@ -100,7 +114,7 @@ function ComponentBeli({  Judul, TabelTipe }) {
                 {
                   market?market.length>0?market.map((item) => {
                     return (
-                      <div>{item.total}</div>
+                      <div>{item.key.total}</div>
                     )
                   }):"-":"-"
                 }

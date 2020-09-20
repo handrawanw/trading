@@ -25,15 +25,19 @@ export default function Dashboard() {
   
   let dispatch = useDispatch();
   const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
-
+  
   React.useEffect(() => {
+    let inc=0;
     let {id}=uuid||{};
 
     SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
     SocketIO.on(`infoUser${id}`, (data) => {
       let user = JSON.parse(data);
-      if(user.message){
-        Toast.success(user.message);
+      if(inc<=0){
+        if(user.message){
+          Toast.success(user.message);
+          inc+=1;
+        }
       }
       dispatch(setInfoUser({ User: user }));
     });
@@ -51,7 +55,7 @@ export default function Dashboard() {
       });
       dispatch(setChart({LabelNew:labelnew,Data:History,DataBeli:dataBeli,lastBeli:dataBeli[dataBeli.length-1],DataJual:dataJUal,lastJual:dataJUal[dataJUal.length-1]}));
     })
-  }, [dispatch])
+  }, [dispatch]);
   
   return ( 
     <Container fluid>

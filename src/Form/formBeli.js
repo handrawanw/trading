@@ -1,19 +1,19 @@
 import React from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 
 import { BeliSend } from "../Fungsi/beli";
 
 export default function FormBeli() {
-
-  let {lastJual}=useSelector((state)=>state.storeHistory);
   
+  let {lastJual}=useSelector((state)=>state.storeHistory?state.storeHistory:{});
+  let {harga,jumlah}=useSelector((state)=>state.UserState.setForm.beli?state.UserState.setForm.beli:{});
 
   const {saldo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
   
   const [DataBeli, setDataBeli] = React.useState({
-    jumlah:"",
-    harga:""
+    jumlah:jumlah?jumlah:"",
+    harga:harga?harga:"",
   });
 
   const handleInput = (e) => {
@@ -24,6 +24,7 @@ export default function FormBeli() {
 
   const handleSubmitBeli = (e) => {
     e.preventDefault();
+    alert(JSON.stringify(DataBeli))
     BeliSend({ DataBeli });
   }
 

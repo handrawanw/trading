@@ -1,3 +1,5 @@
+import Toast from "cogo-toast";
+
 export function setInfoUser({User}){
   
   return {
@@ -6,10 +8,20 @@ export function setInfoUser({User}){
   };
 }
 
-export function setFormHarga({tipe,jumlah,harga}){
-  
+export function setFormJual({tipe,jumlah,harga}){
+  Toast.success("Item Jual harga berhasil dipindahkan ke form");
   return {
-    type: "setInfoUser",
+    type: "setFormJual",
+    tipe,
+    jumlah,
+    harga
+  };
+}
+
+export function setFormBeli({tipe,jumlah,harga}){
+  Toast.success("Item Beli harga berhasil dipindahkan ke form");
+  return {
+    type: "setFormBeli",
     tipe,
     jumlah,
     harga

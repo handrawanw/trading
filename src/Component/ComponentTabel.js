@@ -5,6 +5,7 @@ import { Container } from "reactstrap";
 import { useDispatch,useSelector } from "react-redux";
 
 import { SetTradeBeliAll, SetTradeJualAll,SetTradeAll } from "../Store/actionRedux/TabelMarketAction";
+import {setFormBeli,setFormJual} from "../Store/actionRedux/infoUserRedux";
 
 import { SocketIO ,uuid} from "../Fungsi/soket";
 
@@ -89,11 +90,11 @@ function ComponentBeli({  Judul, TabelTipe }) {
                     market?market.length>0?market.map((item,index) => {
                       if(item.key.tipe==="JUAL"){
                         return (
-                          <div><button className="badge badge-danger" onClick={()=>alert(index)}>{item.key.harga}</button></div>
+                          <div><button className="badge badge-danger" onClick={()=>dispatch(setFormJual({tipe:item.key.tipe,jumlah:item.key.jumlah,harga:item.key.harga}))}>{item.key.harga}</button></div>
                         );
                       }else if(item.key.tipe==="BELI"){
                         return (
-                          <div><button className="badge badge-success" onClick={()=>alert(index)}>{item.key.harga}</button></div>
+                          <div><button className="badge badge-success"  onClick={()=>dispatch(setFormBeli({tipe:item.key.tipe,jumlah:item.key.jumlah,harga:item.key.harga}))}>{item.key.harga}</button></div>
                         );
                       }else{
                         return (

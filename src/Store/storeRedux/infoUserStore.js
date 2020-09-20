@@ -1,9 +1,16 @@
 let initialState = {
     User:null,
-    setFormHarga:{
-      tipe:null,
-      jumlah:0,
-      harga:0
+    setForm:{
+      jual:{
+        tipe:null,
+        jumlah:null,
+        harga:null
+      },
+      beli:{
+        tipe:null,
+        jumlah:null,
+        harga:null
+      }
     }
 };
 
@@ -16,15 +23,32 @@ export default function UserState(state=initialState,action){
         User:action.User
       };
     
-    case "setFormUser":
+    case "setFormJual":
     return {
         ...state,
-        setFormHarga:{
-          ...state.setFormHarga,
+        setForm:{
+          ...state.setForm,
+          jual:{
+            ...state.setForm.jual,
+            tipe:action.tipe,
+            jumlah:action.jumlah,
+            harga:action.harga,
+          }
+        }
+    };
+
+    case "setFormBeli":
+    return {
+      ...state,
+      setForm:{
+        ...state.setForm,
+        beli:{
+          ...state.setForm.beli,
           tipe:action.tipe,
           jumlah:action.jumlah,
           harga:action.harga,
         }
+      }
     };
     default:
       return { ...state };

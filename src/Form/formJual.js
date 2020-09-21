@@ -1,12 +1,15 @@
 import React from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import {setFormJual} from "../Store/actionRedux/infoUserRedux";
 
 import { JualSend } from "../Fungsi/Jual";
 
 export default function FormJual() {
 
+  let dispatch=useDispatch();
   let {lastBeli}=useSelector((state)=>state.storeHistory);
+  let {harga,jumlah}=useSelector((state)=>state.UserState.setForm.jual?state.UserState.setForm.jual:{});
 
   const {codeo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
   
@@ -14,8 +17,6 @@ export default function FormJual() {
     jumlah:"",
     harga:"",
   });
-
-
 
   const handleInput = (e) => {
     if (e.target.validity.valid) {
@@ -25,8 +26,19 @@ export default function FormJual() {
 
   const handleSubmitJual = (e) => {
     e.preventDefault();
-    JualSend({ DataJual });
+    JualSend({DataJual:{
+      jumlah,
+      harga
+    }});
   }
+
+  React.useEffect(()=>{
+    dispatch(setFormJual({
+      tipe:"JUAL",
+      jumlah:DataJual.jumlah,
+      harga:DataJual.harga
+    }));
+  },[DataJual,dispatch]);
 
   return (
     <div className="d-block ml-3 mt-3">
@@ -57,14 +69,14 @@ export default function FormJual() {
             <label for="jumlah">
               Jumlah
             </label>
-            <input type="text" name={Object.keys(DataJual)[0]} value={Object.values(DataJual)[0]} pattern="\d*" onInput={handleInput} className="form-control" />
+            <input type="text" name={Object.keys(DataJual)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
             <label for="jumlah">
               Harga
             </label>
-            <input type="text" name={Object.keys(DataJual)[1]} value={Object.values(DataJual)[1]} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />
+            <input type="text" name={Object.keys(DataJual)[1]} value={harga} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />
             
             <div className="d-block mt-1">
-              Total Bayar : {Number(DataJual.jumlah)*Number(DataJual.harga)}
+              Total Bayar : {Number(jumlah)*Number(harga)}
             </div>
           </div>
       </div>

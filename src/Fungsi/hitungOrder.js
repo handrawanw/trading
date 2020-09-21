@@ -2,7 +2,7 @@ export function OrderCount({marketData}){
 let MarketDataArray=marketData||[];
 let newCount={},finalData=[];
         MarketDataArray.forEach((item,index)=>{
-                if(!Object.keys(newCount).includes("x"+item.harga)){
+            if(!Object.keys(newCount).includes("x"+item.harga)){
                 newCount["x"+item.harga]={
                     jumlah:0,
                     harga:0,
@@ -19,6 +19,5 @@ let newCount={},finalData=[];
         for(let [key,value] of Object.entries(newCount)){
             finalData.push({key:value});
         }
- 
     return finalData;
 }

@@ -8,8 +8,26 @@ export function setInfoUser({User}){
   };
 }
 
-export function setFormJual({tipe,jumlah,harga}){
-  Toast.success("Item Jual harga berhasil dipindahkan ke form");
+export function setForm({tipe,jumlah,harga,status}){
+  if(status){
+    if(status==="CLICK"){
+      Toast.success("Item harga berhasil dipindahkan ke form");
+    }
+  }
+  return {
+    type: "setForm",
+    tipe,
+    jumlah,
+    harga
+  };
+}
+
+export function setFormJual({tipe,jumlah,harga,status}){
+  if(status){
+    if(status==="CLICK"){
+      Toast.success("Item harga berhasil dipindahkan ke form");
+    }
+  }
   return {
     type: "setFormJual",
     tipe,
@@ -18,8 +36,12 @@ export function setFormJual({tipe,jumlah,harga}){
   };
 }
 
-export function setFormBeli({tipe,jumlah,harga}){
-  Toast.success("Item Beli harga berhasil dipindahkan ke form");
+export function setFormBeli({tipe,jumlah,harga,status}){
+  if(status){
+    if(status==="CLICK"){
+      Toast.success("Item harga berhasil dipindahkan ke form");
+    }
+  }
   return {
     type: "setFormBeli",
     tipe,
@@ -27,3 +49,4 @@ export function setFormBeli({tipe,jumlah,harga}){
     harga
   };
 }
+

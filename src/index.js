@@ -8,13 +8,13 @@ import ReduxState from "./Store/index";
 import {BrowserRouter as Router} from "react-router-dom";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
+  <Router>
+    <React.StrictMode>
       <ReduxState>
         <App />
       </ReduxState>
-    </Router>
-  </React.StrictMode>
+    </React.StrictMode>
+  </Router>
   ,document.getElementById('root')
 );
 

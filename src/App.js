@@ -26,7 +26,7 @@ function App() {
 
   return (
       <Switch>
-        <Route path={`/`} exact>
+        <Route exact path={`/`}>
           <Login />
         </Route>
         <Route path={`/daftar`}>

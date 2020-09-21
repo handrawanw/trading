@@ -15,24 +15,24 @@ function App() {
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
       Auth.onLogin(() => {
-        history.push("/dashboard");
+        history.push("/trading/dashboard");
       });
     } else {
       Auth.onLogout(() => {
-        history.push("/");
+        history.push("/trading");
       });
     }
   }, [history]);
 
   return (
       <Switch>
-        <Route exact path={`/`}>
+        <Route exact path={`/trading`}>
           <Login />
         </Route>
-        <Route path={`/daftar`}>
+        <Route path={`/trading/daftar`}>
           <Daftar />
         </Route>
-        <ProteksiRoute path={`/dashboard`} component={Dashboard} />
+        <ProteksiRoute path={`/trading/dashboard`} component={Dashboard} />
       </Switch>
   );
 }

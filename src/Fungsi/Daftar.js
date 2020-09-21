@@ -13,7 +13,7 @@ export default function DaftarSend({ DataDaftar,history }) {
     }
   }).then(({ data }) => {
     Toast.success(data.message);
-    history.push("/");
+    history.push("/trading");
   }).catch((err) => {
     let msg = "";
     if (err.response === undefined) {

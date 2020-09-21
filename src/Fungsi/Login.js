@@ -17,7 +17,7 @@ export default function LoginSend({ DataLogin,history }) {
     Auth.onLogin(() => {
       Toast.success(data.message);
       localStorage.setItem("token", data.token);
-      history.push("/dashboard");
+      history.push("/trading/dashboard");
     })
   }).catch((err) => {
     let msg = "";
@@ -41,7 +41,7 @@ export function LogoutSend({ DataLogin,history }) {
     Auth.onLogout(() => {
       Toast.success(data.message);
       localStorage.clear();
-      history.push("/");
+      history.push("/trading");
     })
   }).catch((err) => {
     let msg = "";

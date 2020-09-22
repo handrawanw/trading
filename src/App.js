@@ -15,7 +15,7 @@ function App() {
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
       Auth.onLogin(() => {
-        history.push("/trading/dashboard");
+          history.push("/trading/dashboard");
       });
     } else {
       Auth.onLogout(() => {
@@ -33,6 +33,9 @@ function App() {
           <Daftar />
         </Route>
         <ProteksiRoute path={`/trading/dashboard`} component={Dashboard} />
+        <Route path="*">
+          <h1>404 Not Found</h1>
+        </Route>
       </Switch>
   );
 }

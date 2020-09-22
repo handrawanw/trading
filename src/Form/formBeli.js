@@ -8,7 +8,7 @@ import { BeliSend } from "../Fungsi/beli";
 export default function FormBeli() {
   
   let dispatch=useDispatch();
-  let {lastJual}=useSelector((state)=>state.storeHistory?state.storeHistory:{});
+  let {lastJual,highPrice,lowPrice}=useSelector((state)=>state.storeHistory?state.storeHistory:{});
   let {harga,jumlah}=useSelector((state)=>state.UserState.setForm.beli?state.UserState.setForm.beli:{});
 
   const {saldo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
@@ -71,10 +71,10 @@ export default function FormBeli() {
             <div className="d-block">
               <div className="d-flex justify-content-around m-1">
                 <div>
-                  <i className="fa fa-eject" /> {lastJual}
+                  <i className="fa fa-arrow-up" /> {highPrice}
                 </div>
                 <div>
-                  <i className="fa fa-eject" /> {lastJual}
+                  <i className="fa fa-arrow-down" /> {lowPrice}
                 </div>
                 <div>
                   <i className="fa fa-eject" /> {lastJual}

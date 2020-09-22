@@ -49,7 +49,7 @@ function ComponentBeli({  Judul, TabelTipe }) {
         </section>
           <div className="componentBeli overScrollBeli">
           <table className="table table-borderless">
-            <thead className="center">
+            <thead className={Judul==="BELI"?"bg-success":"bg-danger"}>
             <tr>
               <td className="scrolStatic">JUMLAH</td>
               <td className="scrolStatic">HARGA</td>
@@ -82,7 +82,6 @@ function ComponentBeli({  Judul, TabelTipe }) {
                           }
                         }):(
                         <tr>
-                          <td>-</td>
                           <td>-</td>
                           <td>-</td>
                           <td>-</td>

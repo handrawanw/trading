@@ -47,83 +47,51 @@ function ComponentBeli({  Judul, TabelTipe }) {
         <section>
           <h3>{Judul}</h3>
         </section>
-        <aside>
           <div className="componentBeli overScrollBeli">
-
-          <div>
-              <div className="d-block m-2 scrolStatic">
-                <h6>TIPE</h6>
-              </div>
-              <div className="d-block">
+          <table className="table table-borderless">
+            <thead className="center">
+            <tr>
+              <td className="scrolStatic">JUMLAH</td>
+              <td className="scrolStatic">HARGA</td>
+              <td className="scrolStatic">TOTAL</td>
+            </tr>
+            </thead>
+            <tbody>
                 {
                   market?market.length>0?market.map((item) => {
-                    return (
-                      <div>{item.key.tipe}</div>
-                    )
-                  }):"-":"-"
-                }
-              </div>
-              
-            </div>
-
-            <div>
-              <div className="d-block m-2 scrolStatic">
-                <h6>JUMLAH</h6>
-              </div>
-              <div className="d-block">
-                {
-                  market?market.length>0?market.map((item) => {
-                    return (
-                      <div>{item.key.jumlah}</div>
-                    )
-                  }):"-":"-"
-                }
-              </div>
-              
-            </div>
-
-            <div>
-              <div className="d-block m-2 scrolStatic">
-                <h6>HARGA</h6>
-              </div>
-              <div className="d-block">
-                  {
-                    market?market.length>0?market.map((item,index) => {
-                      if(item.key.tipe==="JUAL"){
-                        return (
-                          <div><button className="badge badge-danger" onClick={()=>dispatch(setForm({tipe:item.key.tipe,jumlah:item.key.jumlah,harga:item.key.harga,status:"CLICK"}))}>{item.key.harga}</button></div>
-                        );
-                      }else if(item.key.tipe==="BELI"){
-                        return (
-                          <div><button className="badge badge-success"  onClick={()=>dispatch(setForm({tipe:item.key.tipe,jumlah:item.key.jumlah,harga:item.key.harga,status:"CLICK"}))}>{item.key.harga}</button></div>
-                        );
-                      }else{
-                        return (
-                          null
-                        );
+                    if(item.key.tipe==="JUAL"){
+                      return (
+                          <tr className="mouseHover" onClick={()=>dispatch(setForm({tipe:item.key.tipe,jumlah:item.key.jumlah,harga:item.key.harga,status:"CLICK"}))}>
+                              <td>{item.key.jumlah}</td>
+                              <td className="text-danger">{item.key.harga}</td>
+                              <td>{item.key.total}</td>
+                            </tr>
+                          );
+                        }else if(item.key.tipe==="BELI"){
+                          return (
+                            <tr className="mouseHover" onClick={()=>dispatch(setForm({tipe:item.key.tipe,jumlah:item.key.jumlah,harga:item.key.harga,status:"CLICK"}))}>
+                              <td>{item.key.jumlah}</td>
+                              <td className="text-success">{item.key.harga}</td>
+                              <td>{item.key.total}</td>
+                            </tr>
+                          );
+                        }else{
+                          return (
+                            null
+                            );
+                          }
+                        }):(
+                        <tr>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                        </tr>
+                        ):"-"
                       }
-                    }):"-":"-"
-                  }
-              </div>
-            </div>
-
-            <div>
-              <div className="d-block m-2 scrolStatic">
-                <h6>TOTAL</h6>
-              </div>
-              <div className="d-block">
-                {
-                  market?market.length>0?market.map((item) => {
-                    return (
-                      <div>{item.key.total}</div>
-                    )
-                  }):"-":"-"
-                }
-              </div>
-            </div>
-
+              </tbody>
+          </table>
           </div>
-        </aside>
       </div>
     </Container>
   );

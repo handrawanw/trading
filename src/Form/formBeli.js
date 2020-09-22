@@ -50,35 +50,67 @@ export default function FormBeli() {
                 SALDO 
               </div>
               <div className="d-block">
-                {saldo?saldo:0}
+                {saldo?Number(saldo)-Number(jumlah)*Number(harga):0}
               </div>
             </div>
-            <div className="d-block mb-1">
+
+            <div className="d-block">
               <div className="d-block">
-                LAST PRICE BELI
+                Total Bayar
               </div>
               <div className="d-block">
-                {lastJual?lastJual:0}
+                {Number(jumlah)*Number(harga)}
               </div>
             </div>
-            <button className="btn btn-success form-control">
+
+            <button className="btn btn-success form-control mt-2">
               BELI
             </button>
           </div>
           <div className="col-8">
-            <label for="jumlah">
-              Jumlah
-            </label>
-            <input type="text" name={Object.keys(DataBeli)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
-            <label for="jumlah">
-              Harga
-            </label>
-            <input type="text" name={Object.keys(DataBeli)[1]} value={harga} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />
-            
-            <div className="d-block mt-1">
-              Total Bayar  : {Number(jumlah)*Number(harga)}
+            <div className="d-block">
+              <div className="d-flex justify-content-around m-1">
+                <div>
+                  <i className="fa fa-eject" /> {lastJual}
+                </div>
+                <div>
+                  <i className="fa fa-eject" /> {lastJual}
+                </div>
+                <div>
+                  <i className="fa fa-eject" /> {lastJual}
+                </div>
+              </div>
             </div>
+
+            <div className="d-block">
+                <div className="mt-2" align="right">
+                  <label for="jumlah" align="right">
+                    Jumlah
+                  </label>
+                </div>
+                <input type="text" name={Object.keys(DataBeli)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
+            </div>
+
+            <div className="d-block">
+              <div className="input-group">
+                  <div className="input-group-prepend">
+                    <label for="harga">
+                      Jumlah
+                    </label>
+                  </div>
+              </div>
+              <input type="text" name={Object.keys(DataBeli)[1]} value={harga} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />
+            </div>
+
+            <div className="d-block" align="center">
+              <button type="button" className="btn btn-outline-success p-1 m-2">25%</button>
+              <button type="button" className="btn btn-outline-success p-1 m-2">50%</button>
+              <button type="button" className="btn btn-outline-success p-1 m-2">75%</button>
+              <button type="button" className="btn btn-outline-success p-1 m-2">100%</button>
+            </div>
+ 
           </div>
+          
       </div>
     </form>
     </div>

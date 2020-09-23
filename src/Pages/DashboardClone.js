@@ -33,10 +33,10 @@ export default function Dashboard() {
         </div>
       </Row>
       <Row>
-        <div className="col-5">
+        <div className="col-6">
           1
         </div>
-        <div className="col-7">
+        <div className="col-6" style={{backgroundColor:"#252525"}}>
           <section>
             <div className="d-flex justify-content-between mt-3">
               <div className="d-block">
@@ -68,7 +68,7 @@ export default function Dashboard() {
                     <div>Volume</div>
                   </div>
                   <div className="d-block">
-                    <div>1,392,239</div>
+                    <div>72,392,239</div>
                   </div>
               </div>
             </div>
@@ -87,6 +87,71 @@ export default function Dashboard() {
                 <div className="overScroll">
                 <table className="table table-borderless">
                   <tbody align="left">
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-success">189</td>
+                      <td className="text-success">20</td>
+                      <td className="text-success">30</td>
+                    </tr>
                     <tr>
                       <td className="text-success">189</td>
                       <td className="text-success">20</td>
@@ -113,6 +178,63 @@ export default function Dashboard() {
                       <td className="text-danger">20</td>
                       <td className="text-danger">30</td>
                     </tr>
+                    <tr>
+                      <td className="text-danger">189</td>
+                      <td className="text-danger">20</td>
+                      <td className="text-danger">30</td>
+                    </tr>
+
+                    <tr>
+                      <td className="text-danger">189</td>
+                      <td className="text-danger">20</td>
+                      <td className="text-danger">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-danger">189</td>
+                      <td className="text-danger">20</td>
+                      <td className="text-danger">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-danger">189</td>
+                      <td className="text-danger">20</td>
+                      <td className="text-danger">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-danger">189</td>
+                      <td className="text-danger">20</td>
+                      <td className="text-danger">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-danger">189</td>
+                      <td className="text-danger">20</td>
+                      <td className="text-danger">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-danger">189</td>
+                      <td className="text-danger">20</td>
+                      <td className="text-danger">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-danger">189</td>
+                      <td className="text-danger">20</td>
+                      <td className="text-danger">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-danger">189</td>
+                      <td className="text-danger">20</td>
+                      <td className="text-danger">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-danger">189</td>
+                      <td className="text-danger">20</td>
+                      <td className="text-danger">30</td>
+                    </tr>
+                    <tr>
+                      <td className="text-danger">189</td>
+                      <td className="text-danger">20</td>
+                      <td className="text-danger">30</td>
+                    </tr>
+
                   </tbody>
                 </table>
                 </div>

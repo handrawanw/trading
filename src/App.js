@@ -1,6 +1,8 @@
 import React from 'react';
 
-import Dashboard from "./Pages/Dashboard";
+//import Dashboard from "./Pages/Dashboard";
+
+import Dashboard from "./Pages/DashboardClone";
 import Login from './Pages/Login';
 import Daftar from './Pages/Daftar';
 
@@ -33,9 +35,6 @@ function App() {
           <Daftar />
         </Route>
         <ProteksiRoute path={`/trading/dashboard`} component={Dashboard} />
-        <Route path="*">
-          <h1>404 Not Found</h1>
-        </Route>
       </Switch>
   );
 }

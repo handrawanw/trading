@@ -32,10 +32,10 @@ export default function Dashboard() {
     SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
     SocketIO.on(`infoUser${id}`, (data) => {
       let user = JSON.parse(data);
+      dispatch(setInfoUser({ User: user }));
           if(user.message){
             Toast.success(user.message);
           }
-      dispatch(setInfoUser({ User: user }));
     });
     SocketIO.on("latestTrade",(data)=>{
       let History=JSON.parse(data).latestTrade;
@@ -55,6 +55,14 @@ export default function Dashboard() {
   
   return ( 
     <Container fluid>
+
+      <Row>
+        <Col xs="12" sm="12" md="12" lg="12" xl="12">
+          <div className="d-inline-block">
+            <div>wawan</div>
+          </div>
+        </Col>
+      </Row>
 
       <Row>
         <Col xs="12" sm="12" md="12" lg="12" xl="12">

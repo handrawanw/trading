@@ -8,7 +8,7 @@ import { BeliSend } from "../Fungsi/beli";
 export default function FormBeli() {
   
   let dispatch=useDispatch();
-  let {lastJual,highPrice,lowPrice}=useSelector((state)=>state.storeHistory?state.storeHistory:{});
+  let {lastJual,highPrice,lowPrice,lastPriceAll}=useSelector((state)=>state.storeHistory?state.storeHistory:{});
   let {harga,jumlah}=useSelector((state)=>state.UserState.setForm.beli?state.UserState.setForm.beli:{});
 
   const {saldo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
@@ -41,7 +41,7 @@ export default function FormBeli() {
   },[DataBeli,dispatch]);
 
   return (
-    <div className="d-block ml-3 mt-3">
+    <div className="d-block"> 
     <form onSubmit={handleSubmitBeli}>
       <div className="form-group row">
           <div className="col-4 d-block">
@@ -63,55 +63,36 @@ export default function FormBeli() {
               </div>
             </div>
 
-            <button className="btn btn-success form-control mt-2">
+            <button className="btn btn-outline-success form-control mt-2">
               BELI
             </button>
           </div>
+
           <div className="col-8">
-            <div className="d-block">
-              <div className="d-flex justify-content-around m-1">
-                <div>
-                  <i className="fa fa-arrow-up" /> {highPrice}
-                </div>
-                <div>
-                  <i className="fa fa-arrow-down" /> {lowPrice}
-                </div>
-                <div>
-                  <i className="fa fa-eject" /> {lastJual}
-                </div>
-              </div>
-            </div>
-
-            <div className="d-block">
-                <div className="mt-2" align="right">
-                  <label for="jumlah" align="right">
-                    Jumlah
-                  </label>
-                </div>
-                <input type="text" name={Object.keys(DataBeli)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
-            </div>
-
-            <div className="d-block">
-              <div className="input-group">
-                  <div className="input-group-prepend">
-                    <label for="harga">
-                      Jumlah
-                    </label>
-                  </div>
-              </div>
+              
+              <label for="jumlah">
+                Jumlah
+              </label>
+              <input type="text" name={Object.keys(DataBeli)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
+              <label for="jumlah">
+                Harga
+              </label>
               <input type="text" name={Object.keys(DataBeli)[1]} value={harga} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />
+            
+              <div className="d-block mt-1">
+                Total Bayar : {Number(jumlah)*Number(harga)}
+              </div>
             </div>
 
-            <div className="d-block" align="center">
-              <button type="button" className="btn btn-outline-success p-1 m-2">25%</button>
-              <button type="button" className="btn btn-outline-success p-1 m-2">50%</button>
-              <button type="button" className="btn btn-outline-success p-1 m-2">75%</button>
-              <button type="button" className="btn btn-outline-success p-1 m-2">100%</button>
-            </div>
- 
-          </div>
-          
       </div>
+
+      <div className="d-flex justify-content-around">
+          <button type="button" className="btn btn-outline-success m-1">25%</button>
+          <button type="button" className="btn btn-outline-success m-1">50%</button>
+          <button type="button" className="btn btn-outline-success m-1">75%</button>
+          <button type="button" className="btn btn-outline-success m-1">100%</button>
+      </div>
+
     </form>
     </div>
   );

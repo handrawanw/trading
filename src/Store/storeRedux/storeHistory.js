@@ -15,7 +15,8 @@ export default function HistoryStore(state=initialState,action){
   
   switch (action.type) {
     case "setChart":
-      let sorts=action.Data.sort((a,b)=>b.latestHarga-a.latestHarga);
+      let sorts=action.Data?action.Data.sort((a,b)=>b.latestHarga-a.latestHarga):[];
+      let sortsLatest=action.Data?action.Data.sort((a,b)=>a.createdAt-b.createdAt)[0].latestHarga:0;
 
       return {
         ...state,
@@ -27,6 +28,7 @@ export default function HistoryStore(state=initialState,action){
         lastJual:action.lastJual,
         highPrice:action.Data?sorts[0].latestHarga:0,
         lowPrice:action.Data?sorts[sorts.length-1].latestHarga:0,
+        lastPriceAll:sortsLatest
       };
     case "setDataJual":
         return {

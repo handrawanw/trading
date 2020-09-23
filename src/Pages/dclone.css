@@ -1,0 +1,17 @@
+.overScroll {
+  overflow: scroll;
+  max-height:300px;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+
+.overScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.scrolStatic {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  padding: 5px;
+}

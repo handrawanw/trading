@@ -37,9 +37,9 @@ export default function TabelJual({Judul}){
                         !market?null:market.map((item)=>{
                             return (
                                 <tr>
-                                    <td className="text-success">{item.key.harga}</td>
-                                    <td className="text-success">{item.key.jumlah}</td>
-                                    <td className="text-success">{item.key.total}</td>
+                                    <td className="text-danger">{item.key.harga}</td>
+                                    <td className="text-danger">{item.key.jumlah}</td>
+                                    <td className="text-danger">{item.key.total}</td>
                                 </tr>
                             );
                         })

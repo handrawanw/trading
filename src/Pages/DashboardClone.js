@@ -116,7 +116,7 @@ export default function Dashboard() {
                       <td>TOTAL</td>
                     </tr>
                 </table>
-                <TabelJual Judul="JUAL" />
+                <TabelBeli Judul="BELI" />
               </div>
 
               <div className="col-6 col-sm-12 col-xs-12 col-md-6">
@@ -127,7 +127,7 @@ export default function Dashboard() {
                       <td>TOTAL</td>
                     </tr>
                 </table>
-                <TabelBeli Judul="BELI" />
+                <TabelJual Judul="JUAL" />
                </div>
 
             

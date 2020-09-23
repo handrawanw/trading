@@ -1,16 +1,48 @@
 import React from "react";
 import { Container,Row,Col } from "reactstrap";
-import Toast from "cogo-toast";
 
-import TabelJualBeli from "../Component/ComponentTabel";
+import { SocketIO, uuid } from "../Fungsi/soket";
 
+import { useDispatch,useSelector } from "react-redux";
+import TabelJual from "../Component/TabelJual";
 import FormBeli from "../Form/formBeli";
 import FormJual from "../Form/formJual";
+
+import TradingViewWidget,{ Themes } from 'react-tradingview-widget';
+
+import TabelBeli from "../Component/TabelBeli";
+import { setInfoUser } from "../Store/actionRedux/infoUserRedux";
+import Toast from "cogo-toast";
 
 import "./dclone.css";
 
 export default function Dashboard() {
-  
+
+  let dispatch = useDispatch();
+  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
+ 
+  React.useEffect(()=>{
+    let {id}=uuid||{};
+    SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
+    SocketIO.on(`infoUser${id}`, (data) => {
+      let user = JSON.parse(data);
+      dispatch(setInfoUser({ User: user }));
+      if(user.message){
+            Toast.success(user.message);
+          }
+        });
+  },[dispatch]);
+        
+        const App = () => (
+          <TradingViewWidget 
+            symbol="IDX:PGAS"
+            theme={Themes.DARK}
+            locale="id"
+            autosize 
+          />
+        );
+
+
   return ( 
     <Container fluid>
       <Row>
@@ -84,82 +116,7 @@ export default function Dashboard() {
                       <td>TOTAL</td>
                     </tr>
                 </table>
-                <div className="overScroll">
-                <table className="table table-borderless">
-                  <tbody align="left">
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-success">189</td>
-                      <td className="text-success">20</td>
-                      <td className="text-success">30</td>
-                    </tr>
-                  </tbody>
-                </table>
-                </div>
+                <TabelJual Judul="JUAL" />
               </div>
 
               <div className="col-6 col-sm-12 col-xs-12 col-md-6">
@@ -170,75 +127,8 @@ export default function Dashboard() {
                       <td>TOTAL</td>
                     </tr>
                 </table>
-                <div className="overScroll">
-                <table className="table table-borderless">
-                  <tbody align="left">
-                    <tr>
-                      <td className="text-danger">189</td>
-                      <td className="text-danger">20</td>
-                      <td className="text-danger">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-danger">189</td>
-                      <td className="text-danger">20</td>
-                      <td className="text-danger">30</td>
-                    </tr>
-
-                    <tr>
-                      <td className="text-danger">189</td>
-                      <td className="text-danger">20</td>
-                      <td className="text-danger">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-danger">189</td>
-                      <td className="text-danger">20</td>
-                      <td className="text-danger">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-danger">189</td>
-                      <td className="text-danger">20</td>
-                      <td className="text-danger">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-danger">189</td>
-                      <td className="text-danger">20</td>
-                      <td className="text-danger">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-danger">189</td>
-                      <td className="text-danger">20</td>
-                      <td className="text-danger">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-danger">189</td>
-                      <td className="text-danger">20</td>
-                      <td className="text-danger">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-danger">189</td>
-                      <td className="text-danger">20</td>
-                      <td className="text-danger">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-danger">189</td>
-                      <td className="text-danger">20</td>
-                      <td className="text-danger">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-danger">189</td>
-                      <td className="text-danger">20</td>
-                      <td className="text-danger">30</td>
-                    </tr>
-                    <tr>
-                      <td className="text-danger">189</td>
-                      <td className="text-danger">20</td>
-                      <td className="text-danger">30</td>
-                    </tr>
-
-                  </tbody>
-                </table>
-                </div>
-              </div>
+                <TabelBeli Judul="BELI" />
+               </div>
 
             
             </div>

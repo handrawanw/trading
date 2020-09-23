@@ -14,7 +14,6 @@ export function TradeState(state=initialState,action){
   
   switch (action.type) {
     case "TradeJual":
-      
       return {
         ...state,
         TradeJual: {
@@ -23,16 +22,14 @@ export function TradeState(state=initialState,action){
         }
       };
     case "TradeBeli":
-      
-        return {
-          ...state,
-          TradeBeli: {
-            ...state.TradeBeli,
-            market:action.market
-          }
-        };
-    case "TradeAll":
-      
+      return {
+        ...state,
+        TradeBeli: {
+          ...state.TradeBeli,
+          market:action.market
+        }
+      };
+      case "TradeAll":
       return {
         ...state,
           TradeMe: {

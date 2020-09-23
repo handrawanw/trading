@@ -1,5 +1,6 @@
 .overScroll {
   overflow: scroll;
+  height:15em;
   max-height:15em;
   -ms-overflow-style: none; 
   scrollbar-width: none;

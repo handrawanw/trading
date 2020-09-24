@@ -7,31 +7,39 @@ export default function TabelHistory(){
     let { market } = useSelector((state) => state.TradeState.TradeMe);
     
     return (
-        <div className="overScroll" style={{backgroundColor:"#252525"}}>
+        <div style={{backgroundColor:"#252525",height:"100%"}}>
+
             <table className="table table-borderless">
                 <thead>
                     <tr className="text-white">
-                        <td>HARGA</td>
-                        <td>JUMLAH</td>
-                        <td>TOTAL</td>
-                        <td>Aksi</td>
+                        <td>HARGA (IDR)</td>
+                        <td>JUMLAH (CODEO)</td>
+                        <td>TOTAL (CODEO)</td>
+                        <td>Refunds</td>
                     </tr>
                 </thead>
-                <tbody>
+                
+                <tbody className="overScroll">
                     {
                         market?market.length>0?market.map((item) => {
-                        return (
-                            <tr>
-                                <td className="text-white"><b>{item.harga}</b></td>
-                                <td className="text-white"><b>{item.jumlah}</b></td>
-                                <td className="text-white"><b>{item.total}</b></td>
-                                <td className="text-white">
+                            return (
+                                <tr>
                                     {
                                         item.tipe==="JUAL"?
-                                            <button className="btn btn-outline-danger p-1" onClick={()=>RefundSend({DataRefund:item._id})}>
+                                                <td className="text-danger"><b>{item.harga}</b></td>
+                                            :(
+                                                <td className="text-success"><b>{item.harga}</b></td>
+                                        )
+                                    }
+                                <td className="text-white" align="right"><b>{item.jumlah}</b></td>
+                                <td className="text-white" align="right"><b>{item.total}</b></td>
+                                <td className="text-white" align="right">
+                                    {
+                                        item.tipe==="JUAL"?
+                                        <button className="btn btn-outline-danger p-1" onClick={()=>RefundSend({DataRefund:item._id})}>
                                                 <i className="fa fa-money" />
                                             </button>:(
-                                            <button className="btn btn-outline-success p-1" onClick={()=>RefundSend({DataRefund:item._id})}>
+                                                <button className="btn btn-outline-success p-1" onClick={()=>RefundSend({DataRefund:item._id})}>
                                                 <i className="fa fa-money" />
                                             </button>
                                         )
@@ -39,8 +47,8 @@ export default function TabelHistory(){
                                 </td>
                             </tr>
                         )
-                        }):(
-                            <tr>
+                    }):(
+                        <tr>
                                 <td className="text-white">-</td>
                                 <td className="text-white">-</td>
                                 <td className="text-white">-</td>

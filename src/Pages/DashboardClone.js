@@ -162,48 +162,53 @@ export default function Dashboard() {
         </div>
       </Row>
 
-      <div className="row m-3">
+      <div className="row m-3" style={{height:"100%"}}>
+
         <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <TabelHistory />
         </div>
+
         <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style={{backgroundColor:"#252525"}}>
           <div className="row">
-            <div className="col-sm-6">
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
               <table className="table table-borderless">
                 <thead className="text-white">
+                  <tr>
+                    <td colSpan="3" align="center">LIST CRYPTO</td>
+                  </tr>
                   <tr>
                     <td>PAIR</td>
                     <td>HARGA</td>
                     <td>VOLUME</td>
                   </tr>
                 </thead>
-              </table>
-              <table className="table table-borderless">
                 <tbody className="text-white">
                   <tr>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td><div className="d-block text-justify" style={{fontSize:"smaller",wordBreak:"break-word"}}>BTC/CODEO</div></td>
+                    <td><div className="d-block text-justify" style={{fontSize:"smaller",wordBreak:"break-word"}}>12,123,101</div></td>
+                    <td><div className="d-block text-justify" style={{fontSize:"smaller",wordBreak:"break-word"}}>123,123,456,789,101</div></td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div className="col-sm-6">
+
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
               <table className="table table-borderless">
                 <thead className="text-white">
+                  <tr>
+                    <td colSpan="3" align="center">PERDAGANGAN TERKINI</td>
+                  </tr>
                   <tr>
                     <td>HARGA</td>
                     <td>JUMLAH</td>
                     <td>WAKTU</td>
                   </tr>
                 </thead>
-              </table>
-              <table className="table table-borderless">
                 <tbody className="text-white">
                   <tr>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td style={{fontSize:"smaller"}}>0</td>
+                    <td style={{fontSize:"smaller"}}>0</td>
+                    <td style={{fontSize:"smaller"}}>0</td>
                   </tr>
                 </tbody>
               </table>

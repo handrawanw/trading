@@ -56,10 +56,10 @@ export default function FormBeli() {
 
                 <div className="d-block">
                   <div className="d-block">
-                    Total Bayar
+                    Last Price
                   </div>
                   <div className="d-block">
-                    {Number(jumlah)*Number(harga)}
+                    0
                   </div>
                 </div>
 
@@ -70,15 +70,15 @@ export default function FormBeli() {
 
               <div className="col-8">
                   <div className="d-flex justify-content-between">
-                    <label for="jumlah">
+                    <label for="jumlah" style={{fontSize:"smaller"}}>
                       Jumlah
                     </label>
-                    <div align="right">
+                    <div align="right" style={{fontSize:"smaller"}}>
                       0 IDR
                     </div>
                   </div>
                   <input type="text" name={Object.keys(DataBeli)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
-                  <label for="jumlah">
+                  <label for="jumlah" style={{fontSize:"smaller"}}>
                     Harga
                   </label>
                   <input type="text" name={Object.keys(DataBeli)[1]} value={harga} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />

@@ -92,10 +92,10 @@ export default function FormJual() {
         </div>
 
         <div className="d-flex justify-content-around">
-          <button type="button" className="btn btn-outline-success m-1">25%</button>
-          <button type="button" className="btn btn-outline-success m-1">50%</button>
-          <button type="button" className="btn btn-outline-success m-1">75%</button>
-          <button type="button" className="btn btn-outline-success m-1">100%</button>
+          <button type="button" className="btn btn-outline-danger m-1">25%</button>
+          <button type="button" className="btn btn-outline-danger m-1">50%</button>
+          <button type="button" className="btn btn-outline-danger m-1">75%</button>
+          <button type="button" className="btn btn-outline-danger m-1">100%</button>
         </div>
 
       </form>

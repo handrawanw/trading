@@ -10,6 +10,7 @@ import FormJual from "../Form/formJual";
 
 import TradingViewWidget,{ Themes } from 'react-tradingview-widget';
 
+import Chart from "../Chart/LineChartJual";
 import TabelBeli from "../Component/TabelBeli";
 import { setInfoUser } from "../Store/actionRedux/infoUserRedux";
 import Toast from "cogo-toast";
@@ -66,7 +67,7 @@ export default function Dashboard() {
       </Row>
       <Row>
         <div className="col-6">
-          1
+          <Chart />
         </div>
         <div className="col-6" style={{backgroundColor:"#252525"}}>
           <section>

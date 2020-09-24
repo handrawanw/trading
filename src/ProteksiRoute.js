@@ -12,7 +12,7 @@ export default function ProteksiRoute({ component: Component,...rest }) {
         return <Component {...rest} />
       } else {
         return <Redirect to={{
-          pathname: "/", state: {
+          pathname: "/trading", state: {
             from:props.location
           }
         }} />

@@ -3,6 +3,8 @@ import React from "react";
 import { useSelector,useDispatch } from "react-redux";
 import {setFormJual} from "../Store/actionRedux/infoUserRedux";
 
+import {SaldoPercent} from "../Fungsi/saldoPercent";
+
 import { JualSend } from "../Fungsi/Jual";
 
 export default function FormJual() {
@@ -63,7 +65,7 @@ export default function FormJual() {
                   </small>
                 </div>
               </div>
-              <button className="btn btn-outline-danger form-control mt-2">
+              <button className="btn btn-outline-danger form-control mt-3 p-1">
                 JUAL 
               </button>
             </div>
@@ -83,11 +85,11 @@ export default function FormJual() {
                   </div>
                 </div>
 
-              <input type="text" name={Object.keys(DataJual)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
+              <input type="text" name={Object.keys(DataJual)[0]} value={jumlah} pattern="\d*\.?\d*" onInput={handleInput} className="form-control" />
               <label for="jumlah" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                 Harga
               </label>
-              <input type="text" name={Object.keys(DataJual)[1]} value={harga} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />
+              <input type="text" name={Object.keys(DataJual)[1]} value={harga} pattern="\d*" onInput={handleInput} className="form-control" />
               
               <div className="d-block mt-1" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                 Total Bayar : {Number(jumlah)*Number(harga)}
@@ -96,10 +98,26 @@ export default function FormJual() {
         </div>
 
         <div className="d-flex justify-content-around">
-          <button type="button" className="btn btn-outline-danger m-1">25%</button>
-          <button type="button" className="btn btn-outline-danger m-1">50%</button>
-          <button type="button" className="btn btn-outline-danger m-1">75%</button>
-          <button type="button" className="btn btn-outline-danger m-1">100%</button>
+          <button type="button" className="btn btn-outline-danger m-1 p-1" onClick={()=>dispatch(setFormJual({
+            tipe:"JUAL",
+            jumlah:Number(SaldoPercent({saldo:codeo,pilih:0}).kurang)/Number(harga?harga===""?"1":harga:"1"),
+            harga:harga,
+            }))}>25%</button>
+          <button type="button" className="btn btn-outline-danger m-1 p-1" onClick={()=>dispatch(setFormJual({
+            tipe:"JUAL",
+            jumlah:Number(SaldoPercent({saldo:codeo,pilih:1}).kurang)/Number(harga?harga===""?"1":harga:"1"),
+            harga:harga,
+            }))}>50%</button>
+          <button type="button" className="btn btn-outline-danger m-1 p-1" onClick={()=>dispatch(setFormJual({
+            tipe:"JUAL",
+            jumlah:Number(SaldoPercent({saldo:codeo,pilih:2}).kurang)/Number(harga?harga===""?"1":harga:"1"),
+            harga:harga,
+            }))}>75%</button>
+          <button type="button" className="btn btn-outline-danger m-1 p-1" onClick={()=>dispatch(setFormJual({
+            tipe:"JUAL",
+            jumlah:Number(SaldoPercent({saldo:codeo,pilih:3}).kurang)/Number(harga?harga===""?"1":harga:"1"),
+            harga:harga,
+            }))}>100%</button>
         </div>
 
       </form>

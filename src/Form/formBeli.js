@@ -3,12 +3,14 @@ import React from "react";
 import { useSelector,useDispatch } from "react-redux";
 import {setFormBeli} from "../Store/actionRedux/infoUserRedux";
 
+import {SaldoPercent} from "../Fungsi/saldoPercent";
+
 import { BeliSend } from "../Fungsi/beli";
 
 export default function FormBeli() {
   
   let dispatch=useDispatch();
-  let {lastJual,highPrice,lowPrice,lastPriceAll}=useSelector((state)=>state.storeHistory?state.storeHistory:{});
+  //let {lastJual}=useSelector((state)=>state.storeHistory?state.storeHistory:{});
   let {harga,jumlah}=useSelector((state)=>state.UserState.setForm.beli?state.UserState.setForm.beli:{});
 
   const {saldo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
@@ -50,7 +52,7 @@ export default function FormBeli() {
                     SALDO 
                   </div>
                   <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                    {saldo?Number(saldo)-Number(jumlah)*Number(harga):0}
+                    {saldo?Number(saldo):0}
                   </div>
                 </div>
 
@@ -63,7 +65,7 @@ export default function FormBeli() {
                   </div>
                 </div>
 
-                <button className="btn btn-outline-success form-control mt-2">
+                <button className="btn btn-outline-success form-control mt-3 p-1">
                   BELI
                 </button>
               </div>
@@ -83,11 +85,11 @@ export default function FormBeli() {
                   </div>
                 </div>
 
-                  <input type="text" name={Object.keys(DataBeli)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
+                  <input type="text" name={Object.keys(DataBeli)[0]} value={jumlah} pattern="\d*\.?\d*" onInput={handleInput} className="form-control" />
                   <label for="jumlah" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                     Harga
                   </label>
-                  <input type="text" name={Object.keys(DataBeli)[1]} value={harga} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />
+                  <input type="text" name={Object.keys(DataBeli)[1]} value={harga} pattern="\d*" onInput={handleInput} className="form-control" />
                 
                   <div className="d-block mt-1" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                     Total Bayar : {Number(jumlah)*Number(harga)}
@@ -97,11 +99,27 @@ export default function FormBeli() {
 
           </div>
 
-          <div className="d-flex justify-content-around">
-            <button type="button" className="btn btn-outline-success m-1">25%</button>
-            <button type="button" className="btn btn-outline-success m-1">50%</button>
-            <button type="button" className="btn btn-outline-success m-1">75%</button>
-            <button type="button" className="btn btn-outline-success m-1">100%</button>
+          <div className="d-flex justify-content-around" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+            <button type="button" className="btn btn-outline-success m-1 p-1" onClick={()=>dispatch(setFormBeli({
+            tipe:"BELI",
+            jumlah:Number(SaldoPercent({saldo:saldo,pilih:0}).kurang)/Number(harga?harga===""?"1":harga:"1"),
+            harga:harga,
+            }))}>25%</button>
+            <button type="button" className="btn btn-outline-success m-1 p-1" onClick={()=>dispatch(setFormBeli({
+            tipe:"BELI",
+            jumlah:Number(SaldoPercent({saldo:saldo,pilih:1}).kurang)/Number(harga?harga===""?"1":harga:"1"),
+            harga:harga,
+            }))}>50%</button>
+            <button type="button" className="btn btn-outline-success m-1 p-1" onClick={()=>dispatch(setFormBeli({
+            tipe:"BELI",
+            jumlah:Number(SaldoPercent({saldo:saldo,pilih:2}).kurang)/Number(harga?harga===""?"1":harga:"1"),
+            harga:harga,
+            }))}>75%</button>
+            <button type="button" className="btn btn-outline-success m-1 p-1" onClick={()=>dispatch(setFormBeli({
+            tipe:"BELI",
+            jumlah:Number(SaldoPercent({saldo:saldo,pilih:3}).kurang)/Number(harga?harga===""?"1":harga:"1"),
+            harga:harga,
+            }))}>100%</button>
           </div>
 
         </form>

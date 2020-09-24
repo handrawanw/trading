@@ -83,7 +83,7 @@ export default function Dashboard() {
   );
   
   return ( 
-    <Container fluid>
+    <Container style={{fontSize:"smaller",wordBreak:"break-word"}} fluid>
 
       <Header />
 
@@ -153,9 +153,9 @@ export default function Dashboard() {
               <table className="table table-borderless">
                 <thead className="text-white">
                   <tr>
-                    <td colSpan="3" align="center" style={{backgroundColor:"#2d2c31"}}>LIST CRYPTO</td>
+                    <td colSpan="3" align="center" style={{backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>LIST CRYPTO</td>
                   </tr>
-                  <tr>
+                  <tr style={{fontSize:"smaller",wordBreak:"break-word"}}>
                     <td>PAIR</td>
                     <td>HARGA</td>
                     <td>VOLUME</td>
@@ -175,9 +175,9 @@ export default function Dashboard() {
               <table className="table table-borderless">
                 <thead className="text-white">
                   <tr>
-                    <td colSpan="3" align="center" style={{backgroundColor:"#2d2c31"}}>PERDAGANGAN TERKINI</td>
+                    <td colSpan="3" align="center" style={{backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>PERDAGANGAN TERKINI</td>
                   </tr>
-                  <tr>
+                  <tr style={{fontSize:"smaller",wordBreak:"break-word"}}>
                     <td>HARGA</td>
                     <td>JUMLAH</td>
                     <td>WAKTU</td>
@@ -185,9 +185,9 @@ export default function Dashboard() {
                 </thead>
                 <tbody className="text-white">
                   <tr>
-                    <td style={{fontSize:"smaller"}}>0</td>
-                    <td style={{fontSize:"smaller"}}>0</td>
-                    <td style={{fontSize:"smaller"}}>0</td>
+                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>0</td>
+                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>0</td>
+                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>0</td>
                   </tr>
                 </tbody>
               </table>

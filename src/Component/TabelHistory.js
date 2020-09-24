@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import {RefundSend} from "../Fungsi/refund";
 
 export default function TabelHistory(){
+    
     let { market } = useSelector((state) => state.TradeState.TradeMe);
     
     return (
@@ -11,7 +12,7 @@ export default function TabelHistory(){
 
             <table className="table table-borderless">
                 <thead>
-                    <tr className="text-white">
+                    <tr className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                         <td>HARGA (IDR)</td>
                         <td>JUMLAH (CODEO)</td>
                         <td>TOTAL (CODEO)</td>
@@ -23,7 +24,7 @@ export default function TabelHistory(){
                     {
                         market?market.length>0?market.map((item) => {
                             return (
-                                <tr>
+                                <tr style={{fontSize:"smaller",wordBreak:"break-word"}}>
                                     {
                                         item.tipe==="JUAL"?
                                                 <td className="text-danger"><b>{item.harga}</b></td>

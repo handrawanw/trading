@@ -112,13 +112,13 @@ export default function Dashboard() {
       </div>
 
       <Row className="m-3">
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" >
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6" >
 
           <App />
           
         </div>
 
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" style={{backgroundColor:"#252525"}}>
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6" style={{backgroundColor:"#252525"}}>
 
             <div className="row d-flex justify-content-between">
 
@@ -174,7 +174,7 @@ export default function Dashboard() {
               <table className="table table-borderless">
                 <thead className="text-white">
                   <tr>
-                    <td colSpan="3" align="center">LIST CRYPTO</td>
+                    <td colSpan="3" align="center" style={{backgroundColor:"#2d2c31"}}>LIST CRYPTO</td>
                   </tr>
                   <tr>
                     <td>PAIR</td>
@@ -196,7 +196,7 @@ export default function Dashboard() {
               <table className="table table-borderless">
                 <thead className="text-white">
                   <tr>
-                    <td colSpan="3" align="center">PERDAGANGAN TERKINI</td>
+                    <td colSpan="3" align="center" style={{backgroundColor:"#2d2c31"}}>PERDAGANGAN TERKINI</td>
                   </tr>
                   <tr>
                     <td>HARGA</td>

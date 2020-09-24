@@ -46,19 +46,19 @@ export default function FormBeli() {
           <div className="form-group row">
               <div className="col-4 d-block">
                 <div className="d-block mb-3">
-                  <div className="d-block">
+                  <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                     SALDO 
                   </div>
-                  <div className="d-block">
+                  <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                     {saldo?Number(saldo)-Number(jumlah)*Number(harga):0}
                   </div>
                 </div>
 
                 <div className="d-block">
-                  <div className="d-block">
+                  <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                     Last Price
                   </div>
-                  <div className="d-block">
+                  <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                     0
                   </div>
                 </div>
@@ -69,21 +69,27 @@ export default function FormBeli() {
               </div>
 
               <div className="col-8">
-                  <div className="d-flex justify-content-between">
-                    <label for="jumlah" style={{fontSize:"smaller"}}>
-                      Jumlah
-                    </label>
-                    <div align="right" style={{fontSize:"smaller"}}>
+
+                <div className="row">
+                  <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div align="right" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                       0 IDR
                     </div>
                   </div>
+                  <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <label for="jumlah" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+                      Jumlah
+                    </label>
+                  </div>
+                </div>
+
                   <input type="text" name={Object.keys(DataBeli)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
-                  <label for="jumlah" style={{fontSize:"smaller"}}>
+                  <label for="jumlah" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                     Harga
                   </label>
                   <input type="text" name={Object.keys(DataBeli)[1]} value={harga} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />
                 
-                  <div className="d-block mt-1">
+                  <div className="d-block mt-1" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                     Total Bayar : {Number(jumlah)*Number(harga)}
                   </div>
                   

@@ -46,15 +46,15 @@ export default function FormJual() {
         <div className="form-group row">
             <div className="col-4 d-block">
               <div className="d-block mb-3">
-                <div className="d-block">
+                <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                   CODEO
                 </div>
-                <div className="d-block">
+                <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                     {codeo?codeo:0}
                 </div>
               </div>
               <div className="d-block">
-                <div className="d-block">
+                <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                   Last Price
                 </div>
                 <div className="d-block">
@@ -70,22 +70,26 @@ export default function FormJual() {
 
             <div className="col-8">
               
-              <div className="d-flex justify-content-between">
-                <label for="jumlah">
-                  Jumlah
-                </label>
-                <div align="right">
-                  0 IDR
+                <div className="row">
+                  <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div align="right" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+                      0 IDR
+                    </div>
+                  </div>
+                  <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <label for="jumlah" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+                      Jumlah
+                    </label>
+                  </div>
                 </div>
-              </div>
 
               <input type="text" name={Object.keys(DataJual)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
-              <label for="jumlah">
+              <label for="jumlah" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                 Harga
               </label>
               <input type="text" name={Object.keys(DataJual)[1]} value={harga} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />
               
-              <div className="d-block mt-1">
+              <div className="d-block mt-1" style={{fontSize:"smaller",wordBreak:"break-word"}}>
                 Total Bayar : {Number(jumlah)*Number(harga)}
               </div>
             </div>

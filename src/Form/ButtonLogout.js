@@ -9,6 +9,6 @@ export default function BTNLogout() {
   let history = useHistory();
 
   return (
-    <button className="btn btn-success" onClick={()=>LogoutSend({history})}>Logout</button>
+    <button className="btn btn-outline-danger" onClick={()=>LogoutSend({history})}>Logout</button>
   )
 }

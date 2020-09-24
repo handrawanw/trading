@@ -41,7 +41,7 @@ export default function Login() {
               className="form-control" name={Object.keys(DataLogin)[1]} value={Object.values(DataLogin)[1]} onChange={handleInput}
           />
             <div className="d-block mt-2" align="right">
-            <Link to="/daftar" className="m-2">
+            <Link to="/trading/daftar" className="m-2">
               Daftar
             </Link>  
             <button className="btn btn-outline-success">

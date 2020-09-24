@@ -7,8 +7,6 @@ export default function Charts(){
   
   let {LabelNew,DataBeli,DataJual}=useSelector((state)=>state.storeHistory);
   
-  
-
   const data = {
     labels:LabelNew,
     datasets: [{

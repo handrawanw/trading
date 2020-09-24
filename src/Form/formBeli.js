@@ -42,58 +42,70 @@ export default function FormBeli() {
 
   return (
     <div className="d-block"> 
-    <form onSubmit={handleSubmitBeli}>
-      <div className="form-group row">
-          <div className="col-4 d-block">
-            <div className="d-block mb-3">
-              <div className="d-block">
-                SALDO 
-              </div>
-              <div className="d-block">
-                {saldo?Number(saldo)-Number(jumlah)*Number(harga):0}
-              </div>
-            </div>
+        <form onSubmit={handleSubmitBeli}>
+          <div className="form-group row">
+              <div className="col-4 d-block">
+                <div className="d-block mb-3">
+                  <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+                    SALDO 
+                  </div>
+                  <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+                    {saldo?Number(saldo)-Number(jumlah)*Number(harga):0}
+                  </div>
+                </div>
 
-            <div className="d-block">
-              <div className="d-block">
-                Total Bayar
-              </div>
-              <div className="d-block">
-                {Number(jumlah)*Number(harga)}
-              </div>
-            </div>
+                <div className="d-block">
+                  <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+                    Last Price
+                  </div>
+                  <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+                    0
+                  </div>
+                </div>
 
-            <button className="btn btn-outline-success form-control mt-2">
-              BELI
-            </button>
+                <button className="btn btn-outline-success form-control mt-2">
+                  BELI
+                </button>
+              </div>
+
+              <div className="col-8">
+
+                <div className="row">
+                  <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div align="right" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+                      0 IDR
+                    </div>
+                  </div>
+                  <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <label for="jumlah" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+                      Jumlah
+                    </label>
+                  </div>
+                </div>
+
+                  <input type="text" name={Object.keys(DataBeli)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
+                  <label for="jumlah" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+                    Harga
+                  </label>
+                  <input type="text" name={Object.keys(DataBeli)[1]} value={harga} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />
+                
+                  <div className="d-block mt-1" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+                    Total Bayar : {Number(jumlah)*Number(harga)}
+                  </div>
+                  
+                </div>
+
           </div>
 
-          <div className="col-8">
-              
-              <label for="jumlah">
-                Jumlah
-              </label>
-              <input type="text" name={Object.keys(DataBeli)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
-              <label for="jumlah">
-                Harga
-              </label>
-              <input type="text" name={Object.keys(DataBeli)[1]} value={harga} pattern="(\d|\.)*" onInput={handleInput} className="form-control" />
-            
-              <div className="d-block mt-1">
-                Total Bayar : {Number(jumlah)*Number(harga)}
-              </div>
-            </div>
+          <div className="d-flex justify-content-around">
+            <button type="button" className="btn btn-outline-success m-1">25%</button>
+            <button type="button" className="btn btn-outline-success m-1">50%</button>
+            <button type="button" className="btn btn-outline-success m-1">75%</button>
+            <button type="button" className="btn btn-outline-success m-1">100%</button>
+          </div>
 
-      </div>
-
-      <div className="d-flex justify-content-around">
-          <button type="button" className="btn btn-outline-success m-1">25%</button>
-          <button type="button" className="btn btn-outline-success m-1">50%</button>
-          <button type="button" className="btn btn-outline-success m-1">75%</button>
-          <button type="button" className="btn btn-outline-success m-1">100%</button>
-      </div>
-
-    </form>
+        </form>
+      <br />
     </div>
   );
 }

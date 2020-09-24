@@ -50,9 +50,7 @@ export default function FormJual() {
                   CODEO
                 </div>
                 <div className="d-block">
-                  <small>
                     {codeo?codeo:0}
-                  </small>
                 </div>
               </div>
               <div className="d-block">
@@ -72,9 +70,15 @@ export default function FormJual() {
 
             <div className="col-8">
               
-              <label for="jumlah">
-                Jumlah
-              </label>
+              <div className="d-flex justify-content-between">
+                <label for="jumlah">
+                  Jumlah
+                </label>
+                <div align="right">
+                  0 IDR
+                </div>
+              </div>
+
               <input type="text" name={Object.keys(DataJual)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
               <label for="jumlah">
                 Harga

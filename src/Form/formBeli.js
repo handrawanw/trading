@@ -69,10 +69,14 @@ export default function FormBeli() {
           </div>
 
           <div className="col-8">
-              
-              <label for="jumlah">
-                Jumlah
-              </label>
+              <div className="d-flex justify-content-between">
+                <label for="jumlah">
+                  Jumlah
+                </label>
+                <div align="right">
+                  0 IDR
+                </div>
+              </div>
               <input type="text" name={Object.keys(DataBeli)[0]} value={jumlah} pattern="\d*" onInput={handleInput} className="form-control" />
               <label for="jumlah">
                 Harga
@@ -82,15 +86,16 @@ export default function FormBeli() {
               <div className="d-block mt-1">
                 Total Bayar : {Number(jumlah)*Number(harga)}
               </div>
+              
             </div>
 
       </div>
 
       <div className="d-flex justify-content-around">
-          <button type="button" className="btn btn-outline-success m-1">25%</button>
-          <button type="button" className="btn btn-outline-success m-1">50%</button>
-          <button type="button" className="btn btn-outline-success m-1">75%</button>
-          <button type="button" className="btn btn-outline-success m-1">100%</button>
+        <button type="button" className="btn btn-outline-success m-1">25%</button>
+        <button type="button" className="btn btn-outline-success m-1">50%</button>
+        <button type="button" className="btn btn-outline-success m-1">75%</button>
+        <button type="button" className="btn btn-outline-success m-1">100%</button>
       </div>
 
     </form>

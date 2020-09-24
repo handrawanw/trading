@@ -3,7 +3,7 @@ import React from "react";
 
 import DaftarSend from "../Fungsi/Daftar";
 
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 
 import "./LoginForm.css";
 
@@ -48,8 +48,9 @@ export default function Daftar() {
               className="form-control" name={Object.keys(DataDaftar)[2]} value={Object.values(DataDaftar)[2]} onChange={handleInput}
             />
             <div className="d-block mt-2" align="right">
+              <Link to="/trading">LOGIN</Link>
               <button className="btn btn-outline-success">
-                <small>Daftar</small>
+                <small>DAFTAR</small>
               </button>
             </div>
           </div>

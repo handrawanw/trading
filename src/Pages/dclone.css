@@ -1,7 +1,7 @@
 .overScroll {
   overflow: scroll;
-  height:15em;
-  max-height:15em;
+  height:300px;
+  max-height:300px;
   -ms-overflow-style: none; 
   scrollbar-width: none;
 }
@@ -14,5 +14,6 @@
   position: sticky;
   position: -webkit-sticky;
   top: 0;
-  padding: 5px;
+  padding: 20px;
 }
+

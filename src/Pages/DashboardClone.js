@@ -8,54 +8,94 @@ import TabelJual from "../Component/TabelJual";
 import FormBeli from "../Form/formBeli";
 import FormJual from "../Form/formJual";
 
-import TradingViewWidget,{ Themes } from 'react-tradingview-widget';
+import Trafik from "../Component/trafik.js";
 
 import TabelBeli from "../Component/TabelBeli";
+import TabelHistory from "../Component/TabelHistory";
+
+import Chart from "../Chart/LineChartJual";
 import { setInfoUser } from "../Store/actionRedux/infoUserRedux";
 import Toast from "cogo-toast";
+
+import Logout from "../Form/ButtonLogout";
+import {setChart} from "../Store/actionRedux/historyTrade";
+
+import Auth from "../Auth";
+
+import {useHistory} from "react-router-dom";
+
+import jwt from "jwt-decode";
+
+import TradingViewWidget, { Themes } from 'react-tradingview-widget';
 
 import "./dclone.css";
 
 export default function Dashboard() {
 
+  let {id}=localStorage.getItem("token")?jwt(localStorage.getItem("token")):{};
+
+  let history=useHistory();
   let dispatch = useDispatch();
   const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
  
   React.useEffect(()=>{
-    let {id}=uuid||{};
     SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
-    SocketIO.on(`infoUser${id}`, (data) => {
-      let user = JSON.parse(data);
-      dispatch(setInfoUser({ User: user }));
-      if(user.message){
+    if(id){
+      SocketIO.on(`infoUser${id}`, (data) => {
+        let user = JSON.parse(data);
+        if(user.infoUser){
+          dispatch(setInfoUser({ User: user }));
+          if(user.message){
             Toast.success(user.message);
           }
+        }else{
+          Auth.onLogout(()=>{
+            localStorage.clear();
+            history.push("/trading");
+          });
+        }
+      });
+      
+      SocketIO.on("latestTrade",(data)=>{
+        let History=JSON.parse(data).latestTrade;
+        let labelOld=History?History.filter((item)=>item.tipeHistori?item:null):[];
+        let labelnew=[],dataBeli=[],dataJUal=[];
+        labelOld.forEach((item)=> {
+          labelnew.push(new Date(item.createdAt).toLocaleTimeString()+" "+new Date(item.createdAt).toLocaleDateString())
+          if(item.tipeHistori.toUpperCase()==="BELI"){
+            dataBeli.push(item.latestHarga);
+          }else{
+            dataJUal.push(item.latestHarga);
+          }
         });
-  },[dispatch]);
-        
-        const App = () => (
-          <TradingViewWidget 
-            symbol="IDX:PGAS"
-            theme={Themes.DARK}
-            locale="id"
-            autosize 
-          />
-        );
+        dispatch(setChart({LabelNew:labelnew,Data:History,DataBeli:dataBeli,lastBeli:dataBeli[dataBeli.length-1],DataJual:dataJUal,lastJual:dataJUal[dataJUal.length-1]}));
+      })
+    }
+  },[dispatch,id,history]);
 
 
+  const App = () => (
+    <TradingViewWidget
+      symbol="BTC/USD"
+      theme={Themes.DARK}
+      locale="id"
+      autosize
+    />
+  );
+  
   return ( 
     <Container fluid>
       <Row>
-        <div className="col-4">
+        <div className="col-4" style={{backgroundColor:"#2d2c31"}}>
             <div className="d-block m-3">
-                ARCHIDAX
+                Hello {username}
             </div>
         </div>
-        <div className="col-8">
+        <div className="col-8" style={{backgroundColor:"#2d2c31"}}>
           <header>
               <div className="d-flex justify-content-end">
                   <div className="d-block m-3">
-                      <button className="btn btn-outline-success">Masuk</button>
+                      <Logout />
                   </div>
                   <div className="d-block m-3">
                       <button className="btn btn-outline-success">Daftar</button>
@@ -64,63 +104,39 @@ export default function Dashboard() {
           </header>
         </div>
       </Row>
-      <Row>
-        <div className="col-6">
-          1
-        </div>
-        <div className="col-6" style={{backgroundColor:"#252525"}}>
-          <section>
-            <div className="d-flex justify-content-between mt-3">
-              <div className="d-block">
-                  <div className="d-block">
-                    <div>Harga Terakhir</div>
-                  </div>
-                  <div className="d-block">
-                    <div>1122</div>
-                  </div>
-              </div>
-              <div className="d-block">
-                  <div className="d-block">
-                    <div>Tertinggi</div>
-                  </div>
-                  <div className="d-block">
-                    <div>790</div>
-                  </div>
-              </div>
-              <div className="d-block">
-                  <div className="d-block">
-                    <div>Terendah</div>
-                  </div>
-                  <div className="d-block">
-                    <div>91</div>
-                  </div>
-              </div>
-              <div className="d-block">
-                  <div className="d-block">
-                    <div>Volume</div>
-                  </div>
-                  <div className="d-block">
-                    <div>72,392,239</div>
-                  </div>
-              </div>
-            </div>
-          </section>
 
-          <section>
-            <div className="row d-flex justify-content-between mt-1">
-              <div className="col-6 col-sm-12 col-xs-12 col-md-6">
+      <Row>
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" style={{backgroundColor:"#252525"}}>
+
+          <App />
+          
+          <TabelHistory />
+
+        </div>
+
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" style={{backgroundColor:"#252525"}}>
+          
+          <Trafik />
+
+            <div className="row d-flex justify-content-between">
+
+               <div className="col-6 col-sm-12 col-xs-12 col-md-6">
                 <table className="table table-borderless" style={{margin:0}}>
-                    <tr className="text-white">
-                      <td>HARGA</td>
-                      <td>JUMLAH</td>
-                      <td>TOTAL</td>
-                    </tr>
+                    <caption>Daftar Beli</caption>
+                    <thead>
+                      <tr className="text-white">
+                        <td>HARGA</td>
+                        <td>JUMLAH</td>
+                        <td>TOTAL</td>
+                      </tr>
+                    </thead>
                 </table>
                 <TabelBeli Judul="BELI" />
               </div>
 
               <div className="col-6 col-sm-12 col-xs-12 col-md-6">
                 <table className="table table-borderless" style={{margin:0}}>
+                    <caption>Daftar Jual</caption>
                     <tr className="text-white">
                       <td>HARGA</td>
                       <td>JUMLAH</td>
@@ -128,25 +144,18 @@ export default function Dashboard() {
                     </tr>
                 </table>
                 <TabelJual Judul="JUAL" />
-               </div>
-
-            
-            </div>
-          </section>
-
-
-          <section>
-            <div className="mt-3">
-              <div className="row">
-                <div className="col-6">
-                  <FormJual />
-                </div>
-                <div className="col-6">
-                  <FormBeli />
-                </div>
               </div>
             </div>
-          </section>
+
+
+          <div className="row" style={{backgroundColor:"#252525"}}>
+            <div className="col-6">
+              <FormJual />
+            </div>
+            <div className="col-6">
+              <FormBeli />
+            </div>
+          </div>
 
         </div>
       </Row>

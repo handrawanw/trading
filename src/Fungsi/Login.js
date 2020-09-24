@@ -50,6 +50,10 @@ export function LogoutSend({ DataLogin,history }) {
     } else {
       msg = err.response.data.message;
     }
+    Auth.onLogout(() => {
+      localStorage.clear();
+      history.push("/trading");
+    })
     Toast.error(msg);
   })
 }

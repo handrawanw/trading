@@ -21,7 +21,7 @@ export default function Trafik(){
     return (
             <div className="row" style={{backgroundColor:"#252525"}}>
 
-              <div className="col-xs-12 col-sm-6 col-md-6 col-md-6 col-lg-6 col-xl-6">
+              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                 <div className="d-block mt-2">
                     <div className="d-block">
                       <div>Harga Terakhir</div>
@@ -33,7 +33,7 @@ export default function Trafik(){
               </div>
               
 
-              <div className="col-xs-12 col-sm-6 col-md-6 col-md-6 col-lg-6 col-xl-6">
+              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                 <div className="d-block mt-2">
                     <div className="d-block">
                       <div>Tertinggi</div>
@@ -44,7 +44,7 @@ export default function Trafik(){
                 </div>
               </div>
 
-              <div className="col-xs-12 col-sm-6 col-md-6 col-md-6 col-lg-6 col-xl-6">
+              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                 <div className="d-block mt-2">
                     <div className="d-block">
                       <div>Volume</div>
@@ -55,7 +55,7 @@ export default function Trafik(){
                 </div>
               </div>
 
-              <div className="col-xs-12 col-sm-6 col-md-6 col-md-6 col-lg-6 col-xl-6">
+              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                 <div className="d-block mt-1">
                     <div className="d-block">
                       <div>Terendah</div>

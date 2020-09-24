@@ -105,18 +105,20 @@ export default function Dashboard() {
         </div>
       </Row>
 
-      <Row>
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" style={{backgroundColor:"#252525"}}>
+      <div className="row m-3">
+        <div className="col-12">
+          <Trafik />
+        </div>
+      </div>
+
+      <Row className="m-3">
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" >
 
           <App />
           
-          <TabelHistory />
-
         </div>
 
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" style={{backgroundColor:"#252525"}}>
-          
-          <Trafik />
 
             <div className="row d-flex justify-content-between">
 
@@ -148,7 +150,7 @@ export default function Dashboard() {
             </div>
 
 
-          <div className="row" style={{backgroundColor:"#252525"}}>
+          <div className="row m-1" style={{backgroundColor:"#252525"}}>
             <div className="col-6">
               <FormJual />
             </div>
@@ -159,6 +161,56 @@ export default function Dashboard() {
 
         </div>
       </Row>
+
+      <div className="row m-3">
+        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <TabelHistory />
+        </div>
+        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style={{backgroundColor:"#252525"}}>
+          <div className="row">
+            <div className="col-sm-6">
+              <table className="table table-borderless">
+                <thead className="text-white">
+                  <tr>
+                    <td>PAIR</td>
+                    <td>HARGA</td>
+                    <td>VOLUME</td>
+                  </tr>
+                </thead>
+              </table>
+              <table className="table table-borderless">
+                <tbody className="text-white">
+                  <tr>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="col-sm-6">
+              <table className="table table-borderless">
+                <thead className="text-white">
+                  <tr>
+                    <td>HARGA</td>
+                    <td>JUMLAH</td>
+                    <td>WAKTU</td>
+                  </tr>
+                </thead>
+              </table>
+              <table className="table table-borderless">
+                <tbody className="text-white">
+                  <tr>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </Container>
   );

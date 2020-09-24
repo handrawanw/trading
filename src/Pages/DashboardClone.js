@@ -1,23 +1,19 @@
 import React from "react";
-import { Container,Row,Col } from "reactstrap";
+import { Container,Row } from "reactstrap";
 
-import { SocketIO, uuid } from "../Fungsi/soket";
+import { SocketIO } from "../Fungsi/soket";
 
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import TabelJual from "../Component/TabelJual";
 import FormBeli from "../Form/formBeli";
 import FormJual from "../Form/formJual";
 
-import Trafik from "../Component/trafik.js";
-
 import TabelBeli from "../Component/TabelBeli";
 import TabelHistory from "../Component/TabelHistory";
 
-import Chart from "../Chart/LineChartJual";
 import { setInfoUser } from "../Store/actionRedux/infoUserRedux";
 import Toast from "cogo-toast";
 
-import Logout from "../Form/ButtonLogout";
 import {setChart} from "../Store/actionRedux/historyTrade";
 
 import Auth from "../Auth";
@@ -28,6 +24,10 @@ import jwt from "jwt-decode";
 
 import TradingViewWidget, { Themes } from 'react-tradingview-widget';
 
+import Header from "../Component/Header";
+import TrafikHarga from "../Component/TrafikHarga";
+
+
 import "./dclone.css";
 
 export default function Dashboard() {
@@ -36,8 +36,7 @@ export default function Dashboard() {
 
   let history=useHistory();
   let dispatch = useDispatch();
-  const {username} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
- 
+  
   React.useEffect(()=>{
     SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
     if(id){
@@ -85,31 +84,10 @@ export default function Dashboard() {
   
   return ( 
     <Container fluid>
-      <Row>
-        <div className="col-4" style={{backgroundColor:"#2d2c31"}}>
-            <div className="d-block m-3">
-                Hello {username}
-            </div>
-        </div>
-        <div className="col-8" style={{backgroundColor:"#2d2c31"}}>
-          <header>
-              <div className="d-flex justify-content-end">
-                  <div className="d-block m-3">
-                      <Logout />
-                  </div>
-                  <div className="d-block m-3">
-                      <button className="btn btn-outline-success">Daftar</button>
-                  </div>
-              </div>
-          </header>
-        </div>
-      </Row>
 
-      <div className="row m-3">
-        <div className="col-12">
-          <Trafik />
-        </div>
-      </div>
+      <Header />
+
+      <TrafikHarga />
 
       <Row className="m-3">
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6" >

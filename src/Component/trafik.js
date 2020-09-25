@@ -8,13 +8,16 @@ export default function Trafik(){
     
     React.useEffect(()=>{
         SocketIO.on("trafikHariIni", (data) => {
-            let {hargaTerakhir,hargaTertinggi,hargaTerendah,volume}=JSON.parse(data);
+          let dataTrafik=JSON.parse(data);
+          if(dataTrafik){
+            let {hargaTerakhir,hargaTertinggi,hargaTerendah,volume}=dataTrafik;
             setData({
-                hargaTerakhir:hargaTerakhir.hargaDeal,
-                hargaTertinggi:hargaTertinggi.hargaDeal,
-                hargaTerendah:hargaTerendah.hargaDeal,
-                volume:volume
+              hargaTerakhir:hargaTerakhir.hargaDeal,
+              hargaTertinggi:hargaTertinggi.hargaDeal,
+              hargaTerendah:hargaTerendah.hargaDeal,
+              volume:volume
             });
+          }
         });
     },[setData]);
 

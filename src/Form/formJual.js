@@ -52,7 +52,7 @@ export default function FormJual() {
                   Last Price Jual
                 </div>
                 <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                    {lastJual}
+                    {lastJual?lastJual:0}
                 </div>
               </div>
               <div className="d-block">

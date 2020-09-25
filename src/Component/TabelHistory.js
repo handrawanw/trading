@@ -11,6 +11,11 @@ export default function TabelHistory(){
         <div className="overScroll">
             <table className="table table-borderless">
                 <thead>
+                    <tr>
+                        <td colSpan="4" className="text-white" style={{position:"sticky",position:"-webkit-sticky",margin:0,backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>
+                            <i className="fa fa-history" /> ORDER HISTORY
+                        </td>
+                    </tr>
                     <tr className="text-white" style={{position:"sticky",position:"-webkit-sticky",margin:0,backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>
                         <td>HARGA (IDR)</td>
                         <td>JUMLAH (CODEO)</td>

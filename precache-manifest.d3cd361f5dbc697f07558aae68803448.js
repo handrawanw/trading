@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d8fb649140ada8f08ed3d2bcf64cfc71",
+    "revision": "3c36adbcc5d05ae7587558ce15264636",
     "url": "/trading/index.html"
   },
   {
-    "revision": "d2a72bce440dab2c010b",
+    "revision": "68386c7a56ab126786cd",
     "url": "/trading/static/css/2.8aa5a7f8.chunk.css"
   },
   {
-    "revision": "f4b2d2f980ac0b8b4104",
+    "revision": "ac397fee0a5672bda733",
     "url": "/trading/static/css/main.6f590423.chunk.css"
   },
   {
-    "revision": "d2a72bce440dab2c010b",
-    "url": "/trading/static/js/2.3bf7d8e6.chunk.js"
+    "revision": "68386c7a56ab126786cd",
+    "url": "/trading/static/js/2.2584a50e.chunk.js"
   },
   {
     "revision": "8cf839f44a8bec5ffc7020613596e5e0",
-    "url": "/trading/static/js/2.3bf7d8e6.chunk.js.LICENSE.txt"
+    "url": "/trading/static/js/2.2584a50e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f4b2d2f980ac0b8b4104",
-    "url": "/trading/static/js/main.f686696a.chunk.js"
+    "revision": "ac397fee0a5672bda733",
+    "url": "/trading/static/js/main.d4fcca79.chunk.js"
   },
   {
     "revision": "fed5d81f595cfba91359",

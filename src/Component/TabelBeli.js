@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch,useSelector } from "react-redux";
 
-import { SetTradeBeliAll,SetTradeAll,LiveMarketRedux } from "../Store/actionRedux/TabelMarketAction";
+import { SetTradeBeliAll,LiveMarketRedux } from "../Store/actionRedux/TabelMarketAction";
 
 import {setFormBeli} from "../Store/actionRedux/infoUserRedux";
 
@@ -21,12 +21,9 @@ export default function TabelBeli({Judul}){
     React.useEffect(() => {
         SocketIO.on("tradeAll", (data) => {
             let marketDataJual = JSON.parse(data).tradeAll||[];
-            let myOrder=marketDataJual.filter((item)=>{
-                    return item.user?item.user.toString()===id.toString():null
-            });
             let marketArray=marketDataJual?marketDataJual.filter((item) => item.tipe.toUpperCase() === "BELI").sort((a, b) => a.harga - b.harga).filter((item)=>item.jumlah>0).sort((a, b) => a.harga - b.harga).sort((a, b) => a.jumlah - b.jumlah):[];
             let finalCount=OrderCount({marketData:marketArray});
-            dispatch([SetTradeBeliAll({ market:finalCount}),SetTradeAll({market:myOrder}),LiveMarketRedux({market:marketDataJual})]);
+            dispatch([SetTradeBeliAll({ market:finalCount}),LiveMarketRedux({market:marketDataJual})]);
         });
     }, [Judul,dispatch,id]);
     

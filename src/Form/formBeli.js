@@ -10,7 +10,7 @@ import { BeliSend } from "../Fungsi/beli";
 export default function FormBeli() {
   
   let dispatch=useDispatch();
-  //let {lastJual}=useSelector((state)=>state.storeHistory?state.storeHistory:{});
+  let {lastJual,lastBeli}=useSelector((state)=>state.storeHistory?state.storeHistory:{});
   let {harga,jumlah}=useSelector((state)=>state.UserState.setForm.beli?state.UserState.setForm.beli:{});
 
   const {saldo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
@@ -49,19 +49,19 @@ export default function FormBeli() {
               <div className="col-4 d-block">
                 <div className="d-block mb-3">
                   <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                    SALDO 
+                    Last Price Beli
                   </div>
                   <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                    {saldo?Number(saldo):0}
+                    {lastBeli?lastBeli:0}
                   </div>
                 </div>
 
                 <div className="d-block">
                   <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                    Last Price
+                    Last Price Jual
                   </div>
                   <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                    0
+                    {lastJual?lastJual:0}
                   </div>
                 </div>
 
@@ -75,7 +75,7 @@ export default function FormBeli() {
                 <div className="row">
                   <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div align="right" style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                      0 IDR
+                      SALDO : {saldo?Number(saldo):0}
                     </div>
                   </div>
                   <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

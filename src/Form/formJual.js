@@ -10,7 +10,7 @@ import { JualSend } from "../Fungsi/Jual";
 export default function FormJual() {
 
   let dispatch=useDispatch();
-  let {lastBeli}=useSelector((state)=>state.storeHistory);
+  let {lastBeli,lastJual}=useSelector((state)=>state.storeHistory);
   let {harga,jumlah}=useSelector((state)=>state.UserState.setForm.jual?state.UserState.setForm.jual:{});
 
   const {codeo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
@@ -49,15 +49,15 @@ export default function FormJual() {
             <div className="col-4 d-block">
               <div className="d-block mb-3">
                 <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                  CODEO
+                  Last Price Jual
                 </div>
                 <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                    {codeo?codeo:0}
+                    {lastJual}
                 </div>
               </div>
               <div className="d-block">
                 <div className="d-block" style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                  Last Price
+                  Last Price Beli
                 </div>
                 <div className="d-block">
                   <small>
@@ -75,7 +75,7 @@ export default function FormJual() {
                 <div className="row">
                   <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div align="right" style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                      0 IDR
+                      {codeo?codeo:0} CODEO
                     </div>
                   </div>
                   <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

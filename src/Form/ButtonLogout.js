@@ -10,5 +10,5 @@ export default function BTNLogout() {
 
   return (
     <button className="btn btn-outline-danger" onClick={()=>LogoutSend({history})}>Logout</button>
-  )
+  );
 }

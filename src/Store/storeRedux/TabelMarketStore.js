@@ -7,7 +7,10 @@ let initialState = {
   },
   TradeMe:{
     market:[]
-  }
+  },
+  TradeAll:{
+    market:[],
+  },
 };
 
 export function TradeState(state=initialState,action){
@@ -36,6 +39,14 @@ export function TradeState(state=initialState,action){
             ...state.TradeMe,
             market:action.market
           }
+        };
+      case "LiveMarket":
+        return {
+          ...state,
+            TradeAll: {
+              ...state.TradeAll,
+              market:action.market
+            }
         };
     default:
       return { ...state };

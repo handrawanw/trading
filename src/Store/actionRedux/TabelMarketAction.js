@@ -21,3 +21,11 @@ export function SetTradeAll({market}) {
     market,
   }
 }
+
+export function LiveMarketRedux({market}) {
+  
+  return {
+    type:"LiveMarket",
+    market,
+  }
+}

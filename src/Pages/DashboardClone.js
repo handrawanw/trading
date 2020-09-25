@@ -27,13 +27,14 @@ import TradingViewWidget, { Themes } from 'react-tradingview-widget';
 import Header from "../Component/Header";
 import TrafikHarga from "../Component/TrafikHarga";
 
+import LiveMarket from "../Component/liveMarket";
+
 
 import "./dclone.css";
 
 export default function Dashboard() {
 
   let {id}=localStorage.getItem("token")?jwt(localStorage.getItem("token")):{};
-
   let history=useHistory();
   let dispatch = useDispatch();
   
@@ -73,7 +74,6 @@ export default function Dashboard() {
       })
     }
   },[dispatch,id,history]);
-
 
   const App = () => (
     <TradingViewWidget
@@ -173,25 +173,7 @@ export default function Dashboard() {
             </div>
 
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-              <table className="table table-borderless">
-                <thead className="text-white">
-                  <tr>
-                    <td colSpan="3" align="center" style={{backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>PERDAGANGAN TERKINI</td>
-                  </tr>
-                  <tr style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                    <td>HARGA</td>
-                    <td>JUMLAH</td>
-                    <td>WAKTU</td>
-                  </tr>
-                </thead>
-                <tbody className="text-white">
-                  <tr>
-                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>0</td>
-                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>0</td>
-                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>0</td>
-                  </tr>
-                </tbody>
-              </table>
+              <LiveMarket />
             </div>
           </div>
         </div>

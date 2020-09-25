@@ -11,6 +11,9 @@ let initialState = {
           jumlah:"",
           harga:""
         },
+    },
+    myOrderTrade:{
+        market:[]
     }
 };
 
@@ -68,6 +71,15 @@ export default function UserState(state=initialState,action){
             jumlah:action.jumlah,
             harga:action.harga,
           }
+        }
+    };
+
+    case "OrderHistory":
+    return {
+        ...state,
+        myOrderTrade:{
+          ...state.myOrderTrade,
+          market:action.market?action.market:[],
         }
     }; 
 

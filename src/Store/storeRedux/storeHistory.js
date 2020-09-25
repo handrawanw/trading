@@ -15,8 +15,6 @@ export default function HistoryStore(state=initialState,action){
   
   switch (action.type) {
     case "setChart":
-      let sorts=action.Data?action.Data.sort((a,b)=>b.latestHarga-a.latestHarga):[];
-
       return {
         ...state,
         Grafik:action.Data,

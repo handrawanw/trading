@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch,useSelector } from "react-redux";
 
-import { SetTradeJualAll,SetTradeAll } from "../Store/actionRedux/TabelMarketAction";
+import { SetTradeJualAll,SetTradeAll,LiveMarketRedux } from "../Store/actionRedux/TabelMarketAction";
 
 import {setFormJual} from "../Store/actionRedux/infoUserRedux";
 
@@ -25,7 +25,7 @@ export default function TabelJual({Judul}){
             });
             let marketArray=marketDataJual?marketDataJual.filter((item) => item.tipe.toUpperCase() === "JUAL").sort((a, b) => b.harga - a.harga).filter((item)=>item.jumlah>0).sort((a, b) => b.harga - a.harga).sort((a, b) => b.jumlah - a.jumlah):[];
             let finalCount=OrderCount({marketData:marketArray});
-            dispatch([SetTradeJualAll({ market:finalCount}),SetTradeAll({market:myOrder})]);
+            dispatch(SetTradeJualAll({ market:finalCount}),SetTradeAll({market:myOrder}),LiveMarketRedux({market:marketDataJual}));
         });
       }, [Judul,dispatch,id]);
     

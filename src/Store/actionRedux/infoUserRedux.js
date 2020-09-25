@@ -8,6 +8,13 @@ export function setInfoUser({User}){
   };
 }
 
+export function orderHistory({market}){
+  return {
+    type: "OrderHistory",
+    market,
+  };
+}
+
 export function setForm({tipe,jumlah,harga,status}){
   if(status){
     if(status==="CLICK"){

@@ -1,12 +1,27 @@
 import React from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import {RefundSend} from "../Fungsi/refund";
+
+import jwt from "jwt-decode";
+
+import {SocketIO} from "../Fungsi/soket";
+import {orderHistory} from "../Store/actionRedux/infoUserRedux";
 
 export default function TabelHistory(){
     
-    let { market } = useSelector((state) => state.TradeState.TradeMe);
+    let {id}=localStorage.getItem("token")?jwt(localStorage.getItem("token")):{};
+
+    let dispatch=useDispatch();
+    let { market } = useSelector((state) => state.UserState.myOrderTrade);
     
+    React.useEffect(()=>{
+        SocketIO.on(`tradeMe${id}`,(data)=>{
+            let {tradeMe}=JSON.parse(data);
+            dispatch(orderHistory({market:tradeMe}));
+        });
+    },[dispatch,id]); 
+
     return (
         <div className="overScroll">
             <table className="table table-borderless">

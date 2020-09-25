@@ -19,7 +19,7 @@ export default function Trafik(){
     },[setData]);
 
     return (
-            <div className="row" style={{backgroundColor:"#252525"}}>
+            <div className="row p-1" style={{backgroundColor:"#252525"}}>
 
               <div className="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                 <div className="d-block mt-2">

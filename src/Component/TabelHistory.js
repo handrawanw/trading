@@ -8,11 +8,10 @@ export default function TabelHistory(){
     let { market } = useSelector((state) => state.TradeState.TradeMe);
     
     return (
-        <div style={{backgroundColor:"#252525",height:"100%"}}>
-
+        <div className="overScroll">
             <table className="table table-borderless">
                 <thead>
-                    <tr className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>
+                    <tr className="text-white" style={{position:"sticky",position:"-webkit-sticky",margin:0,backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>
                         <td>HARGA (IDR)</td>
                         <td>JUMLAH (CODEO)</td>
                         <td>TOTAL (CODEO)</td>
@@ -20,7 +19,7 @@ export default function TabelHistory(){
                     </tr>
                 </thead>
                 
-                <tbody className="overScroll">
+                <tbody style={{backgroundColor:"#252525"}}>
                     {
                         market?market.length>0?market.map((item) => {
                             return (

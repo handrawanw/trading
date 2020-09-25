@@ -34,7 +34,7 @@ export default function TabelJual({Judul}){
                 <table className="table table-borderless">
                   <tbody align="left">
                     {
-                        !market?null:market.length<=0?<div>No data</div>:market.map((item)=>{
+                        !market?null:market.length<=0?<div>No data</div>:market.flatMap((item)=>{
                             return (
                                 <tr style={{cursor:"pointer"}} onClick={()=>dispatch(setFormJual({
                                     tipe:"JUAL",

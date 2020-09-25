@@ -44,8 +44,10 @@ export default function Dashboard() {
         let user = JSON.parse(data);
         if(user.infoUser){
           dispatch(setInfoUser({ User: user }));
-          if(user.message){
-            Toast.success(user.message);
+          if(user.infoUser._id===id){
+            if(user.message){
+              Toast.success(user.message);
+            }
           }
         }else{
           Auth.onLogout(()=>{
@@ -89,11 +91,10 @@ export default function Dashboard() {
 
       <TrafikHarga />
 
-      <Row className="m-3">
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6" >
+      <Row className="p-1">
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6  p-1" style={{padding:0}}>
 
           <App />
-          
           
         </div>
 
@@ -101,9 +102,9 @@ export default function Dashboard() {
 
             <div className="row d-flex justify-content-between">
 
-               <div className="col-6 col-sm-12 col-xs-12 col-md-6">
-                <table className="table table-borderless" style={{margin:0}}>
-                    <caption>Daftar Beli</caption>
+               <div className="col-6 col-sm-12 col-xs-12 col-md-6 p-1">
+                <table className="table table-borderless" style={{margin:0,backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>
+                    <caption className="p-1">Daftar Beli</caption>
                     <thead>
                       <tr className="text-white">
                         <td>HARGA</td>
@@ -115,9 +116,9 @@ export default function Dashboard() {
                 <TabelBeli Judul="BELI" />
               </div>
 
-              <div className="col-6 col-sm-12 col-xs-12 col-md-6">
-                <table className="table table-borderless" style={{margin:0}}>
-                    <caption>Daftar Jual</caption>
+              <div className="col-6 col-sm-12 col-xs-12 col-md-6 p-1">
+                <table className="table table-borderless" style={{margin:0,backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>
+                    <caption className="p-1">Daftar Jual</caption>
                     <tr className="text-white">
                       <td>HARGA</td>
                       <td>JUMLAH</td>
@@ -141,13 +142,13 @@ export default function Dashboard() {
         </div>
       </Row>
 
-      <div className="row m-3" style={{height:"100%"}}>
+      <div className="row" style={{height:"100%"}}>
 
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" style={{padding:0}}>
           <TabelHistory />
         </div>
 
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style={{backgroundColor:"#252525"}}>
+        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" style={{backgroundColor:"#252525",padding:0}}>
           <div className="row">
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
               <table className="table table-borderless">

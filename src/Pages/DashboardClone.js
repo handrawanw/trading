@@ -29,7 +29,6 @@ import TrafikHarga from "../Component/TrafikHarga";
 
 import LiveMarket from "../Component/liveMarket";
 
-
 import "./dclone.css";
 
 export default function Dashboard() {
@@ -95,7 +94,7 @@ export default function Dashboard() {
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6  p-1" style={{padding:0}}>
 
           <App />
-          
+
         </div>
 
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6" style={{backgroundColor:"#252525"}}>

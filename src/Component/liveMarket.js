@@ -2,24 +2,11 @@ import React from "react";
 
 import {useSelector} from "react-redux";
 
+
 export default function LiveMarket(){
-
-    let {Grafik}=useSelector((state)=>state.storeHistory);
-
-    let start=new Date(),end=new Date();
-
-    let GrafikNow=Grafik?Grafik.filter((item)=>{
-        let itemStartDate=new Date(item.createdAt);
-        console.log(itemStartDate>=start&&itemStartDate<=end);
-        
-        if(itemStartDate>=start&&itemStartDate<=end){
-            return item;
-        }else{
-            return null;
-        }
-    }):[];
     
-
+    
+    let {Grafik}=useSelector((state)=>state.storeHistory);
 
     return (
         <table className="table table-borderless">
@@ -35,20 +22,21 @@ export default function LiveMarket(){
             </thead>
             <tbody className="text-white">
                 {
-                    GrafikNow?GrafikNow.length<=0?(
+                    Grafik?Grafik.length<=0?(
                         <tr>
                             <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
                             <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
                             <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
                         </tr>
-                    ):GrafikNow.flatMap((item)=>{
+                    ):Grafik.reverse().flatMap((item)=>{
+
                         if(item.tipeHistori.toUpperCase()==="JUAL"){
 
                             return (
                                 <tr>
                                     <td className="text-danger" style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.latestHarga}</td>
-                                    <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.jumlah?item.jumlah:0}</td>
-                                    <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{new Date(item.createdAt).toLocaleTimeString()}</td>
+                                    <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.jumlahDeal?item.jumlahDeal:0}</td>
+                                    <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{new Date(item.createdAt).toLocaleTimeString()+" "+new Date(item.createdAt).toLocaleDateString()}</td>
                                 </tr>
                             );
 
@@ -57,8 +45,8 @@ export default function LiveMarket(){
                             return (
                                 <tr>
                                     <td className="text-success" style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.latestHarga}</td>
-                                    <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.jumlah?item.jumlah:0}</td>
-                                    <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{new Date(item.createdAt).toLocaleTimeString()}</td>
+                                    <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.jumlahDeal?item.jumlahDeal:0}</td>
+                                    <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{new Date(item.createdAt).toLocaleTimeString()+" "+new Date(item.createdAt).toLocaleDateString()}</td>
                                 </tr>
                             );
 
@@ -66,9 +54,9 @@ export default function LiveMarket(){
 
                             return (
                                 <tr>
-                                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.harga}</td>
-                                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.jumlah}</td>
-                                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>{new Date(item.createdAt).toLocaleTimeString()}</td>
+                                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
+                                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
+                                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
                                 </tr>
                             );
                         }

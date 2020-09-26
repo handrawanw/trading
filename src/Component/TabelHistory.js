@@ -18,20 +18,21 @@ export default function TabelHistory(){
     React.useEffect(()=>{
         SocketIO.on(`tradeMe${id}`,(data)=>{
             let {tradeMe}=JSON.parse(data);
+            console.log(JSON.stringify(data))
             dispatch(orderHistory({market:tradeMe}));
         });
-    },[dispatch,id]); 
+    },[dispatch,id]);
 
     return (
         <div className="overScroll">
             <table className="table table-borderless">
                 <thead>
                     <tr>
-                        <td colSpan="4" className="text-white" style={{position:"sticky",position:"-webkit-sticky",margin:0,backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>
+                        <td colSpan="4" className="text-white" style={{position:"-webkit-sticky",margin:0,backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>
                             <i className="fa fa-history" /> ORDER HISTORY
                         </td>
                     </tr>
-                    <tr className="text-white" style={{position:"sticky",position:"-webkit-sticky",margin:0,backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>
+                    <tr className="text-white" style={{position:"-webkit-sticky",margin:0,backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>
                         <td>HARGA (IDR)</td>
                         <td>JUMLAH (CODEO)</td>
                         <td>TOTAL (CODEO)</td>

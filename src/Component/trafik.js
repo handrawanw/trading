@@ -10,11 +10,11 @@ export default function Trafik(){
         SocketIO.on("trafikHariIni", (data) => {
           let dataTrafik=JSON.parse(data);
           if(dataTrafik){
-            let {hargaTerakhir,hargaTertinggi,hargaTerendah,volume}=dataTrafik;
+            let {lastPrice,highPrice,lowPrice,volume}=dataTrafik;
             setData({
-              hargaTerakhir:hargaTerakhir.hargaDeal,
-              hargaTertinggi:hargaTertinggi.hargaDeal,
-              hargaTerendah:hargaTerendah.hargaDeal,
+              lastPrice:lastPrice,
+              highPrice:highPrice,
+              lowPrice:lowPrice,
               volume:volume
             });
           }
@@ -30,7 +30,7 @@ export default function Trafik(){
                       <div>Harga Terakhir</div>
                     </div>
                     <div className="d-block">
-                      <div>{Data?Data.hargaTerakhir:0}</div>
+                      <div>{Data?Data.lastPrice:0}</div>
                     </div>
                 </div>
               </div>
@@ -42,7 +42,7 @@ export default function Trafik(){
                       <div>Tertinggi</div>
                     </div>
                     <div className="d-block">
-                      <div>{Data?Data.hargaTertinggi:0}</div>
+                      <div>{Data?Data.highPrice:0}</div>
                     </div>
                 </div>
               </div>
@@ -64,7 +64,7 @@ export default function Trafik(){
                       <div>Terendah</div>
                     </div>
                     <div className="d-block">
-                      <div>{Data?Data.hargaTerendah:0}</div>
+                      <div>{Data?Data.lowPrice:0}</div>
                     </div>
                 </div>
               </div>

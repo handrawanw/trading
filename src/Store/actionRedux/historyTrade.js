@@ -23,3 +23,11 @@ export function setDataBeli({Data,last}){
     last
   };
 }
+
+export function setChartTradingLightweight({market}){
+  
+  return {
+    type: "setChartTrading",
+    market
+  };
+}

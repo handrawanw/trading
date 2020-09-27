@@ -1,5 +1,6 @@
 const MAX_DATA=10;
 let initialState = {
+    chart:[], 
     Grafik:[],
     LabelNew:[],
     DataBeli:[],
@@ -13,7 +14,7 @@ let initialState = {
 
 export default function HistoryStore(state=initialState,action){
   
-  switch (action.type) {
+  switch (action.type){
     case "setChart":
       return {
         ...state,
@@ -37,6 +38,12 @@ export default function HistoryStore(state=initialState,action){
           DataJual:action.Data,
           lastJual:action.last
       };
+
+    case "setChartTrading":
+      return {
+          ...state,
+          chart:action.market
+    };
     
     default:
       return { ...state };

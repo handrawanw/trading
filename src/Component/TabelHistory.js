@@ -18,7 +18,6 @@ export default function TabelHistory(){
     React.useEffect(()=>{
         SocketIO.on(`tradeMe${id}`,(data)=>{
             let {tradeMe}=JSON.parse(data);
-            console.log(JSON.stringify(data))
             dispatch(orderHistory({market:tradeMe}));
         });
     },[dispatch,id]);

@@ -22,12 +22,12 @@ import {useHistory} from "react-router-dom";
 
 import jwt from "jwt-decode";
 
-import TradingViewWidget, { Themes } from 'react-tradingview-widget';
-
 import Header from "../Component/Header";
 import TrafikHarga from "../Component/TrafikHarga";
 
 import LiveMarket from "../Component/liveMarket";
+
+import Chart from "../Chart/Chart";
 
 import "./dclone.css";
 
@@ -74,15 +74,6 @@ export default function Dashboard() {
     }
   },[dispatch,id,history]);
 
-  const App = () => (
-    <TradingViewWidget
-      symbol="BTC/USD"
-      theme={Themes.DARK}
-      locale="id"
-      autosize
-    />
-  );
-  
   return ( 
     <Container style={{fontSize:"smaller",wordBreak:"break-word"}} fluid>
 
@@ -91,9 +82,9 @@ export default function Dashboard() {
       <TrafikHarga />
 
       <Row className="p-1">
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6  p-1" style={{padding:0}}>
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6" style={{padding:0}}>
 
-          <App />
+          <Chart />
 
         </div>
 

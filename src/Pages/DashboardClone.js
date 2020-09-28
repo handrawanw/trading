@@ -88,7 +88,7 @@ export default function Dashboard() {
           open:item.high,
           high:item.high,
           low:item.low,
-          close:item.low,
+          close:item.last,
           value:item.last,
         };
       });

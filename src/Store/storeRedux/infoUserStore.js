@@ -81,7 +81,7 @@ export default function UserState(state=initialState,action){
           ...state.myOrderTrade,
           market:action.market?action.market:[],
         }
-    }; 
+    };
 
     default:
       return { ...state };

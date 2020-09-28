@@ -4,7 +4,7 @@ import { useDispatch,useSelector } from "react-redux";
 
 import { SetTradeJualAll,LiveMarketRedux } from "../Store/actionRedux/TabelMarketAction";
 
-import {setFormJual} from "../Store/actionRedux/infoUserRedux";
+import {setForm} from "../Store/actionRedux/infoUserRedux";
 
 import { SocketIO } from "../Fungsi/soket";
 import {OrderCount} from "../Fungsi/hitungOrder";
@@ -33,7 +33,7 @@ export default function TabelJual({Judul}){
                     {
                         !market?null:market.length<=0?<div>No data</div>:market.flatMap((item)=>{
                             return (
-                                <tr style={{cursor:"pointer"}} onClick={()=>dispatch(setFormJual({
+                                <tr style={{cursor:"pointer"}} onClick={()=>dispatch(setForm({
                                     tipe:"JUAL",
                                     jumlah:item.key.jumlah.toString(),
                                     harga:item.key.harga.toString()

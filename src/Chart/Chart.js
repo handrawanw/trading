@@ -14,63 +14,83 @@ let data=[
     { time: '2018-10-28', open: 180.82, high: 181.40, low: 177.56, close: 180.75 },
   ];
 
+let settings = {
+  options: {
+    alignLabels: true,
+    timeScale: {
+      rightOffset: 10,
+      barSpacing: 10,
+      fixLeftEdge: true,
+      lockVisibleTimeRangeOnResize: true,
+      rightBarStaysOnScroll: true,
+      borderVisible: false,
+      borderColor: "#fff000",
+      visible: true,
+      timeVisible: false,
+      secondsVisible: false,
+    },
+    position: 'right',
+    mode: 6,
+    autoScale: true,
+    invertScale: true,
+    borderVisible: false,
+    borderColor: '#555ffd',
+
+    layout: {
+      backgroundColor: '#121115',
+      textColor: '#696969',
+      fontSize: 12,
+      fontFamily: 'Calibri',
+  },
+
+  handleScroll: {
+    mouseWheel: true,
+    pressedMouseMove: true,
+  },
+  handleScale: {
+      axisPressedMouseMove: true,
+      mouseWheel: true,
+      pinch: true,
+  },
+
+  crosshair: {
+    vertLine: {
+        color: '#606060',
+        width: 0.5,
+        style: 1,
+        visible: true,
+        labelVisible: false,
+    },
+    horzLine: {
+        color: '#606060',
+        width: 0.5,
+        style: 0,
+        visible: true,
+        labelVisible: true,
+    },
+    mode: 1,
+},
+
+    watermark: {
+      color: 'rgba(112,112,112,121)',
+      visible: true,
+      text: 'CODEO TOKEN',
+      fontSize: 18,
+      horzAlign: 'left',
+      vertAlign: 'bottom',
+    },
+  },
+  candlestickSeries: [{
+    data:[],
+  }]
+}
 
 export default function App(props){
 
-  let settings = {
-    options: {
-      alignLabels: true,
-      timeScale: {
-        rightOffset: 10,
-        barSpacing: 10,
-        fixLeftEdge: true,
-        lockVisibleTimeRangeOnResize: true,
-        rightBarStaysOnScroll: true,
-        borderVisible: false,
-        borderColor: "#fff000",
-        visible: true,
-        timeVisible: false,
-        secondsVisible: false,
-      },
-      position: 'right',
-      mode: 6,
-      autoScale: true,
-      invertScale: true,
-      borderVisible: false,
-      borderColor: '#555ffd',
-
-      layout: {
-        backgroundColor: '#121115',
-        textColor: '#696969',
-        fontSize: 12,
-        fontFamily: 'Calibri',
-    },
-
-    handleScroll: {
-      mouseWheel: true,
-      pressedMouseMove: true,
-    },
-    handleScale: {
-        axisPressedMouseMove: true,
-        mouseWheel: true,
-        pinch: true,
-    },
-
-      watermark: {
-        color: 'rgba(112,112,112,121)',
-        visible: true,
-        text: 'CODEO TOKEN',
-        fontSize: 18,
-        horzAlign: 'left',
-        vertAlign: 'bottom',
-      },
-    },
-    candlestickSeries: [{
-      data:props.data,
-    }]
-  }
 
       return (
-        <Chart options={settings.options} darkTheme autoWidth autoHeight candlestickSeries={settings.candlestickSeries} />
+        <Chart options={settings.options} darkTheme autoWidth autoHeight candlestickSeries={[{
+          data:props.data,
+        }]} />
       );
-} 
+}

@@ -4,7 +4,7 @@ import { useDispatch,useSelector } from "react-redux";
 
 import { SetTradeBeliAll,LiveMarketRedux } from "../Store/actionRedux/TabelMarketAction";
 
-import {setFormBeli} from "../Store/actionRedux/infoUserRedux";
+import {setForm} from "../Store/actionRedux/infoUserRedux";
 
 import { SocketIO } from "../Fungsi/soket";
 import {OrderCount} from "../Fungsi/hitungOrder";
@@ -34,7 +34,7 @@ export default function TabelBeli({Judul}){
                 {
                     !market?null:market.length<=0?<div>No data</div>:market.map((item)=>{
                         return (
-                            <tr style={{cursor:"pointer"}} onClick={()=>dispatch(setFormBeli({
+                            <tr style={{cursor:"pointer"}} onClick={()=>dispatch(setForm({
                                 tipe:"BELI",
                                 jumlah:item.key.jumlah,
                                 harga:item.key.harga

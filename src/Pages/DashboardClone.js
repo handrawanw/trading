@@ -3,7 +3,7 @@ import { Container,Row } from "reactstrap";
 
 import { SocketIO } from "../Fungsi/soket";
 
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import TabelJual from "../Component/TabelJual";
 import FormBeli from "../Form/formBeli";
 import FormJual from "../Form/formJual";
@@ -29,13 +29,16 @@ import LiveMarket from "../Component/liveMarket";
 
 import Chart from "../Chart/Chart";
 
+import {setChartTradingLightweight} from "../Store/actionRedux/historyTrade";
+
 import "./dclone.css";
 
 export default function Dashboard() {
-
+  
   let {id}=localStorage.getItem("token")?jwt(localStorage.getItem("token")):{};
   let history=useHistory();
   let dispatch = useDispatch();
+  let {chart}=useSelector((state)=>state.storeHistory);
   
   React.useEffect(()=>{
     SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
@@ -59,7 +62,7 @@ export default function Dashboard() {
       
       SocketIO.on("latestTrade",(data)=>{
         let History=JSON.parse(data).latestTrade;
-        let labelOld=History?History.filter((item)=>item.tipeHistori?item:null):[];
+        let labelOld=History?History.filter((item)=>item.tipeHistori?item:null).sort((a,b)=>b.createdAt-a.createdAt):[];
         let labelnew=[],dataBeli=[],dataJUal=[];
         labelOld.forEach((item)=> {
           labelnew.push(new Date(item.createdAt).toLocaleTimeString()+" "+new Date(item.createdAt).toLocaleDateString())
@@ -74,6 +77,25 @@ export default function Dashboard() {
     }
   },[dispatch,id,history]);
 
+
+  React.useEffect(()=>{
+
+    SocketIO.on("chartTerkini",(data)=>{
+      let {chart}=JSON.parse(data);
+      let chartMap=chart.map((item)=>{
+        return {
+          time:new Date(item.createdAt).toLocaleDateString()+" "+new Date(item.createdAt).toLocaleTimeString(),
+          open:item.high,
+          high:item.high,
+          low:item.low,
+          close:item.low,
+          value:item.last,
+        };
+      });
+      dispatch(setChartTradingLightweight({market:!chartMap||chartMap.length<=0?[]:chartMap}));
+    });
+  },[dispatch]);
+
   return ( 
     <Container style={{fontSize:"smaller",wordBreak:"break-word"}} fluid>
 
@@ -84,7 +106,7 @@ export default function Dashboard() {
       <Row className="p-1">
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6" style={{padding:0}}>
 
-          <Chart />
+          <Chart data={chart} />
 
         </div>
 

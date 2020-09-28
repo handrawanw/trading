@@ -3,13 +3,11 @@ import React from "react";
 import {SocketIO} from "../Fungsi/soket";
 
 
-import {useRouteMatch,useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 export default function ListCrypto(){
 
-    const {url}=useRouteMatch();
     let history=useHistory();
-    const awalUrl=url.split("/")[0];
 
     const [List,setList]=React.useState([]);
 
@@ -42,6 +40,7 @@ export default function ListCrypto(){
             }
         ]);
     },[setList]);
+    
 
     return (
         <table className="table table-borderless">

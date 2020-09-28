@@ -35,7 +35,6 @@ import "./dclone.css";
 import ListCrypto from "../Component/ListCrypto";
 
 export default function Dashboard(){
-
   let {crypto}=useParams();
 
   let {id}=localStorage.getItem("token")?jwt(localStorage.getItem("token")):{};
@@ -44,7 +43,10 @@ export default function Dashboard(){
   let {chart}=useSelector((state)=>state.storeHistory);
   
   React.useEffect(()=>{
-    SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
+    SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token"),typeChart:crypto }));
+  },[crypto]);
+
+  React.useLayoutEffect(()=>{
     if(id){
       SocketIO.on(`infoUser${id}`, (data) => {
         let user = JSON.parse(data);
@@ -80,9 +82,7 @@ export default function Dashboard(){
     }
   },[dispatch,id,history]);
 
-
-  React.useEffect(()=>{
-
+  React.useLayoutEffect(()=>{
     SocketIO.on("chartTerkini",(data)=>{
       let {chart}=JSON.parse(data);
       let chartMap=chart.map((item)=>{

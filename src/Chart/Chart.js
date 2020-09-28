@@ -42,7 +42,7 @@ export default function App(props){
       layout: {
         backgroundColor: '#121115',
         textColor: '#696969',
-        fontSize: 16,
+        fontSize: 14,
         fontFamily: 'Calibri',
     },
   
@@ -66,7 +66,7 @@ export default function App(props){
       },
       horzLine: {
           color: '#606060',
-          width: 0.5,
+          width: 1,
           style: 0,
           visible: true,
           labelVisible: true,

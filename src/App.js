@@ -17,7 +17,7 @@ function App() {
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
       Auth.onLogin(() => {
-          history.push("/trading/dashboard");
+          history.push("/trading/CODEO");
       });
     } else {
       Auth.onLogout(() => {
@@ -34,7 +34,7 @@ function App() {
         <Route path={`/trading/daftar`}>
           <Daftar />
         </Route>
-        <ProteksiRoute path={`/trading/dashboard`} component={Dashboard} />
+        <ProteksiRoute path={`/trading/:crypto`} component={Dashboard} />
       </Switch>
   );
 }

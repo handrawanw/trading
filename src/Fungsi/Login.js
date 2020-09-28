@@ -17,7 +17,7 @@ export default function LoginSend({ DataLogin,history }) {
     Auth.onLogin(() => {
       Toast.success(data.message);
       localStorage.setItem("token", data.token);
-      history.push("/trading/dashboard");
+      history.push("/trading/CODEO");
     })
   }).catch((err) => {
     let msg = "";

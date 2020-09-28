@@ -18,7 +18,7 @@ import {setChart} from "../Store/actionRedux/historyTrade";
 
 import Auth from "../Auth";
 
-import {useHistory} from "react-router-dom";
+import {useHistory,useParams} from "react-router-dom";
 
 import jwt from "jwt-decode";
 
@@ -32,9 +32,12 @@ import Chart from "../Chart/Chart";
 import {setChartTradingLightweight} from "../Store/actionRedux/historyTrade";
 
 import "./dclone.css";
+import ListCrypto from "../Component/ListCrypto";
 
-export default function Dashboard() {
-  
+export default function Dashboard(){
+
+  let {crypto}=useParams();
+
   let {id}=localStorage.getItem("token")?jwt(localStorage.getItem("token")):{};
   let history=useHistory();
   let dispatch = useDispatch();
@@ -106,7 +109,7 @@ export default function Dashboard() {
       <Row className="p-1">
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6" style={{padding:0}}>
 
-          <Chart data={chart} />
+          <Chart TOKEN={crypto} data={chart} />
 
         </div>
 
@@ -163,25 +166,7 @@ export default function Dashboard() {
         <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" style={{backgroundColor:"#252525",padding:0}}>
           <div className="row">
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-              <table className="table table-borderless">
-                <thead className="text-white">
-                  <tr>
-                    <td colSpan="3" align="center" style={{backgroundColor:"#2d2c31",fontSize:"smaller",wordBreak:"break-word"}}>LIST CRYPTO</td>
-                  </tr>
-                  <tr style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                    <td>PAIR</td>
-                    <td>HARGA</td>
-                    <td>VOLUME</td>
-                  </tr>
-                </thead>
-                <tbody className="text-white">
-                  <tr>
-                    <td><div className="d-block text-justify" style={{fontSize:"smaller",wordBreak:"break-word"}}>BTC/CODEO</div></td>
-                    <td><div className="d-block text-justify" style={{fontSize:"smaller",wordBreak:"break-word"}}>12,123,101</div></td>
-                    <td><div className="d-block text-justify" style={{fontSize:"smaller",wordBreak:"break-word"}}>123,123,456,789,101</div></td>
-                  </tr>
-                </tbody>
-              </table>
+              <ListCrypto />
             </div>
 
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">

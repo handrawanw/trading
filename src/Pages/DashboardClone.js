@@ -72,7 +72,7 @@ export default function Dashboard() {
             dataJUal.push(item.latestHarga);
           }
         });
-        dispatch(setChart({LabelNew:labelnew,Data:History,DataBeli:dataBeli,lastBeli:dataBeli[dataBeli.length-1],DataJual:dataJUal,lastJual:dataJUal[dataJUal.length-1]}));
+        dispatch(setChart({LabelNew:labelnew,Data:History.reverse(),DataBeli:dataBeli,lastBeli:dataBeli[dataBeli.length-1],DataJual:dataJUal,lastJual:dataJUal[dataJUal.length-1]}));
       })
     }
   },[dispatch,id,history]);
@@ -84,7 +84,7 @@ export default function Dashboard() {
       let {chart}=JSON.parse(data);
       let chartMap=chart.map((item)=>{
         return {
-          time:new Date(item.createdAt).toLocaleDateString()+" "+new Date(item.createdAt).toLocaleTimeString(),
+          time:new Date(item.createdAt).toUTCString(),
           open:item.high,
           high:item.high,
           low:item.low,

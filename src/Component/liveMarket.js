@@ -28,7 +28,7 @@ export default function LiveMarket(){
                             <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
                             <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
                         </tr>
-                    ):Grafik.reverse().flatMap((item)=>{
+                    ):Grafik.flatMap((item)=>{
 
                         if(item.tipeHistori.toUpperCase()==="JUAL"){
 
@@ -36,7 +36,7 @@ export default function LiveMarket(){
                                 <tr>
                                     <td className="text-danger" style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.latestHarga}</td>
                                     <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.jumlahDeal?item.jumlahDeal:0}</td>
-                                    <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{new Date(item.createdAt).toLocaleTimeString()+" "+new Date(item.createdAt).toLocaleDateString()}</td>
+                                    <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{new Date(item.createdAt).toUTCString()}</td>
                                 </tr>
                             );
 
@@ -46,7 +46,7 @@ export default function LiveMarket(){
                                 <tr>
                                     <td className="text-success" style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.latestHarga}</td>
                                     <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.jumlahDeal?item.jumlahDeal:0}</td>
-                                    <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{new Date(item.createdAt).toLocaleTimeString()+" "+new Date(item.createdAt).toLocaleDateString()}</td>
+                                    <td className="text-white" style={{fontSize:"smaller",wordBreak:"break-word"}}>{new Date(item.createdAt).toUTCString()}</td>
                                 </tr>
                             );
 

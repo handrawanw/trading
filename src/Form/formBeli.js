@@ -7,7 +7,11 @@ import {SaldoPercent} from "../Fungsi/saldoPercent";
 
 import { BeliSend } from "../Fungsi/beli";
 
+import {useParams} from "react-router-dom";
+
 export default function FormBeli() {
+
+  const {crypto}=useParams();
   
   let dispatch=useDispatch();
   let {lastJual,lastBeli}=useSelector((state)=>state.storeHistory?state.storeHistory:{});
@@ -30,7 +34,8 @@ export default function FormBeli() {
     e.preventDefault();
     BeliSend({ DataBeli:{
       jumlah,
-      harga
+      harga,
+      symbol:crypto
     }});
   }
 

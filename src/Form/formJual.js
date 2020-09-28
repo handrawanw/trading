@@ -7,7 +7,11 @@ import {SaldoPercent} from "../Fungsi/saldoPercent";
 
 import { JualSend } from "../Fungsi/Jual";
 
+import {useParams} from "react-router-dom";
+
 export default function FormJual() {
+
+  const {crypto}=useParams();
 
   let dispatch=useDispatch();
   let {lastBeli,lastJual}=useSelector((state)=>state.storeHistory);
@@ -30,7 +34,8 @@ export default function FormJual() {
     e.preventDefault();
     JualSend({DataJual:{
       jumlah,
-      harga
+      harga,
+      symbol:crypto
     }});
   }
 

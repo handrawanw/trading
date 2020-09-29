@@ -93,6 +93,7 @@ export default function Dashboard(){
           low:item.low,
           close:item.last,
           value:item.last,
+          volume:1233333,
         };
       });
       dispatch(setChartTradingLightweight({market:!chartMap||chartMap.length<=0?[]:chartMap}));

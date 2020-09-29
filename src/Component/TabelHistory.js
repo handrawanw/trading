@@ -57,7 +57,7 @@ export default function TabelHistory(){
                                     {
                                         item.tipe==="JUAL"?
                                         <button className="btn btn-outline-danger p-1" onClick={()=>RefundSend({DataRefund:item._id})}>
-                                                <i className="fa fa-money" /> {item._id}
+                                                <i className="fa fa-money" />
                                             </button>:(
                                                 <button className="btn btn-outline-success p-1" onClick={()=>RefundSend({DataRefund:item._id})}>
                                                 <i className="fa fa-money" />

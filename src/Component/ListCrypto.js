@@ -11,33 +11,6 @@ export default function ListCrypto(){
     const [List,setList]=React.useState([]);
 
     React.useEffect(()=>{
-        // setList([
-        //     {
-        //         nama:"BTC/USD",
-        //         harga:Math.ceil(Math.random()*1000000),
-        //         volume:Math.ceil(Math.random()*100000000),
-        //     },
-        //     {
-        //         nama:"LTC/USD",
-        //         harga:Math.ceil(Math.random()*1000000),
-        //         volume:Math.ceil(Math.random()*100000000),
-        //     },
-        //     {
-        //         nama:"BNB/USD",
-        //         harga:Math.ceil(Math.random()*1000000),
-        //         volume:Math.ceil(Math.random()*100000000),
-        //     },
-        //     {
-        //         nama:"ETH/USD",
-        //         harga:Math.ceil(Math.random()*1000000),
-        //         volume:Math.ceil(Math.random()*100000000),
-        //     },
-        //     {
-        //         nama:"CODEO/USD",
-        //         harga:Math.ceil(Math.random()*1000000),
-        //         volume:Math.ceil(Math.random()*100000000),
-        //     }
-        // ]);
         SocketIO.on("listCrypto",(data)=>{
             let {ListCrypto}=JSON.parse(data);
             setList(ListCrypto);
@@ -58,7 +31,13 @@ export default function ListCrypto(){
                 </tr>
             </thead>
             <tbody className="text-white">
-               {List.map((item)=>{
+               {List?List.length<=0?(
+                    <tr>
+                        <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
+                        <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
+                        <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
+                    </tr>
+                   ):List.map((item)=>{
                    return (
                     <tr style={{cursor:"pointer"}} onClick={()=>history.push(item.simbol.toString().toUpperCase().replace(/\//g,"_"))}>
                         <td><div className="d-block text-justify" style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.simbol}</div></td>
@@ -66,7 +45,13 @@ export default function ListCrypto(){
                         <td><div className="d-block text-justify" style={{fontSize:"smaller",wordBreak:"break-word"}}>{item.volume}</div></td>
                     </tr>
                    );
-               })}
+               }):(
+                <tr>
+                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
+                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
+                    <td style={{fontSize:"smaller",wordBreak:"break-word"}}>-</td>
+                </tr>
+               )}
             </tbody>
         </table>
     );

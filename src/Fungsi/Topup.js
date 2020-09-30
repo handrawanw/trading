@@ -1,12 +1,15 @@
 import axios from "axios";
 import Toast from "cogo-toast";
 
-export function TopUp() {
+export function TopUp({crypto}) {
     axios({
       url: `${process.env.REACT_APP_URL_LOCALHOST}/topupSaldo`,
       method: "POST",
       headers: {
         jwttoken:localStorage.getItem("token")
+      },
+      data:{
+        crypto
       }
     }).then(({ data }) => {
         Toast.success(data.message);

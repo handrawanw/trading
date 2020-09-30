@@ -80,7 +80,7 @@ export default function FormJual() {
                 <div className="row">
                   <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div align="right" style={{fontSize:"smaller",wordBreak:"break-word"}}>
-                      {codeo?codeo:0} CODEO
+                      {codeo?codeo:0} {crypto}
                     </div>
                   </div>
                   <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

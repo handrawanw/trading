@@ -17,8 +17,10 @@ export default function FormJual() {
   let {lastBeli,lastJual}=useSelector((state)=>state.storeHistory);
   let {harga,jumlah}=useSelector((state)=>state.UserState.setForm.jual?state.UserState.setForm.jual:{});
 
-  const {codeo} = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
+  const UserState = useSelector(state => state.UserState.User?state.UserState.User.infoUser?state.UserState.User.infoUser:{}:{});
   
+  const codeo=UserState[crypto.toUpperCase()];
+
   const [DataJual, setDataJual] = React.useState({
     jumlah:"",
     harga:"",

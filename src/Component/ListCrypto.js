@@ -16,7 +16,6 @@ export default function ListCrypto(){
             setList(ListCrypto);
         });
     },[setList]);
-    
 
     return (
         <table className="table table-borderless">

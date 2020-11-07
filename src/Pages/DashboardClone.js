@@ -40,7 +40,7 @@ export default function Dashboard(){
   let {id}=localStorage.getItem("token")?jwt(localStorage.getItem("token")):{};
   let history=useHistory();
   let dispatch = useDispatch();
-  let {chart}=useSelector((state)=>state.storeHistory);
+  //let {chart}=useSelector((state)=>state.storeHistory);
   
   React.useEffect(()=>{
     SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token"),typeChart:crypto }));

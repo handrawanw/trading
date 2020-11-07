@@ -3,6 +3,8 @@ import Chart from 'react-apexcharts';
 
 import dayjs from "dayjs";
 
+import DataJSON from "./ApexData.json";
+
 class ChartTrading extends React.Component {
     constructor(props) {
       super(props);
@@ -256,28 +258,27 @@ class ChartTrading extends React.Component {
 
           options: {
             chart: {
-              height: 350,
+              height: "100%",
               type: 'candlestick',
             },
             title: {
-              text: 'CandleStick Chart - Category X-axis',
+              text: 'Trading Chart',
               align: 'left'
             },
             annotations: {
               xaxis: [
                 {
                   x: 'Oct 06 14:00',
-                  borderColor: '#00E396',
+                  borderColor: '#606060',
                   label: {
-                    borderColor: '#00E396',
+                    borderColor: '#606060',
                     style: {
                       fontSize: '12px',
-                      color: '#fff',
-                      background: '#606060'
+                      color: 'white',
+                      background: 'red'
                     },
                     orientation: 'horizontal',
                     offsetY: 7,
-                    text: 'Annotation Test'
                   }
                 }
               ]
@@ -295,7 +296,9 @@ class ChartTrading extends React.Component {
             },
             yaxis: {
               tooltip: {
-                enabled: true
+                background:"black",
+                color:"white",
+                enabled: true,
               }
             }
           },
@@ -303,7 +306,7 @@ class ChartTrading extends React.Component {
     }
     render() {
       return (
-        <Chart options={this.state.options} series={this.state.series} type="candlestick" width={500} height={320} />
+        <Chart options={this.state.options} style={{color:"black"}} series={this.state.series} type="candlestick" width={"100%"} height={"100%"} />
       )
     }
   }

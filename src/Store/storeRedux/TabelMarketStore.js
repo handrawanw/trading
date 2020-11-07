@@ -37,7 +37,7 @@ export function TradeState(state=initialState,action){
         ...state,
           TradeMe: {
             ...state.TradeMe,
-            market:action.market
+            market:action.market,
           }
         };
       case "LiveMarket":

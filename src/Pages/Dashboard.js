@@ -13,7 +13,6 @@ import History from "../Component/ComponentHistory";
 
 import ChartJual from "../Chart/LineChartJual";
 
-
 import { SocketIO, uuid } from "../Fungsi/soket";
 
 import { useDispatch,useSelector } from "react-redux";

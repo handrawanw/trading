@@ -1,6 +1,6 @@
 const MAX_DATA=10;
 let initialState = {
-    chart:[], 
+    chart:[],
     Grafik:[],
     LabelNew:[],
     DataBeli:[],
@@ -16,6 +16,7 @@ export default function HistoryStore(state=initialState,action){
   
   switch (action.type){
     case "setChart":
+
       return {
         ...state,
         Grafik:action.Data,
@@ -25,6 +26,7 @@ export default function HistoryStore(state=initialState,action){
         DataJual:typeof action.DataJual==="object"?action.DataJual.reverse().filter((item,index)=>index<=MAX_DATA?item:null):[],
         lastJual:action.lastJual,
       };
+    
     case "setDataJual":
         return {
           ...state,

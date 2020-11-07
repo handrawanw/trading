@@ -85,17 +85,7 @@ export default function Dashboard(){
   React.useLayoutEffect(()=>{
     SocketIO.on("chartTerkini",(data)=>{
       let {chart}=JSON.parse(data);
-      let chartMap=chart.filter((item)=>{
-      if(item){
-        return {
-          x:new Date(item.createdAt).getTime(),
-          y:[item.high,item.low,item.last,item.last],
-        }; 
-      }else{
-        return null;
-      }
-      });
-      dispatch(setChartTradingLightweight({market:!chartMap||chartMap.length<=0?[]:chartMap}));
+      dispatch(setChartTradingLightweight({market:!chart||chart.length<=0?[]:chart}));
     });
   },[dispatch]);
 

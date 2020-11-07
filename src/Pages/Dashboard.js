@@ -29,7 +29,6 @@ export default function Dashboard() {
   React.useEffect(() => {
     SocketIO.emit("soketAuth", JSON.stringify({ token: localStorage.getItem("token") }));
     let {id}=uuid||{};
-    alert(JSON.stringify(id))
     SocketIO.on(`infoUser${id}`, (data) => {
       let user = JSON.parse(data);
       dispatch(setInfoUser({ User: user }));

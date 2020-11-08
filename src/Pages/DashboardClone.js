@@ -85,6 +85,7 @@ export default function Dashboard(){
   React.useLayoutEffect(()=>{
     SocketIO.on("chartTerkini",(data)=>{
       let {chart}=JSON.parse(data);
+      dispatch(setChartTradingLightweight({market:[]}));
       dispatch(setChartTradingLightweight({market:!chart||chart.length<=0?[]:chart}));
     });
   },[dispatch]);

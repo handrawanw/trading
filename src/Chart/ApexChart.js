@@ -25,12 +25,8 @@ function ChartInjectData(){
   },[setChart,baseUrl]);
 
   React.useEffect(()=>{
-    setInterval(() => {
-      getData()
-    }, 1000);
+    getData(); 
   },[getData]);
-
-
   return (
     <ChartTrading data={chart} />
   );

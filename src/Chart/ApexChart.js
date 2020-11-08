@@ -28,7 +28,7 @@ function ChartInjectData(){
     getData(); 
   },[getData]);
   return (
-    <ChartTrading data={chart} />
+    <ChartTrading data={chart?chart:[]} />
   );
 }
 
@@ -40,7 +40,7 @@ class ChartTrading extends React.Component {
       this.state = {
         series: [{
             name: 'candle',
-            data:!props.data?[]:props.data,
+            data:props.data,
           }],
 
           options: {

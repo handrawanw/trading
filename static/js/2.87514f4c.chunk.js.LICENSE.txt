@@ -5,23 +5,15 @@ object-assign
 */
 
 /*!
-   * @license
-   * TradingView Lightweight Charts v2.0.0
-   * Copyright (c) 2019 TradingView, Inc.
-   * Licensed under Apache License 2.0 https://www.apache.org/licenses/LICENSE-2.0
-   */
-
-/*!
   Copyright (c) 2017 Jed Watson.
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
 */
 
 /*!
- * @license
- * TradingView Lightweight Charts v3.1.5
- * Copyright (c) 2020 TradingView, Inc.
- * Licensed under Apache License 2.0 https://www.apache.org/licenses/LICENSE-2.0
+ * ApexCharts v3.22.1
+ * (c) 2018-2020 Juned Chhipa
+ * Released under the MIT License.
  */
 
 /*!
@@ -32,6 +24,16 @@ object-assign
  */
 
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/*! svg.draggable.js - v2.2.2 - 2019-01-08
+* https://github.com/svgdotjs/svg.draggable.js
+* Copyright (c) 2019 Wout Fierens; Licensed MIT */
+
+/*! svg.filter.js - v2.0.2 - 2016-02-24
+* https://github.com/wout/svg.filter.js
+* Copyright (c) 2016 Wout Fierens; Licensed MIT */
 
 /** @license React v0.19.1
  * scheduler.production.min.js

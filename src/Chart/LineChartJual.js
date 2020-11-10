@@ -1,40 +1,30 @@
 import React from "react";
-import {Line} from 'react-chartjs-2';
 
-import {useSelector} from "react-redux";
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-export default function Charts(){
-  
-  let {LabelNew,DataBeli,DataJual}=useSelector((state)=>state.storeHistory);
-  
-  const data = {
-    labels:LabelNew,
-    datasets: [{
-        type: 'line',
-        label: 'Harga Beli',
-        data:DataBeli,
-        fill: false,
-        backgroundColor: 'green',
-        borderColor: 'green',
-        hoverBackgroundColor: 'green',
-        hoverBorderColor: 'green',
+    this.state = {
+      options: {
+        chart: {
+          id: 'apexchart-example'
+        },
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+        }
       },
-      {
-        type: 'line',
-        label: 'Harga Jual',
-        data:DataJual,
-        fill: false,
-        backgroundColor: 'red',
-        borderColor: 'red',
-        hoverBackgroundColor: 'red',
-        hoverBorderColor: 'red',
-      }
-    ]
-  };
-  
+      series: [{
+        name: 'series-1',
+        data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
+      }]
+    }
+  }
+
+  render() {
     return (
-        <Line
-          data={data}
-          />
-    );
+      <Chart options={this.state.options} series={this.state.series} type="bar" width={500} height={320} />
+    )
+  }
 }
+
+export default App;

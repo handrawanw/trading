@@ -27,7 +27,7 @@ import TrafikHarga from "../Component/TrafikHarga";
 
 import LiveMarket from "../Component/liveMarket";
 
-import Chart from "../Chart/Chart";
+import Chart from "../Chart/LineChartJual";
 
 import {setChartTradingLightweight} from "../Store/actionRedux/historyTrade";
 

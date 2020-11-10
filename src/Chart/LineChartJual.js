@@ -1,14 +1,16 @@
 import React from "react";
 import Chart from "react-apexcharts";
 
-
-import Data from "./chart.json";
+import {useSelector} from "react-redux";
 
 function AppChart(){
+
+  const {chart}=useSelector((state)=>state.storeHistory)
+
   const settings={
     series: [{
       name: 'candle',
-      data: Data.data,
+      data: chart,
     }],
     options: {
       chart: {
@@ -17,8 +19,9 @@ function AppChart(){
       },
       title: {
         text: 'CandleStick Chart - Category X-axis',
-        align: 'left'
+        align: 'left',
       },
+
       annotations: {
         xaxis: [
           {
@@ -32,7 +35,7 @@ function AppChart(){
                 background: '#00E396'
               },
               orientation: 'horizontal',
-              offsetY: 7,
+              offsetY: 1,
               text: ''
             }
           }
@@ -51,7 +54,7 @@ function AppChart(){
       },
       yaxis: {
         tooltip: {
-          enabled: true
+          enabled: false
         }
       }
     },
@@ -60,7 +63,7 @@ function AppChart(){
 
   
   return (
-    <Chart options={settings.options} style={{color:"black"}} series={settings.series} type="candlestick" width={"100%"} height={"100%"} />
+    <Chart options={settings.options} style={{color:"black"}} series={settings.series} type="candlestick" width="100%" height="100%" />
   );
 }
 

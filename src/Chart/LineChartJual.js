@@ -12,7 +12,7 @@ function AppChart(){
   const settings={
     series: [{
       name: 'candle',
-      data: chart,
+      data: RandomTrade(),
     }],
     options: {
       chart: {
@@ -45,24 +45,29 @@ function AppChart(){
       },
       tooltip: {
         enabled: true,
+        x: {
+          format: 'dd MMM yyyy'
+        }
       },
       xaxis: {
+        type: 'category',
         labels: {
           formatter: function (value, timestamp) {
-            return new Date(value).toLocaleString();
+            return new Date(value).toLocaleTimeString();
           },
         },
         tickPlacement: 'on'
       },
       yaxis: {
         tooltip: {
-          enabled: false
+          enabled: false,
         },
         formatter: function (value) {
           return value + "$";
         }
       }
     },
+    
     dataLabels: {
       enabled: true,
       offsetY: -25,
@@ -86,9 +91,30 @@ function AppChart(){
         fontFamily: "Poppins, sans-serif"
       }
     },
+    
+    grid:{
+      position: 'front',
+      xaxis: {
+        lines: {
+          show: false
+        }
+      },
+      yaxis: {
+        lines: {
+          show: false
+        }
+      },
+      row: {
+        colors: [
+          '#ffffff',
+          '#eeeeee'
+        ],
+        opacity: 1,
+      },
+      borderColor: '#cccccc'
+    },
   
   }
-
   
   return (
     <Chart style={{width:'100%',height:'100%'}} options={settings.options} style={{color:"black"}} series={settings.series} type="candlestick" width='100%' height='auto' />

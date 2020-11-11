@@ -4,7 +4,6 @@ import Chart from "react-apexcharts";
 import {useSelector} from "react-redux";
 
 function AppChart(){
-
   const {chart}=useSelector((state)=>state.storeHistory);
 
   const settings={

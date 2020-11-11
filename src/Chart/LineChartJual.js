@@ -3,8 +3,6 @@ import Chart from "react-apexcharts";
 
 import {useSelector} from "react-redux";
 
-import {RandomTrade} from "./fungsi";
-
 function AppChart(){
 
   const {chart}=useSelector((state)=>state.storeHistory);
@@ -12,7 +10,7 @@ function AppChart(){
   const settings={
     series: [{
       name: 'candle',
-      data: RandomTrade(),
+      data: chart,
     }],
 
     options: {
@@ -59,7 +57,6 @@ function AppChart(){
           },
         },
         tickPlacement: 'on',
-        show:false,
       },
       
       yaxis: {

@@ -14,6 +14,7 @@ function AppChart(){
       name: 'candle',
       data: RandomTrade(),
     }],
+
     options: {
       chart: {
         type: 'candlestick',
@@ -23,7 +24,7 @@ function AppChart(){
         text: 'CandleStick Chart - Category X-axis',
         align: 'left',
       },
-
+    
       annotations: {
         xaxis: [
           {
@@ -67,7 +68,6 @@ function AppChart(){
         }
       }
     },
-    
     dataLabels: {
       enabled: true,
       offsetY: -25,
@@ -75,7 +75,7 @@ function AppChart(){
         fontSize: "15px",
         colors: ["#304758"],
         fontSize: "14px",
-        fontFamily: "Poppins, sans-serif"
+        fontFamily: "Poppins, sans-serif",
       }
     },
 
@@ -119,6 +119,7 @@ function AppChart(){
   return (
     <Chart style={{width:'100%',height:'100%'}} options={settings.options} style={{color:"black"}} series={settings.series} type="candlestick" width='100%' height='auto' />
   );
+  
 }
 
 export default AppChart;

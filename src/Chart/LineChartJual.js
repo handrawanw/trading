@@ -47,14 +47,10 @@ function AppChart(){
         enabled: true,
       },
       xaxis: {
-        type: 'category',
         labels: {
-          datetimeFormatter: {
-            year: 'yyyy',
-            month: 'MMM \'yy',
-            day: 'dd MMM',
-            hour: 'HH:mm'
-          }
+          formatter: function (value, timestamp) {
+            return new Date(value).toLocaleString();
+          },
         },
         tickPlacement: 'on'
       },

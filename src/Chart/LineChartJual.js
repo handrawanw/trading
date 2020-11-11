@@ -14,8 +14,8 @@ function AppChart(){
     }],
     options: {
       chart: {
-        height: "100%",
         type: 'candlestick',
+        height: '100%', 
       },
       title: {
         text: 'CandleStick Chart - Category X-axis',
@@ -50,7 +50,8 @@ function AppChart(){
           formatter: function(val) {
             return new Date(val).toLocaleString();
           }
-        }
+        },
+        tickPlacement: 'on'
       },
       yaxis: {
         tooltip: {
@@ -58,12 +59,35 @@ function AppChart(){
         }
       }
     },
+    dataLabels: {
+      enabled: true,
+      offsetY: -25,
+      style: {
+        fontSize: "15px",
+        colors: ["#304758"],
+        fontSize: "14px",
+        fontFamily: "Poppins, sans-serif"
+      }
+    },
+
+    tooltip: {
+      enabled: true,
+      shared: true,
+      followCursor: true,
+      x: {
+        show: false
+      },
+      style: {
+        fontSize: "12px",
+        fontFamily: "Poppins, sans-serif"
+      }
+    },
   
   }
 
   
   return (
-    <Chart options={settings.options} style={{color:"black"}} series={settings.series} type="candlestick" width="100%" height="100%" />
+    <Chart style={{width:'100%',height:'100%'}} options={settings.options} style={{color:"black"}} series={settings.series} type="candlestick" width='100%' height='auto' />
   );
 }
 

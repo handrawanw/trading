@@ -3,9 +3,11 @@ import Chart from "react-apexcharts";
 
 import {useSelector} from "react-redux";
 
+import {RandomTrade} from "./fungsi";
+
 function AppChart(){
 
-  const {chart}=useSelector((state)=>state.storeHistory)
+  const {chart}=useSelector((state)=>state.storeHistory);
 
   const settings={
     series: [{
@@ -47,8 +49,11 @@ function AppChart(){
       xaxis: {
         type: 'category',
         labels: {
-          formatter: function(val) {
-            return new Date(val).toLocaleString();
+          datetimeFormatter: {
+            year: 'yyyy',
+            month: 'MMM \'yy',
+            day: 'dd MMM',
+            hour: 'HH:mm'
           }
         },
         tickPlacement: 'on'
@@ -56,6 +61,9 @@ function AppChart(){
       yaxis: {
         tooltip: {
           enabled: false
+        },
+        formatter: function (value) {
+          return value + "$";
         }
       }
     },

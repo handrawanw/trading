@@ -53,12 +53,15 @@ function AppChart(){
       xaxis: {
         type: 'category',
         labels: {
+          show:false,
           formatter: function (value, timestamp) {
-            return new Date(value).toLocaleTimeString();
+            return new Date(value).toLocaleString("Id-id");
           },
         },
-        tickPlacement: 'on'
+        tickPlacement: 'on',
+        show:false,
       },
+      
       yaxis: {
         tooltip: {
           enabled: false,
@@ -68,6 +71,7 @@ function AppChart(){
         }
       }
     },
+
     dataLabels: {
       enabled: true,
       offsetY: -25,
@@ -92,34 +96,13 @@ function AppChart(){
       }
     },
     
-    grid:{
-      position: 'front',
-      xaxis: {
-        lines: {
-          show: false
-        }
-      },
-      yaxis: {
-        lines: {
-          show: false
-        }
-      },
-      row: {
-        colors: [
-          '#ffffff',
-          '#eeeeee'
-        ],
-        opacity: 1,
-      },
-      borderColor: '#cccccc'
-    },
-  
+    
   }
   
   return (
     <Chart style={{width:'100%',height:'100%'}} options={settings.options} style={{color:"black"}} series={settings.series} type="candlestick" width='100%' height='auto' />
   );
-  
+
 }
 
 export default AppChart;

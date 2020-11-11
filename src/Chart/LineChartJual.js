@@ -12,7 +12,6 @@ function AppChart(){
       name: 'candle',
       data: chart,
     }],
-
     options: {
       chart: {
         type: 'candlestick',
@@ -45,7 +44,7 @@ function AppChart(){
       tooltip: {
         enabled: true,
         x: {
-          format: 'dd MMM yyyy'
+          format: 'dd MMM yyyy',
         }
       },
       xaxis: {
@@ -58,7 +57,6 @@ function AppChart(){
         },
         tickPlacement: 'on',
       },
-      
       yaxis: {
         tooltip: {
           enabled: false,

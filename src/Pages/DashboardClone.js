@@ -27,7 +27,11 @@ import TrafikHarga from "../Component/TrafikHarga";
 
 import LiveMarket from "../Component/liveMarket";
 
+<<<<<<< HEAD
 import ChartTrading from "../Chart/ApexChart";
+=======
+import Chart from "../Chart/LineChartJual";
+>>>>>>> 7360719e59371653f642b7c9e2bab73c8d1aa0f9
 
 import {setChartTradingLightweight} from "../Store/actionRedux/historyTrade";
 
@@ -85,8 +89,7 @@ export default function Dashboard(){
   React.useLayoutEffect(()=>{
     SocketIO.on("chartTerkini",(data)=>{
       let {chart}=JSON.parse(data);
-      dispatch(setChartTradingLightweight({market:[]}));
-      dispatch(setChartTradingLightweight({market:!chart||chart.length<=0?[]:chart}));
+      dispatch(setChartTradingLightweight({market:chart}));
     });
   },[dispatch]);
 

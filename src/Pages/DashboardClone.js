@@ -27,11 +27,7 @@ import TrafikHarga from "../Component/TrafikHarga";
 
 import LiveMarket from "../Component/liveMarket";
 
-<<<<<<< HEAD
-import ChartTrading from "../Chart/ApexChart";
-=======
 import Chart from "../Chart/LineChartJual";
->>>>>>> 7360719e59371653f642b7c9e2bab73c8d1aa0f9
 
 import {setChartTradingLightweight} from "../Store/actionRedux/historyTrade";
 
@@ -103,7 +99,7 @@ export default function Dashboard(){
       <Row className="p-1">
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6" style={{padding:0}}>
 
-          <ChartTrading />
+          {/* <ChartTrading /> */}
 
         </div>
 
